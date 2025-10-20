@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* 
+=================================================================
+MAIN BACKGROUND COLOR CONFIGURATION
+=================================================================
+To change the main website background color, update these values:
+- Light mode: --background and --card and --popover and --primary-foreground
+- Dark mode: --foreground and --card-foreground and --popover-foreground and --primary
+
+Current background: #FBF7ED (warm cream)
+Previous background: #faf9f7 (light cream) 
+Alternative options: #FFFFFF (pure white), #F8F9FA (subtle gray)
+=================================================================
+*/
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --font-size: 16px;
+  --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --background: #FBF7ED;
+  --foreground: #2d2821;
+  --card: #FBF7ED;
+  --card-foreground: #2d2821;
+  --popover: #FBF7ED;
+  --popover-foreground: #2d2821;
+  --primary: #2d2821;
+  --primary-foreground: #FBF7ED;
+  --secondary: #f4f3f0;
+  --secondary-foreground: #2d2821;
+  --muted: #f1ede7;
+  --muted-foreground: #73696a;
+  --accent: #ede9e3;
+  --accent-foreground: #2d2821;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --accent-orange: #ff6b3d;
+  --accent-orange-foreground: #ffffff;
+  --border: rgba(45, 40, 33, 0.15);
+  --input: transparent;
+  --input-background: #f4f3f0;
+  --switch-background: #d4cfc7;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #030213;
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: #1a1612;
+  --foreground: #FBF7ED;
+  --card: #1a1612;
+  --card-foreground: #FBF7ED;
+  --popover: #1a1612;
+  --popover-foreground: #FBF7ED;
+  --primary: #FBF7ED;
+  --primary-foreground: #2d2821;
+  --secondary: #2d2821;
+  --secondary-foreground: #FBF7ED;
+  --muted: #2d2821;
+  --muted-foreground: #a8a299;
+  --accent: #2d2821;
+  --accent-foreground: #FBF7ED;
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --accent-orange: #ff6b3d;
+  --accent-orange-foreground: #ffffff;
+  --border: #2d2821;
+  --input: #2d2821;
+  --ring: #73696a;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
+  --font-weight-medium: 500;
+  --font-weight-normal: 400;
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-orange: var(--accent-orange);
+  --color-accent-orange-foreground: var(--accent-orange-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+/* Retro Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 14px;
+  background: #d4cfc7;
+}
+::-webkit-scrollbar-thumb {
+  background: #2d2821;
+  border: 3px solid #a8a299;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 0 #a8a299;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1a1612;
+}
+::-webkit-scrollbar-track {
+  background: #d4cfc7;
+  border-left: 2px solid #a8a299;
+}
+
+/* Firefox */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #2d2821 #d4cfc7;
+}
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    background-image: 
+      linear-gradient(to right, rgba(45, 40, 33, 0.08) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(45, 40, 33, 0.08) 1px, transparent 1px);
+    background-size: 40px 40px;
+    background-position: -1px -1px;
+  }
+
+  /* Orange accent text - base layer for priority */
+  .text-accent-orange {
+    color: #ff6b3d !important;
+  }
+  
+  span.text-accent-orange {
+    color: #ff6b3d !important;
+  }
+  
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  
+  /* Retro Cursor Style */
+  body, button, a, input, textarea {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><rect width="16" height="16" fill="%23faf9f7"/><rect width="14" height="14" x="1" y="1" fill="none" stroke="%232d2821" stroke-width="1"/><path d="M3 3 L13 8 L8 13 Z" fill="%232d2821"/></svg>') 2 2, pointer;
+  }
+}
+
+/**
+ * Retro shadow utilities - can be applied to any element for emphasis
+ * Usage: Add .shadow-retro class to any box or button for the retro offset shadow effect
+ */
+@layer utilities {
+  .shadow-retro {
+    box-shadow: 6px 6px 0 0 #a8a299;
+  }
+  
+  .shadow-retro-sm {
+    box-shadow: 4px 4px 0 0 #a8a299;
+  }
+  
+  .shadow-retro-lg {
+    box-shadow: 8px 8px 0 0 #a8a299;
+  }
+
+  /* Section header styles - opaque background like other headings */
+  .section-header {
+    background-color: var(--background) !important;
+    border: 2px solid var(--border);
+    box-shadow: 4px 4px 0 0 #a8a299;
+  }
+
+  /* Orange accent text color */
+  .text-accent-orange {
+    color: #ff6b3d !important;
+  }
+  
+  span.text-accent-orange {
+    color: #ff6b3d !important;
+  }
+  
+  a.text-accent-orange {
+    color: #ff6b3d !important;
+  }
+}
+
+/**
+ * Base typography. This is not applied to elements which have an ancestor with a Tailwind text class.
+ */
+@layer base {
+  :where(:not(:has([class*=" text-"]), :not(:has([class^="text-"])))) {
+    h1 {
+      font-size: var(--text-5xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: var(--text-3xl);
+      font-weight: var(--font-weight-bold);
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: var(--text-2xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+    }
+
+    h4 {
+      font-size: var(--text-xl);
+      font-weight: var(--font-weight-semibold);
+      line-height: 1.4;
+    }
+
+    p {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.6;
+    }
+
+    label {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    button {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-medium);
+      line-height: 1.5;
+    }
+
+    input {
+      font-size: var(--text-base);
+      font-weight: var(--font-weight-normal);
+      line-height: 1.5;
+    }
+  }
+}
+
+html {
+  font-size: var(--font-size);
+}
+
+/* Global orange text styling - ensure it works everywhere */
+.text-accent-orange,
+span.text-accent-orange,
+a.text-accent-orange,
+[class*="text-accent-orange"],
+[classname*="text-accent-orange"] {
+  color: #ff6b3d !important;
+}
+
+.text-accent-orange:hover {
+  color: #ff5722 !important;
+}
+
+/* Fallback orange styling using attribute selectors */
+span[classname="text-accent-orange"],
+span[class="text-accent-orange"] {
+  color: #ff6b3d !important;
+}
+
+/* Inline styles with orange color - highest priority */
+span[style*="color: #ff6b3d"],
+span[style*="color:#ff6b3d"] {
+  color: #ff6b3d !important;
+}
+
+/* Additional specificity for any span with orange inline styles */
+p span[style*="color: #ff6b3d"],
+div span[style*="color: #ff6b3d"],
+h1 span[style*="color: #ff6b3d"],
+h2 span[style*="color: #ff6b3d"],
+h3 span[style*="color: #ff6b3d"],
+h4 span[style*="color: #ff6b3d"] {
+  color: #ff6b3d !important;
+}
