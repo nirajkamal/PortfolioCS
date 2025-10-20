@@ -339,3 +339,13 @@ h3 span[style*="color: #ff6b3d"],
 h4 span[style*="color: #ff6b3d"] {
   color: #ff6b3d !important;
 }
+
+/* Blog specific styles - adding !important to ensure they're applied */
+.blog-content-container {
+  background-color: var(--background) !important;
+}
+
+.blog-content-quote {
+  background-color: var(--secondary) !important;
+  opacity: 0.5 !important;
+}

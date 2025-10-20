@@ -16,7 +16,7 @@ interface BlogContentProps {
 
 export function BlogContent({ blocks }: BlogContentProps) {
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 blog-content-container">
       {blocks.map((block, index) => {
         switch (block.type) {
           case "heading":
@@ -62,7 +62,7 @@ export function BlogContent({ blocks }: BlogContentProps) {
             return (
               <blockquote 
                 key={index} 
-                className="border-l-4 border-accent-orange pl-6 pr-6 py-4 bg-secondary/50 italic"
+                className="border-l-4 border-accent-orange pl-6 pr-6 py-4 bg-secondary/50 blog-content-quote italic"
               >
                 <p 
                   className="text-lg mb-2"

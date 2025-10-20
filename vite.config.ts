@@ -6,6 +6,12 @@
   export default defineConfig({
     plugins: [react()],
     base: '/',
+    css: {
+      // Enable source maps for CSS
+      devSourcemap: true,
+      // Ensure postcss processes all CSS
+      postcss: {},
+    },
     resolve: {
       extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
       alias: {
@@ -54,6 +60,14 @@
     build: {
       target: 'esnext',
       outDir: 'dist',
+      rollupOptions: {
+        output: {
+          // Add a hash to filenames for cache busting
+          entryFileNames: 'assets/[name].[hash].js',
+          chunkFileNames: 'assets/[name].[hash].js',
+          assetFileNames: 'assets/[name].[hash].[ext]',
+        }
+      },
     },
     server: {
       port: 3000,

@@ -11,6 +11,7 @@ interface BlogPost {
   category: string;
   author: string;
   authorAvatar: string;
+  slug?: string;
 }
 
 export function Blogs() {
@@ -22,8 +23,9 @@ export function Blogs() {
         "readTime": "8 min",
         "image": "https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
         "category": "BACKEND",
-        "author": "David Adler",
-        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+        "author": "Niraj Kamal K",
+        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+        "slug": "building-scalable-microservices"
     },
     {
         "title": "React Performance Optimization Techniques",
@@ -32,8 +34,9 @@ export function Blogs() {
         "readTime": "6 min",
         "image": "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
         "category": "FRONTEND",
-        "author": "Nolan Sullivan",
-        "authorAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
+        "author": "Niraj Kamal K",
+        "authorAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop",
+        "slug": "react-performance-optimization"
     },
     {
         "title": "TypeScript Best Practices for 2025",
@@ -42,8 +45,9 @@ export function Blogs() {
         "readTime": "10 min",
         "image": "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
         "category": "TYPESCRIPT",
-        "author": "Sagar Batchu",
-        "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+        "author": "Niraj Kamal K",
+        "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop",
+        "slug": "sample-post"
     },
     {
         "title": "Designing Scalable Database Schemas",
@@ -52,8 +56,9 @@ export function Blogs() {
         "readTime": "12 min",
         "image": "https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
         "category": "DATABASE",
-        "author": "Ivan Gorshkov",
-        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+        "author": "Niraj Kamal K",
+        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+        "slug": "sample-post"
     }
 ];
 

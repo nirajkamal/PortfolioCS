@@ -310,7 +310,7 @@ class UserService {
 
             {/* Article Content */}
             <article className="lg:col-span-9">
-              <div className="max-w-3xl">
+              <div className="max-w-3xl bg-background p-4 rounded-lg">
                 <BlogContent blocks={contentBlocks} />
 
                 {/* Share Section */}
