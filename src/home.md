@@ -20,18 +20,31 @@ education:
 //title: Professional Journey
 
 ### MS in Computer Science at Georgia Institute of Technology
-period: 2024 - 2026 (Expected)
+period: 2026 (Expected)
 featured: true
-Specializing in [orange](Machine Learning), NLP, and High-Performance Computing with GPUs. 
+MSCS Specializing in [orange](Machine Learning), NLP, and High-Performance Computing with GPUs. 
+
+### Tech Talk at Georgia Tech
+period: August 2025
+Delivered [orange](Lightning Talk) on "Pytorch and Foundation Models" at Georgia Tech Dev-Day in Klaus Research wing, hosted by IBM.
 
 ### Software Development Engineer at Mercedes-Benz R&D
 period: 2022 - 2024
 Led development of a proprietary [orange](Large Language Model) for code generation and built ADAS validation simulations. 
 
+### Tech Talk at IIT Roorkee
+period: March 2025
+Delivered a [orange](Tech Talk) on "[orange](Autonomous Driving) and [orange](Data Science)" to IIT Roorkee's Mehta Family School of Data Science.
+
 ### AI Research Intern at IBM Research
 period: May 2025 - Aug 2025
 featured: true
 Contributed to PyTorch and IBM's [orange](Foundation Models Stack), enhancing attention mechanisms. 
+
+### Keynote at Cognizance, IIT Roorkee
+period: March 2024
+Delivered a [orange](Keynote) titled "[orange](Driving the Autonomous Future)" at Cognizance (IIT Roorkee), covering advances in [orange](Autonomous Driving), perception, and real‑world deployment challenges.
+
 
 ### Bachelor of Architecture at IIT Roorkee
 period: 2018

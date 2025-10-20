@@ -22,7 +22,7 @@ export function Header() {
     },
     {
         "label": "Resume",
-        "href": "#resume",
+        "href": "#/resume",
         "isCTA": true
     }
 ];

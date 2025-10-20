@@ -6,7 +6,7 @@ navigation:
 - Home | #/ | false
 - Blog | #/blog | false
 - Projects | #/projects | false
-- Resume | #resume | true
+- Resume | #/resume | true
 
 ---FOOTER---
 
