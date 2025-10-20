@@ -5,39 +5,58 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { TableOfContents } from "../components/blog/TableOfContents";
 import { BlogContent, BlogContentBlock } from "../components/blog/BlogContent";
 
-export function ReadmePage() {
+export function BusinessCardGeneratorPage() {
   // Project data generated from markdown
   const projectData = {
-    "title": "Your Project Title",
+    "title": "Business Card Generator",
     "category": "WEB APP",
     "date": "October 2025",
-    "heroImage": "https://images.unsplash.com/photo-xxx?w=1080",
+    "type": "Web Application",
+    "heroImage": "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
     "tags": [
         "React",
         "TypeScript",
-        "API"
+        "UI/UX",
+        "Generator",
+        "Interactive"
     ],
-    "github": "https://github.com/username/repo",
-    "demo": "https://demo-link.com",
     "technologies": [
         "React",
-        "Node.js",
-        "MongoDB"
+        "TypeScript",
+        "html2canvas",
+        "CSS",
+        "Tailwind"
     ],
-    "duration": "3 months",
-    "slug": "your-project-slug",
-    "description": "Brief description for project card"
+    "github": "https://github.com/nirajkamal/business-card-generator",
+    "demo": "#/business-card-generator",
+    "duration": "1 week",
+    "slug": "business-card-generator"
 };
 
   const tocItems = [
         {
-                "title": "Overview",
-                "id": "overview",
+                "title": "Interactive Business Card Generator",
+                "id": "interactive-business-card-generator",
                 "level": 2
         },
         {
-                "title": "Technical Details",
-                "id": "technical-details",
+                "title": "Key Features",
+                "id": "key-features",
+                "level": 2
+        },
+        {
+                "title": "Technical Implementation",
+                "id": "technical-implementation",
+                "level": 2
+        },
+        {
+                "title": "Design Considerations",
+                "id": "design-considerations",
+                "level": 2
+        },
+        {
+                "title": "Future Enhancements",
+                "id": "future-enhancements",
                 "level": 2
         }
 ];
@@ -45,35 +64,57 @@ export function ReadmePage() {
   const contentBlocks: BlogContentBlock[] = [
         {
                 "type": "heading",
-                "content": "Overview",
-                "id": "overview"
+                "content": "Interactive Business Card Generator",
+                "id": "interactive-business-card-generator"
         },
         {
                 "type": "paragraph",
-                "content": "Your detailed project description..."
+                "content": "I designed and built a responsive and interactive Business Card Generator that allows users to create professional business cards in minutes. This application showcases my skills in building interactive UI components and real-time preview functionalities."
         },
         {
-                "type": "heading",
-                "content": "Technical Details",
-                "id": "technical-details"
+                "type": "subheading",
+                "content": "Key Features",
+                "id": "key-features"
         },
         {
                 "type": "paragraph",
-                "content": "Implementation details..."
+                "content": "- <strong>Interactive Preview</strong>: Real-time preview of business card design as you make changes - <strong>Customization Options</strong>: Multiple background patterns, color schemes, and layout options - <strong>Two-sided Design</strong>: Design both front and back sides of the business card - <strong>Logo Upload</strong>: Upload and position your company logo - <strong>Download Functionality</strong>: Export your design as a high-resolution PNG image - <strong>Responsive Design</strong>: Works seamlessly on desktop and mobile devices"
+        },
+        {
+                "type": "subheading",
+                "content": "Technical Implementation",
+                "id": "technical-implementation"
+        },
+        {
+                "type": "paragraph",
+                "content": "The Business Card Generator is built using React and TypeScript with a focus on component reusability and state management. The app uses the html2canvas library to convert the DOM elements into downloadable images."
         },
         {
                 "type": "code",
-                "content": "\n## \ufffd Current Projects\n- `adas-validation-simulation.md` - ADAS simulation project\n- `ibm-foundation-models-contribution.md` - IBM FMS contribution\n- `proprietary-llm-development.md` - LLM development project\n\n## \ud83c\udfa8 Custom Markdown Formatting\n\n- `[orange](text)` - Orange-colored text\n- `[comment](text)` - Comment-style text (// style)\n- `[link](url)` - Styled link\n- `[orange-link](url)` - Orange-styled link\n- Standard markdown for **bold**, *italic*, code blocks, etc.\n\n## \ufffd Build Process\n",
-                "language": "text"
+                "content": "// Example code showing card preview generation\nconst downloadCard = async (side: string) => {\n  if (cardRef.current) {\n    const canvas = await html2canvas(cardRef.current, {\n      backgroundColor: null,\n      scale: 2, // Higher resolution\n    });\n    \n    const image = canvas.toDataURL('image/png');\n    const link = document.createElement('a');\n    link.href = image;\n    link.download = `business-card-${side}.png`;\n    link.click();\n  }\n};",
+                "language": "javascript"
         },
         {
                 "type": "paragraph",
-                "content": "cd src python build_projects.py  # Generates pages and index"
+                "content": "I implemented dynamic styling based on user selections for background patterns, colors, and layout. The application maintains a clean separation of concerns between the UI components and the business logic."
         },
         {
-                "type": "code",
-                "content": "\nThis auto-generates:\n- Individual page components (`ProjectNamePage.tsx`)\n- `ProjectIndex.ts` with all metadata (DO NOT EDIT MANUALLY)\n\n---\n\n**Need more help?** Read [HOW-TO-ADD-PROJECTS.md](./HOW-TO-ADD-PROJECTS.md)",
-                "language": "text"
+                "type": "subheading",
+                "content": "Design Considerations",
+                "id": "design-considerations"
+        },
+        {
+                "type": "paragraph",
+                "content": "The interface was designed with usability in mind, featuring intuitive controls and immediate visual feedback. I focused on creating a balance between providing enough customization options while maintaining simplicity in the user experience."
+        },
+        {
+                "type": "subheading",
+                "content": "Future Enhancements",
+                "id": "future-enhancements"
+        },
+        {
+                "type": "paragraph",
+                "content": "Potential future improvements include: - Additional card templates and preset designs - QR code generation for contact information - Social media icons and integration - PDF export option for professional printing - Save designs to user accounts"
         }
 ];
 
@@ -222,12 +263,10 @@ export function ReadmePage() {
                     {projectData.demo && (
                       <a
                         href={projectData.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />
-                        Demo
+                        Use Generator
                       </a>
                     )}
                   </div>

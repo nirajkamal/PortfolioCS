@@ -8,41 +8,36 @@ interface Project {
   tags: string[];
   github?: string;
   demo?: string;
-  slug?: string;
 }
 
 export function Projects() {
   const projects: Project[] = [
-        {
-                "title": "Proprietary Large Language Model Development",
-                "description": "Led the development of a proprietary in-house Large Language Model, executing parallel distributed training on 8 Nvidia A100 GPUs.",
-                "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-                "tags": [
-                        "PyTorch",
-                        "CUDA",
-                        "Python",
-                        "Distributed Computing",
-                        "A100 GPUs"
-                ],
-                "slug": "proprietary-llm-development",
-                "github": "https://github.com/example/llm-project",
-                "demo": "https://llm-demo.example.com"
-        },
-        {
-                "title": "ADAS Validation and Verification Simulation",
-                "description": "Developed simulations for verification and validation of ADAS features using stochastic methods and adversarial models.",
-                "image": "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-                "tags": [
-                        "Python",
-                        "CARLA",
-                        "ROS2",
-                        "Machine Learning",
-                        "Computer Vision"
-                ],
-                "slug": "adas-validation-simulation",
-                "github": "https://github.com/example/adas-simulation",
-                "demo": "https://adas-sim-demo.example.com"
-        }
+    {
+        "title": "LLM for Code Generation",
+        "description": "Led the development of a proprietary in-house Large Language Model, executing <span style='color: #ff6b3d;'>parallel distributed training</span> on 8 Nvidia A100 GPUs.",
+        "image": "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "tags": [
+            "PyTorch",
+            "LLM",
+            "Distributed Training",
+            "A100 GPU"
+        ],
+        "github": "https://github.com/example/ecommerce",
+        "demo": "https://ecommerce-demo.com"
+    },
+    {
+        "title": "ADAS Simulation & Validation",
+        "description": "Developed simulations for verification and validation of ADAS features using <span style='color: #ff6b3d;'>stochastic methods</span> and adversarial models.",
+        "image": "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "tags": [
+            "Autonomous Driving",
+            "Simulation",
+            "Python",
+            "RL"
+        ],
+        "github": "https://github.com/example/collab-tool",
+        "demo": "https://collab-demo.com"
+    }
 ];
 
   return (
@@ -57,16 +52,6 @@ export function Projects() {
               <ProjectCard {...project} index={index} imageHeight="h-48 sm:h-64" />
             </div>
           ))}
-        </div>
-
-        {/* View All Projects Button */}
-        <div className="mt-12 text-center">
-          <a
-            href="#/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
-          >
-            View All Projects →
-          </a>
         </div>
       </div>
     </section>

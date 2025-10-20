@@ -11,39 +11,50 @@ interface BlogPost {
   category: string;
   author: string;
   authorAvatar: string;
-  slug?: string;
-  linkType?: 'internal' | 'external';
-  linkUrl?: string;
 }
 
 export function Blogs() {
   const posts: BlogPost[] = [
-        {
-                "title": "Deep Learning Fundamentals: A Complete Guide",
-                "excerpt": "A comprehensive guide to understanding deep learning fundamentals, from neural networks to advanced architectures like transformers and CNNs.",
-                "date": "Oct 18, 2025",
-                "readTime": "12 min read",
-                "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-                "category": "MACHINE LEARNING",
-                "author": "Niraj Kamal K",
-                "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-                "slug": "deep-learning-on-medium",
-                "linkType": "external",
-                "linkUrl": "https://medium.com/@yourusername/deep-learning-fundamentals"
-        },
-        {
-                "title": "Building Scalable Microservices with Node.js",
-                "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
-                "date": "Oct 15, 2025",
-                "readTime": "8 min read",
-                "image": "https://images.unsplash.com/photo-1593442257276-1895e27c8ed6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODQ5MDI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
-                "category": "BACKEND",
-                "author": "Niraj Kamal K",
-                "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-                "slug": "building-scalable-microservices",
-                "linkType": "internal",
-                "linkUrl": "#/blog/building-scalable-microservices"
-        }
+    {
+        "title": "Building Scalable Microservices with Node.js",
+        "excerpt": "Learn how to design and implement <span style='color: #ff6b3d;'>microservices architecture</span> that can handle millions of requests with minimal latency.",
+        "date": "Oct 15, 2025",
+        "readTime": "8 min",
+        "image": "https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "category": "BACKEND",
+        "author": "David Adler",
+        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+    },
+    {
+        "title": "React Performance Optimization Techniques",
+        "excerpt": "Discover <span style='color: #ff6b3d;'>advanced patterns</span> and techniques to make your React applications blazingly fast and responsive.",
+        "date": "Oct 5, 2025",
+        "readTime": "6 min",
+        "image": "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "category": "FRONTEND",
+        "author": "Nolan Sullivan",
+        "authorAvatar": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop"
+    },
+    {
+        "title": "TypeScript Best Practices for 2025",
+        "excerpt": "A comprehensive guide to writing <span style='color: #ff6b3d;'>type-safe, maintainable code</span> with the latest TypeScript features.",
+        "date": "Sep 28, 2025",
+        "readTime": "10 min",
+        "image": "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
+        "category": "TYPESCRIPT",
+        "author": "Sagar Batchu",
+        "authorAvatar": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop"
+    },
+    {
+        "title": "Designing Scalable Database Schemas",
+        "excerpt": "Best practices for <span style='color: #ff6b3d;'>database design</span> that scales from startup to enterprise.",
+        "date": "Sep 15, 2025",
+        "readTime": "12 min",
+        "image": "https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+        "category": "DATABASE",
+        "author": "Ivan Gorshkov",
+        "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop"
+    }
 ];
 
   return (
