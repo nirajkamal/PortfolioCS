@@ -1,0 +1,6 @@
+# Ignore node modules
+node_modules/
+build/
+.venv/
+__pycache__/
+# Ignore environment variables
