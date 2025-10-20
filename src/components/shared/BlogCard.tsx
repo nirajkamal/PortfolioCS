@@ -22,8 +22,17 @@ export function BlogCard({
   authorAvatar,
   slug,
 }: BlogCardProps) {
+  const handleCardClick = () => {
+    const url = slug ? `#/blog/${slug}` : '#/blog/sample-post';
+    console.log('Blog card clicked, navigating to:', url);
+    window.location.href = url;
+  };
+
   return (
-    <article className="bg-background border-2 border-border overflow-hidden group cursor-pointer hover:bg-secondary transition-colors">
+    <article 
+      className="bg-background border-2 border-border overflow-hidden group cursor-pointer hover:bg-secondary transition-colors"
+      onClick={handleCardClick}
+    >
       <div className="relative h-40 sm:h-48 overflow-hidden border-b-2 border-border">
         <ImageWithFallback
           src={image}
@@ -63,6 +72,7 @@ export function BlogCard({
         <a
           href={slug ? `#/blog/${slug}` : '#/blog/sample-post'}
           className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors font-mono text-xs inline-flex"
+          onClick={(e) => e.stopPropagation()}
         >
           <span>Read article</span>
           <ArrowRight className="w-3 h-3" />

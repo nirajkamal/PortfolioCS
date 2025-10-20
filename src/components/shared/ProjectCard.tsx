@@ -28,8 +28,20 @@ export function ProjectCard({
   imageHeight = "h-48 sm:h-48",
   slug,
 }: ProjectCardProps) {
+  const handleCardClick = () => {
+    if (slug) {
+      console.log('Project card clicked, navigating to:', `#/project/${slug}`);
+      window.location.href = `#/project/${slug}`;
+    } else {
+      console.log('Project card clicked but no slug provided');
+    }
+  };
+
   return (
-    <article className="bg-background border-2 border-border overflow-hidden group cursor-pointer hover:bg-secondary transition-colors">
+    <article 
+      className="bg-background border-2 border-border overflow-hidden group cursor-pointer hover:bg-secondary transition-colors"
+      onClick={handleCardClick}
+    >
       <div className={`relative ${imageHeight} overflow-hidden border-b-2 border-border`}>
         <ImageWithFallback
           src={image}
@@ -81,6 +93,7 @@ export function ProjectCard({
             <a
               href={`#/project/${slug}`}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs"
+              onClick={(e) => e.stopPropagation()}
             >
               <span>View Details</span>
             </a>
@@ -89,6 +102,7 @@ export function ProjectCard({
             <a
               href={github}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs"
+              onClick={(e) => e.stopPropagation()}
             >
               <Github className="w-4 h-4" />
               <span>Code</span>
@@ -98,6 +112,7 @@ export function ProjectCard({
             <a
               href={demo}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs"
+              onClick={(e) => e.stopPropagation()}
             >
               <ExternalLink className="w-4 h-4" />
               <span>Demo</span>

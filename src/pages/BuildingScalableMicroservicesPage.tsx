@@ -274,51 +274,36 @@ export function BuildingScalableMicroservicesPage() {
         </div>
       </section>
 
-      {/* Mobile Table of Contents */}
-      <section className="lg:hidden border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 py-8">
-          <details className="bg-background border-2 border-border rounded-lg">
-            <summary className="p-4 cursor-pointer font-mono text-sm hover:bg-muted transition-colors">
-              // TABLE OF CONTENTS
-            </summary>
-            <div className="p-4 pt-0">
-              <TableOfContents items={tocItems} />
-            </div>
-          </details>
-        </div>
-      </section>
-
       {/* Main Content */}
       <section className="border-b border-border">
         <div className="max-w-7xl mx-auto px-8 py-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-0">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Table of Contents - Desktop */}
-            <aside className="hidden lg:block lg:col-span-3 pr-8">
+            <aside className="hidden lg:block lg:col-span-3">
               <TableOfContents items={tocItems} />
             </aside>
 
             {/* Article Content */}
             <article className="lg:col-span-9">
-              {/* Main Content Box */}
-              <div className="bg-background p-8 md:p-12">
+              <div className="bg-background p-4 rounded-lg">
                 <BlogContent blocks={contentBlocks} />
-              </div>
 
-              {/* Action Buttons */}
-              <div className="mt-8 bg-background p-8 md:p-12">
-                <p className="font-mono text-sm text-muted-foreground mb-4">
-                  // SHARE THIS ARTICLE
-                </p>
-                <div className="flex gap-3">
-                  <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
-                    Twitter
-                  </button>
-                  <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
-                    LinkedIn
-                  </button>
-                  <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
-                    Copy Link
-                  </button>
+                {/* Share Section */}
+                <div className="mt-16 pt-8 border-t-2 border-border">
+                  <p className="font-mono text-sm text-muted-foreground mb-4">
+                    // SHARE THIS ARTICLE
+                  </p>
+                  <div className="flex gap-3">
+                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                      Twitter
+                    </button>
+                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                      LinkedIn
+                    </button>
+                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                      Copy Link
+                    </button>
+                  </div>
                 </div>
               </div>
             </article>

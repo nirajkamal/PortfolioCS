@@ -48,8 +48,8 @@ export function TableOfContents({ items }: TableOfContentsProps) {
   };
 
   return (
-    <div className="sticky top-8">
-      <div className="section-header bg-background p-6">
+    <div className="sticky top-24">
+      <div className="border-2 border-border bg-background p-6">
         <div className="mb-4 border-b-2 border-border pb-4">
           <p className="font-mono">// TABLE OF CONTENTS</p>
         </div>
