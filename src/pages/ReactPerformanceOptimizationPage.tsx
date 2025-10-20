@@ -162,6 +162,10 @@ export function ReactPerformanceOptimizationPage() {
           <a
             href="#/blog"
             className="inline-flex items-center gap-2 mb-8 px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+            onClick={() => {
+              // Scroll to top when going back to blog list
+              setTimeout(() => window.scrollTo(0, 0), 10);
+            }}
           >
             <ArrowLeft className="w-4 h-4" />
             <span>Back to Blog</span>

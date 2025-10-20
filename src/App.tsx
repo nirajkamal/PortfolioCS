@@ -14,6 +14,8 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       setCurrentPath(window.location.hash || "#/");
+      // Scroll to the top of the page when navigating
+      window.scrollTo(0, 0);
     };
 
     window.addEventListener("hashchange", handleHashChange);

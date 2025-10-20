@@ -8,37 +8,37 @@ export function Timeline() {
   const timelineItems: TimelineItem[] = [
     {
         "period": "2026 (Expected)",
-        "content": "MSCS Specializing in <span style='color: #ff6b3d;'>Machine Learning</span>, NLP, and High-Performance Computing with GPUs.",
+        "content": "-- MSCS Specializing in <span style='color: #ff6b3d;'>Machine Learning</span>, NLP, and High-Performance Computing with GPUs.",
         "featured": true
     },
     {
         "period": "August 2025",
-        "content": "Delivered <span style='color: #ff6b3d;'>Lightning Talk</span> on \"Pytorch and Foundation Models\" at Georgia Tech Dev-Day in Klaus Research wing, hosted by IBM.",
+        "content": "-- Delivered <span style='color: #ff6b3d;'>Lightning Talk</span> on \"Pytorch and Foundation Models\" at Georgia Tech Dev-Day in Klaus Research wing, hosted by IBM.",
         "featured": false
     },
     {
         "period": "2022 - 2024",
-        "content": "Led development of a proprietary <span style='color: #ff6b3d;'>Large Language Model</span> for code generation and built ADAS validation simulations.",
+        "content": "-- Led development of a proprietary <span style='color: #ff6b3d;'>Large Language Model</span> for code generation and built ADAS validation simulations.",
         "featured": false
     },
     {
         "period": "March 2025",
-        "content": "Delivered a <span style='color: #ff6b3d;'>Tech Talk</span> on \"<span style='color: #ff6b3d;'>Autonomous Driving</span> and <span style='color: #ff6b3d;'>Data Science</span>\" to IIT Roorkee's Mehta Family School of Data Science.",
+        "content": "-- Delivered a <span style='color: #ff6b3d;'>Tech Talk</span> on \"<span style='color: #ff6b3d;'>Autonomous Driving</span> and <span style='color: #ff6b3d;'>Data Science</span>\" to IIT Roorkee's Mehta Family School of Data Science.",
         "featured": false
     },
     {
         "period": "May 2025 - Aug 2025",
-        "content": "Contributed to PyTorch and IBM's <span style='color: #ff6b3d;'>Foundation Models Stack</span>, enhancing attention mechanisms.",
+        "content": "-- Contributed to PyTorch and IBM's <span style='color: #ff6b3d;'>Foundation Models Stack</span>, enhancing attention mechanisms.",
         "featured": true
     },
     {
         "period": "March 2024",
-        "content": "Delivered a <span style='color: #ff6b3d;'>Keynote</span> titled \"<span style='color: #ff6b3d;'>Driving the Autonomous Future</span>\" at Cognizance (IIT Roorkee), covering advances in <span style='color: #ff6b3d;'>Autonomous Driving</span>, perception, and real\u00e2\u20ac\u2018world deployment challenges.",
+        "content": "-- Delivered a <span style='color: #ff6b3d;'>Keynote</span> titled \"<span style='color: #ff6b3d;'>Driving the Autonomous Future</span>\" at Cognizance (IIT Roorkee), covering advances in <span style='color: #ff6b3d;'>Autonomous Driving</span>, perception, and real world deployment challenges.",
         "featured": false
     },
     {
         "period": "2018",
-        "content": "Gold Medalist in Inter-IIT Tech Meet for <span style='color: #ff6b3d;'>Computer Vision</span> and focused on computational graphics.",
+        "content": "-- Gold Medalist in Inter-IIT Tech Meet for <span style='color: #ff6b3d;'>Computer Vision</span> and focused on computational graphics.",
         "featured": false
     }
 ];

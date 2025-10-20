@@ -22,33 +22,33 @@ education:
 ### MS in Computer Science at Georgia Institute of Technology
 period: 2026 (Expected)
 featured: true
-MSCS Specializing in [orange](Machine Learning), NLP, and High-Performance Computing with GPUs. 
+ -- MSCS Specializing in [orange](Machine Learning), NLP, and High-Performance Computing with GPUs. 
 
 ### Tech Talk at Georgia Tech
 period: August 2025
-Delivered [orange](Lightning Talk) on "Pytorch and Foundation Models" at Georgia Tech Dev-Day in Klaus Research wing, hosted by IBM.
+ -- Delivered [orange](Lightning Talk) on "Pytorch and Foundation Models" at Georgia Tech Dev-Day in Klaus Research wing, hosted by IBM.
 
 ### Software Development Engineer at Mercedes-Benz R&D
 period: 2022 - 2024
-Led development of a proprietary [orange](Large Language Model) for code generation and built ADAS validation simulations. 
+ -- Led development of a proprietary [orange](Large Language Model) for code generation and built ADAS validation simulations. 
 
 ### Tech Talk at IIT Roorkee
 period: March 2025
-Delivered a [orange](Tech Talk) on "[orange](Autonomous Driving) and [orange](Data Science)" to IIT Roorkee's Mehta Family School of Data Science.
+ -- Delivered a [orange](Tech Talk) on "[orange](Autonomous Driving) and [orange](Data Science)" to IIT Roorkee's Mehta Family School of Data Science.
 
 ### AI Research Intern at IBM Research
 period: May 2025 - Aug 2025
 featured: true
-Contributed to PyTorch and IBM's [orange](Foundation Models Stack), enhancing attention mechanisms. 
+ -- Contributed to PyTorch and IBM's [orange](Foundation Models Stack), enhancing attention mechanisms. 
 
 ### Keynote at Cognizance, IIT Roorkee
 period: March 2024
-Delivered a [orange](Keynote) titled "[orange](Driving the Autonomous Future)" at Cognizance (IIT Roorkee), covering advances in [orange](Autonomous Driving), perception, and real‑world deployment challenges.
+ -- Delivered a [orange](Keynote) titled "[orange](Driving the Autonomous Future)" at Cognizance (IIT Roorkee), covering advances in [orange](Autonomous Driving), perception, and real world deployment challenges.
 
 
 ### Bachelor of Architecture at IIT Roorkee
 period: 2018
-Gold Medalist in Inter-IIT Tech Meet for [orange](Computer Vision) and focused on computational graphics. 
+ -- Gold Medalist in Inter-IIT Tech Meet for [orange](Computer Vision) and focused on computational graphics. 
 
 ## Blog  
 //comment: WRITINGS
@@ -101,13 +101,6 @@ github: https://github.com/example/ecommerce
 demo: https://ecommerce-demo.com
 Led the development of a proprietary in-house Large Language Model, executing [orange](parallel distributed training) on 8 Nvidia A100 GPUs. 
 
-### IBM FMS & PyTorch Contributions
-tags: PyTorch, Open Source, LLM, Attention Mechanisms
-image: https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080
-github: https://github.com/example/ai-tasks
-demo: https://ai-tasks-demo.com
-Contributed to IBM's Foundation Model Stack by enhancing new methods of attention and authored [orange](6 pull requests) to PyTorch.
-
 ### ADAS Simulation & Validation
 tags: Autonomous Driving, Simulation, Python, RL
 image: https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080
@@ -115,9 +108,3 @@ github: https://github.com/example/collab-tool
 demo: https://collab-demo.com
 Developed simulations for verification and validation of ADAS features using [orange](stochastic methods) and adversarial models. 
 
-### Shape Detection & Generation
-tags: Python, Rhino, Computer Vision, Generative Models
-image: https://images.unsplash.com/photo-1737575655055-e3967cbefd03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwcm9mZXNzaW9uYWwlMjBkZXZlbG9wZXIlMjBwb3J0cmFpdHxlbnwxfHx8fDE3NjA4NzYyNjB8MA&ixlib=rb-4.1.0&q=80&w=1080
-github: https://github.com/example/portfolio-builder
-demo: https://portfolio-builder-demo.com
-Implemented [orange](shape detection algorithms) for pattern matching and stochastic map generation as a Graduate Research Assistant. 

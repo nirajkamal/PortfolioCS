@@ -84,7 +84,8 @@ export function BlogPage() {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 400, behavior: 'smooth' });
+    // Just scroll to top of blog section instead of a specific position
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   // Featured post (first real blog post or first post)
@@ -138,6 +139,10 @@ export function BlogPage() {
                 <a
                   href={featuredPost.slug ? `#/blog/${featuredPost.slug}` : '#/blog/featured'}
                   className="flex items-center gap-2 px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors font-mono text-xs sm:text-sm inline-flex"
+                  onClick={() => {
+                    // Scroll to top when navigating to blog post
+                    setTimeout(() => window.scrollTo(0, 0), 10);
+                  }}
                 >
                   <span>Read article</span>
                   <ArrowRight className="w-3 h-3" />
