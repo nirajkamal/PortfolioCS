@@ -3,6 +3,7 @@ import { GridBackground } from "./components/GridBackground";
 import { HomePage } from "./pages/HomePage";
 import { BlogPage } from "./pages/BlogPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
+import { ResumePage } from "./pages/ResumePage";
 import { BlogPostPage } from "./pages/BlogPostPage";
 import { BLOG_COMPONENTS } from "./pages/BlogIndex";
 import { PROJECT_COMPONENTS } from "./pages/ProjectIndex";
@@ -50,6 +51,8 @@ export default function App() {
         return <BlogPage />;
       case "#/projects":
         return <ProjectsPage />;
+      case "#/resume":
+        return <ResumePage />;
       case "#/":
       default:
         return <HomePage />;

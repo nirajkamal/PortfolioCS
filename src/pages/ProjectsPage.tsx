@@ -91,7 +91,7 @@ export function ProjectsPage() {
   const featuredProject = allProjects[0];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="size-full relative">
       <Header />
       
       {/* Hero Section */}
