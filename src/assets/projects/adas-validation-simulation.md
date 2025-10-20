@@ -15,6 +15,10 @@ technologies: ["Python", "CARLA", "ROS2", "Machine Learning", "Computer Vision"]
 team: ["Research Team", "Industry Partners"]
 duration: 4 months
 slug: adas-validation-simulation
+description: Developed simulations for verification and validation of ADAS features using stochastic methods and adversarial models.
+featuredOnHome: true
+featuredOnProjects: true
+displayOrder: 2
 ---META---
 
 ---TOC---

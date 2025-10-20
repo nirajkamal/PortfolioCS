@@ -19,6 +19,8 @@ interface BlogPost {
   author: string;
   authorAvatar: string;
   slug?: string;
+  linkType?: 'internal' | 'external';
+  linkUrl?: string;
 }
 
 export function BlogPage() {
@@ -29,53 +31,35 @@ export function BlogPage() {
   // Convert blog index to BlogPost format
   const convertBlogMetaToBlogPost = (meta: BlogMeta): BlogPost => ({
     title: meta.title,
-    excerpt: `${meta.title} - ${meta.tags.slice(0, 3).join(', ')}`, // Generate excerpt from title and tags
+    excerpt: meta.excerpt || `${meta.title} - ${meta.tags.slice(0, 3).join(', ')}`, // Use excerpt if available
     date: meta.date,
     readTime: meta.readTime,
     image: meta.heroImage || 'https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080',
     category: meta.category,
     author: meta.author,
     authorAvatar: meta.authorAvatar,
-    slug: meta.slug
+    slug: meta.slug,
+    linkType: meta.external ? 'external' : 'internal',
+    linkUrl: meta.external ? meta.externalUrl : undefined
   });
 
-  // Get all blog posts from the generated index
+  // Get all blog posts from the generated index (source of truth: src/assets/blogs/*.md)
   const allPosts: BlogPost[] = BLOG_INDEX.map(entry => convertBlogMetaToBlogPost(entry.meta));
 
-  // Add some placeholder posts if we don't have enough
-  const placeholderPosts: BlogPost[] = [
-    {
-      title: "Design Systems: Creating Consistency at Scale",
-      excerpt: "Exploring how to build and maintain a cohesive design system that ensures consistency across your entire product ecosystem.",
-      date: "October 8, 2024",
-      readTime: "10 min",
-      image: "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      category: "DESIGN",
-      author: "Niraj Kamal K",
-      authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-    },
-    {
-      title: "Getting Started with Component-Driven Development",
-      excerpt: "A beginner's guide to building scalable applications with reusable components and modern JavaScript frameworks.",
-      date: "October 1, 2024",
-      readTime: "8 min",
-      image: "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      category: "TUTORIALS",
-      author: "Niraj Kamal K",
-      authorAvatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
-    },
-  ];
-
-  // Combine real posts with placeholders
-  const combinedPosts = [...allPosts, ...placeholderPosts];
+  // Sort by displayOrder
+  const sortedPosts = [...allPosts].sort((a, b) => {
+    const orderA = BLOG_INDEX.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
+    const orderB = BLOG_INDEX.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
+    return orderA - orderB;
+  });
 
   // Get unique categories from all posts
-  const categories = ["ALL", ...Array.from(new Set(combinedPosts.map(post => post.category)))];
+  const categories = ["ALL", ...Array.from(new Set(sortedPosts.map(post => post.category)))];
 
   // Filter posts by category
   const filteredPosts = selectedCategory === "ALL" 
-    ? combinedPosts 
-    : combinedPosts.filter(post => post.category === selectedCategory);
+    ? sortedPosts 
+    : sortedPosts.filter(post => post.category === selectedCategory);
 
   // Pagination
   const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
@@ -89,7 +73,11 @@ export function BlogPage() {
   };
 
   // Featured post (first real blog post or first post)
-  const featuredPost = combinedPosts[0];
+  // Get featured post (highest displayOrder with featuredOnBlog = true)
+  const featuredPost = sortedPosts.find(post => {
+    const meta = BLOG_INDEX.find(p => p.meta.title === post.title)?.meta;
+    return meta?.featuredOnBlog;
+  }) || sortedPosts[0];
 
   return (
     <div className="size-full relative">

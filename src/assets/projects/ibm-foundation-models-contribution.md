@@ -15,6 +15,10 @@ technologies: ["PyTorch", "Python", "Transformers", "CUDA", "Git"]
 team: ["IBM Research Team", "Open Source Community"]
 duration: 3 months
 slug: ibm-foundation-models-contribution
+description: Enhanced IBM's Foundation Models Stack with optimized attention mechanisms and contributed to PyTorch core.
+featuredOnHome: false
+featuredOnProjects: false
+displayOrder: 3
 ---META---
 
 ---TOC---

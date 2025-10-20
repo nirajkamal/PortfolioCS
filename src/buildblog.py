@@ -61,8 +61,15 @@ def parse_blog_markdown(content):
                     key = key.strip()
                     value = value.strip()
                     
+                    # Handle arrays
                     if key == 'tags':
                         blog_data['meta'][key] = [tag.strip() for tag in value.split(',')]
+                    # Handle booleans
+                    elif value.lower() in ['true', 'false']:
+                        blog_data['meta'][key] = value.lower() == 'true'
+                    # Handle numbers
+                    elif value.isdigit():
+                        blog_data['meta'][key] = int(value)
                     else:
                         blog_data['meta'][key] = value
                 i += 1
@@ -373,6 +380,7 @@ def main():
     """Main function to process all blog markdown files"""
     blogs_dir = Path('assets/blogs')
     pages_dir = Path('pages')
+    components_dir = Path('components')
     
     if not blogs_dir.exists():
         print("Error: assets/blogs/ directory not found!")
@@ -382,8 +390,11 @@ def main():
     if not pages_dir.exists():
         pages_dir.mkdir()
     
-    # Process all markdown files in blogs directory
-    blog_files = list(blogs_dir.glob('*.md'))
+    # Process all markdown files in blogs directory, excluding documentation
+    blog_files = [
+        f for f in blogs_dir.glob('*.md') 
+        if f.name.upper() not in ['README.MD']
+    ]
     
     if not blog_files:
         print("No markdown files found in assets/blogs/ directory.")
@@ -393,10 +404,6 @@ def main():
     blog_index = []
     
     for blog_file in blog_files:
-        # Skip README.md
-        if blog_file.name.lower() == 'readme.md':
-            continue
-            
         print(f"Processing {blog_file.name}...")
         
         content = blog_file.read_text(encoding='utf-8')
@@ -405,15 +412,29 @@ def main():
         # Get slug from filename or meta
         blog_slug = blog_data['meta'].get('slug', blog_file.stem)
         
-        # Generate component
-        component_code = generate_blog_post_component(blog_data, blog_slug)
+        # Ensure display flags have default values
+        if 'featuredOnHome' not in blog_data['meta']:
+            blog_data['meta']['featuredOnHome'] = False
+        if 'featuredOnBlog' not in blog_data['meta']:
+            blog_data['meta']['featuredOnBlog'] = False
+        if 'displayOrder' not in blog_data['meta']:
+            blog_data['meta']['displayOrder'] = 999
+        if 'external' not in blog_data['meta']:
+            blog_data['meta']['external'] = False
+        if 'externalUrl' not in blog_data['meta']:
+            blog_data['meta']['externalUrl'] = None
         
-        # Write to pages directory
-        component_name = ''.join(word.capitalize() for word in blog_slug.split('-')) + 'Page'
-        output_file = pages_dir / f"{component_name}.tsx"
-        output_file.write_text(component_code, encoding='utf-8')
-        
-        generated_files.append(output_file.name)
+        # Generate component only if not external
+        if not blog_data['meta'].get('external', False):
+            component_code = generate_blog_post_component(blog_data, blog_slug)
+            component_name = ''.join(word.capitalize() for word in blog_slug.split('-')) + 'Page'
+            output_file = pages_dir / f"{component_name}.tsx"
+            output_file.write_text(component_code, encoding='utf-8')
+            generated_files.append(output_file.name)
+            print(f"✓ Generated {output_file.name}")
+        else:
+            component_name = None
+            print(f"✓ External blog link: {blog_slug}")
         
         # Add to blog index
         blog_index.append({
@@ -421,11 +442,18 @@ def main():
             'component': component_name,
             'meta': blog_data['meta']
         })
-        
-        print(f"✓ Generated {output_file.name}")
     
     # Generate blog index file
     generate_blog_index(blog_index, pages_dir)
+    
+    # Generate Blogs.tsx component for HomePage
+    try:
+        blogs_component = generate_blogs_component(blog_index)
+        blogs_file = components_dir / "Blogs.tsx"
+        blogs_file.write_text(blogs_component, encoding='utf-8')
+        print("✓ Generated Blogs.tsx component")
+    except Exception as e:
+        print(f"✗ Error generating Blogs component: {e}")
     
     print(f"\n✅ Blog generation complete! Generated {len(generated_files)} files:")
     for file in generated_files:
@@ -435,6 +463,14 @@ def main():
 def generate_blog_index(blog_index, pages_dir):
     """Generate a blog index file with all blog metadata"""
     blog_index_json = json.dumps(blog_index, indent=2)
+    
+    # Get imports for non-external blogs
+    imports = [f'import {{ {entry["component"]} }} from "./{entry["component"]}";' 
+               for entry in blog_index if entry['component'] is not None]
+    
+    # Get components mapping for non-external blogs
+    components = [f'  "{entry["slug"]}": {entry["component"]},' 
+                  for entry in blog_index if entry['component'] is not None]
     
     index_content = f'''// Auto-generated blog index - DO NOT EDIT MANUALLY
 // This file is generated by buildblog.py
@@ -449,27 +485,125 @@ export interface BlogMeta {{
   heroImage?: string;
   tags: string[];
   slug: string;
+  excerpt?: string;
+  featuredOnHome?: boolean;
+  featuredOnBlog?: boolean;
+  displayOrder?: number;
+  external?: boolean;
+  externalUrl?: string;
 }}
 
 export interface BlogIndexEntry {{
   slug: string;
-  component: string;
+  component: string | null;
   meta: BlogMeta;
 }}
 
 export const BLOG_INDEX: BlogIndexEntry[] = {blog_index_json};
 
 // Import all generated blog page components
-{chr(10).join([f'import {{ {entry["component"]} }} from "./{entry["component"]}";' for entry in blog_index])}
+{chr(10).join(imports)}
 
 export const BLOG_COMPONENTS = {{
-{chr(10).join([f'  "{entry["slug"]}": {entry["component"]},' for entry in blog_index])}
+{chr(10).join(components)}
 }};
 '''
     
     index_file = pages_dir / 'BlogIndex.ts'
     index_file.write_text(index_content, encoding='utf-8')
     print("✓ Generated BlogIndex.ts")
+
+
+def generate_blogs_component(blog_index):
+    """Generate Blogs.tsx component for HomePage with featured blogs"""
+    # Filter and sort blogs for home page
+    featured_blogs = [
+        b for b in blog_index 
+        if b['meta'].get('featuredOnHome', False)
+    ]
+    
+    # Sort by display order
+    featured_blogs.sort(key=lambda b: b['meta'].get('displayOrder', 999))
+    
+    # Prepare blog data
+    blogs_data = []
+    for blog in featured_blogs:
+        meta = blog['meta']
+        
+        # Determine the link - external or internal
+        if meta.get('external', False) and meta.get('externalUrl'):
+            link_type = 'external'
+            link_url = meta['externalUrl']
+        else:
+            link_type = 'internal'
+            link_url = f"#/blog/{blog['slug']}"
+        
+        blog_obj = {
+            'title': meta.get('title', ''),
+            'excerpt': meta.get('excerpt', ''),
+            'date': meta.get('date', ''),
+            'readTime': meta.get('readTime', ''),
+            'image': meta.get('heroImage', 'https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?w=1080'),
+            'category': meta.get('category', ''),
+            'author': meta.get('author', ''),
+            'authorAvatar': meta.get('authorAvatar', ''),
+            'slug': blog['slug'],
+            'linkType': link_type,
+            'linkUrl': link_url
+        }
+        
+        blogs_data.append(blog_obj)
+    
+    blogs_json = json.dumps(blogs_data, indent=8)
+    
+    component_content = f'''import {{ ArrowRight }} from "lucide-react";
+import {{ PageHeader }} from "./shared/PageHeader";
+import {{ BlogCard }} from "./shared/BlogCard";
+
+interface BlogPost {{
+  title: string;
+  excerpt: string;
+  date: string;
+  readTime: string;
+  image: string;
+  category: string;
+  author: string;
+  authorAvatar: string;
+  slug?: string;
+  linkType?: 'internal' | 'external';
+  linkUrl?: string;
+}}
+
+export function Blogs() {{
+  const posts: BlogPost[] = {blogs_json};
+
+  return (
+    <section id="blog" className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20">
+        <div className="mb-8 sm:mb-12 flex items-end justify-between flex-wrap gap-4">
+          <PageHeader label="WRITINGS" title="Latest Articles" />
+          <a
+            href="#/blog"
+            className="flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono text-sm"
+          >
+            <span>View All</span>
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        {{/* Grid Layout */}}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {{posts.map((post, index) => (
+            <BlogCard key={{index}} {{...post}} />
+          ))}}
+        </div>
+      </div>
+    </section>
+  );
+}}
+'''
+    
+    return component_content
 
 
 if __name__ == '__main__':

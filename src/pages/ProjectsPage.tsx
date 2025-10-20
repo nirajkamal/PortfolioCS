@@ -42,40 +42,23 @@ export function ProjectsPage() {
   // Get all projects from the generated index
   const realProjects: Project[] = PROJECT_INDEX.map(entry => convertProjectMetaToProject(entry.meta));
 
-  // Add some placeholder projects if needed
-  const placeholderProjects: Project[] = [
-    {
-      title: "Technical Portfolio Website",
-      description: "A modern portfolio with gridded blueprint aesthetic, built with React and Tailwind CSS featuring responsive design and technical documentation.",
-      image: "https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["React", "Tailwind CSS", "TypeScript", "Responsive Design"],
-      category: "WEB APP",
-      year: "2024",
-      github: "#",
-      demo: "#",
-    },
-    {
-      title: "Task Management Dashboard",
-      description: "Clean and intuitive task management interface with drag-and-drop functionality, priority sorting, and real-time updates.",
-      image: "https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      tags: ["React", "Node.js", "MongoDB", "Socket.io"],
-      category: "FULL-STACK",
-      year: "2024",
-      github: "#",
-      demo: "#",
-    },
-  ];
+  // Use only projects from the markdown files (source of truth: src/assets/projects/*.md)
+  const allProjects = realProjects;
 
-  // Combine real projects with placeholders
-  const allProjects = [...realProjects, ...placeholderProjects];
+  // Sort projects by displayOrder
+  const sortedProjects = [...allProjects].sort((a, b) => {
+    const orderA = PROJECT_INDEX.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
+    const orderB = PROJECT_INDEX.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
+    return orderA - orderB;
+  });
 
   // Get unique categories from all projects
-  const categories = ["ALL", ...Array.from(new Set(allProjects.map(project => project.category)))];
+  const categories = ["ALL", ...Array.from(new Set(sortedProjects.map(project => project.category)))];
 
   // Filter projects by category
   const filteredProjects = selectedCategory === "ALL" 
-    ? allProjects 
-    : allProjects.filter((project: Project) => project.category === selectedCategory);
+    ? sortedProjects 
+    : sortedProjects.filter((project: Project) => project.category === selectedCategory);
 
   // Pagination
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
@@ -87,8 +70,9 @@ export function ProjectsPage() {
     window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
-  // Featured project (first real project or first project)
-  const featuredProject = allProjects[0];
+  // Featured project (first project with featuredOnProjects flag, or first project)
+  const featuredProjectMeta = PROJECT_INDEX.find(p => p.meta.featuredOnProjects) || PROJECT_INDEX[0];
+  const featuredProject = featuredProjectMeta ? convertProjectMetaToProject(featuredProjectMeta.meta) : sortedProjects[0];
 
   return (
     <div className="size-full relative">

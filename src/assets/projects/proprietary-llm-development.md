@@ -15,6 +15,10 @@ technologies: ["PyTorch", "CUDA", "Python", "Distributed Computing", "A100 GPUs"
 team: ["Lead ML Engineer", "Research Team", "Infrastructure Team"]
 duration: 8 months
 slug: proprietary-llm-development
+description: Led the development of a proprietary in-house Large Language Model, executing parallel distributed training on 8 Nvidia A100 GPUs.
+featuredOnHome: true
+featuredOnProjects: false
+displayOrder: 1
 ---META---
 
 ---TOC---

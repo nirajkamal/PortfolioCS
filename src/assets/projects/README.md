@@ -1,103 +1,80 @@
-# Projects Content Management
+# Projects Directory
 
-This directory contains the markdown files for projects displayed on the portfolio site.
+**📁 Source of Truth**: This directory contains all project markdown files for the portfolio.
 
-## 📁 File Structure
+## 🚀 Quick Start
+
+### Add a New Project
+1. Create `your-project.md` in this directory
+2. Add metadata and content (see template below)
+3. Run `python build_projects.py` from `src/` directory
+4. Deploy with `npm run deploy`
+
+### Complete Guide
+See **[HOW-TO-ADD-PROJECTS.md](./HOW-TO-ADD-PROJECTS.md)** for:
+- ✅ Adding full project pages with detailed content
+- ✅ Adding external project cards (link to GitHub/demo only)
+- ✅ Metadata field reference
+- ✅ Troubleshooting
+- ✅ Examples
+
+## � Minimal Project Template
 
 Each project should be in its own markdown file (`.md`) with the following structure:
 
 ```markdown
+# Project Title
+
 ---META---
-title: AI-Powered Task Manager
-category: FULLSTACK
+title: Your Project Title
+category: WEB APP
 date: October 2025
-image: /path/to/image.jpg
-description: Smart task management application with AI-powered prioritization
+heroImage: https://images.unsplash.com/photo-xxx?w=1080
+tags: ["React", "TypeScript", "API"]
 github: https://github.com/username/repo
 demo: https://demo-link.com
-tags: React, TypeScript, OpenAI, Next.js
-featured: true
----
+technologies: ["React", "Node.js", "MongoDB"]
+duration: 3 months
+slug: your-project-slug
+description: Brief description for project card
+---META---
 
-## Project Overview
+---TOC---
+- [Overview](#overview)
+- [Technical Details](#technical-details)
+---TOC---
 
-Detailed description of the project...
+## Overview
+Your detailed project description...
 
-### Key Features
-
-- Feature 1: Description
-- Feature 2: Description
-- Feature 3: Description
-
-### Technologies Used
-
-- React
-- TypeScript
-- OpenAI API
-- Next.js
-
-### Screenshots
-
-![Screenshot 1](/path/to/screenshot1.jpg)
-![Screenshot 2](/path/to/screenshot2.jpg)
-
-### Development Process
-
-Information about how you built the project...
-
-### Challenges and Solutions
-
-Discussion of challenges faced and how they were solved...
+## Technical Details
+Implementation details...
 ```
 
-## 🔄 Adding or Updating Projects
+## � Current Projects
+- `adas-validation-simulation.md` - ADAS simulation project
+- `ibm-foundation-models-contribution.md` - IBM FMS contribution
+- `proprietary-llm-development.md` - LLM development project
 
-1. **Create a new markdown file** in this directory with a descriptive filename (e.g., `ai-task-manager.md`)
-
-2. **Add the required frontmatter** between the `---META---` markers:
-   - `title` - The title of your project
-   - `category` - The category of the project (e.g., FULLSTACK, FRONTEND, etc.)
-   - `date` - The completion date
-   - `image` - Path to the featured image
-   - `description` - A brief summary of the project
-   - `github` - GitHub repository link (if applicable)
-   - `demo` - Live demo link (if applicable)
-   - `tags` - Comma-separated list of technologies used
-   - `featured` - Set to `true` to feature on homepage (optional)
-
-3. **Write your project content** using markdown syntax
-
-4. **Generate the project components** by running:
-   ```bash
-   python src/build_projects.py
-   ```
-
-5. **Deploy the updated site**:
-   ```bash
-   npm run deploy
-   ```
-
-## 📝 Markdown Tips
-
-- Use `#` for main heading, `##` for section headings, and `###` for subsection headings
-- Format code with triple backticks and language identifier: ```javascript
-- Add images with `![alt text](path/to/image.jpg)`
-- Create links with `[link text](https://example.com)`
-- Use `*italic*` for italic text and `**bold**` for bold text
-- Create lists with `- ` or `1. ` for numbered lists
-
-## 🖼️ Images
-
-- Place project images in this directory or in a subdirectory
-- Use relative paths in your markdown: `![Image description](./image-name.jpg)`
-- For optimal performance, compress images before adding them
-- Recommended image dimensions: 1200×630 pixels for featured images
-
-## 🧩 Advanced Features
-
-You can also use custom formatting in your markdown:
+## 🎨 Custom Markdown Formatting
 
 - `[orange](text)` - Orange-colored text
-- `[comment](text)` - Comment-style text
-- `[link](url)` - Regular link
+- `[comment](text)` - Comment-style text (// style)
+- `[link](url)` - Styled link
 - `[orange-link](url)` - Orange-styled link
+- Standard markdown for **bold**, *italic*, code blocks, etc.
+
+## � Build Process
+
+```bash
+cd src
+python build_projects.py  # Generates pages and index
+```
+
+This auto-generates:
+- Individual page components (`ProjectNamePage.tsx`)
+- `ProjectIndex.ts` with all metadata (DO NOT EDIT MANUALLY)
+
+---
+
+**Need more help?** Read [HOW-TO-ADD-PROJECTS.md](./HOW-TO-ADD-PROJECTS.md)

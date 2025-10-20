@@ -17,6 +17,10 @@ export interface ProjectMeta {
   team?: string[];
   duration?: string;
   slug: string;
+  description?: string;
+  featuredOnHome?: boolean;
+  featuredOnProjects?: boolean;
+  displayOrder?: number;
 }
 
 export interface ProjectIndexItem {
@@ -62,7 +66,11 @@ export const PROJECT_INDEX: ProjectIndexItem[] = [
         "Industry Partners"
       ],
       "duration": "4 months",
-      "slug": "adas-validation-simulation"
+      "slug": "adas-validation-simulation",
+      "description": "Developed simulations for verification and validation of ADAS features using stochastic methods and adversarial models.",
+      "featuredOnHome": true,
+      "featuredOnProjects": true,
+      "displayOrder": 2
     }
   },
   {
@@ -96,7 +104,11 @@ export const PROJECT_INDEX: ProjectIndexItem[] = [
         "Open Source Community"
       ],
       "duration": "3 months",
-      "slug": "ibm-foundation-models-contribution"
+      "slug": "ibm-foundation-models-contribution",
+      "description": "Enhanced IBM's Foundation Models Stack with optimized attention mechanisms and contributed to PyTorch core.",
+      "featuredOnHome": false,
+      "featuredOnProjects": false,
+      "displayOrder": 3
     }
   },
   {
@@ -131,7 +143,11 @@ export const PROJECT_INDEX: ProjectIndexItem[] = [
         "Infrastructure Team"
       ],
       "duration": "8 months",
-      "slug": "proprietary-llm-development"
+      "slug": "proprietary-llm-development",
+      "description": "Led the development of a proprietary in-house Large Language Model, executing parallel distributed training on 8 Nvidia A100 GPUs.",
+      "featuredOnHome": true,
+      "featuredOnProjects": false,
+      "displayOrder": 1
     }
   }
 ];

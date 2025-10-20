@@ -37,7 +37,11 @@ export function ProprietaryLlmDevelopmentPage() {
         "Infrastructure Team"
     ],
     "duration": "8 months",
-    "slug": "proprietary-llm-development"
+    "slug": "proprietary-llm-development",
+    "description": "Led the development of a proprietary in-house Large Language Model, executing parallel distributed training on 8 Nvidia A100 GPUs.",
+    "featuredOnHome": true,
+    "featuredOnProjects": false,
+    "displayOrder": 1
 };
 
   const tocItems = [

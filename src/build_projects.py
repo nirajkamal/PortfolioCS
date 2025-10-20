@@ -64,6 +64,12 @@ def parse_project_markdown(content):
                 except json.JSONDecodeError:
                     # Fallback to simple string split
                     meta[key] = [item.strip().strip('"\'') for item in value[1:-1].split(',')]
+            # Handle booleans
+            elif value.lower() in ['true', 'false']:
+                meta[key] = value.lower() == 'true'
+            # Handle numbers
+            elif value.isdigit():
+                meta[key] = int(value)
             else:
                 meta[key] = value
     
@@ -419,7 +425,12 @@ export function {component_name}() {{
 def generate_project_index():
     """Generate index file with all project metadata and components"""
     projects_dir = Path('assets/projects')
-    project_files = list(projects_dir.glob('*.md'))
+    
+    # Get all markdown files, excluding documentation files
+    project_files = [
+        f for f in projects_dir.glob('*.md') 
+        if f.name.upper() not in ['README.MD', 'HOW-TO-ADD-PROJECTS.MD']
+    ]
     
     project_index = []
     project_components = {}
@@ -435,6 +446,14 @@ def generate_project_index():
             # Generate component name
             filename = project_file.stem
             component_name = ''.join([word.capitalize() for word in filename.replace('-', ' ').split()]) + 'Page'
+            
+            # Ensure display flags have default values
+            if 'featuredOnHome' not in meta:
+                meta['featuredOnHome'] = False
+            if 'featuredOnProjects' not in meta:
+                meta['featuredOnProjects'] = False
+            if 'displayOrder' not in meta:
+                meta['displayOrder'] = 999  # Default to low priority
             
             # Add to index
             project_index.append({
@@ -469,6 +488,10 @@ export interface ProjectMeta {{
   team?: string[];
   duration?: string;
   slug: string;
+  description?: string;
+  featuredOnHome?: boolean;
+  featuredOnProjects?: boolean;
+  displayOrder?: number;
 }}
 
 export interface ProjectIndexItem {{
@@ -495,10 +518,103 @@ export interface ProjectIndexItem {{
     return index_content
 
 
+def generate_projects_component(project_index):
+    """Generate Projects.tsx component for HomePage with featured projects"""
+    # Filter and sort projects for home page
+    featured_projects = [
+        p for p in project_index 
+        if p['meta'].get('featuredOnHome', False)
+    ]
+    
+    # Sort by display order
+    featured_projects.sort(key=lambda p: p['meta'].get('displayOrder', 999))
+    
+    # Prepare project data
+    projects_data = []
+    for project in featured_projects:
+        meta = project['meta']
+        project_obj = {
+            'title': meta.get('title', ''),
+            'description': meta.get('description', ''),
+            'image': meta.get('heroImage', 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1080'),
+            'tags': meta.get('technologies', meta.get('tags', [])),
+            'slug': meta.get('slug', '')
+        }
+        
+        if meta.get('github'):
+            project_obj['github'] = meta['github']
+        if meta.get('demo'):
+            project_obj['demo'] = meta['demo']
+            
+        projects_data.append(project_obj)
+    
+    projects_json = json.dumps(projects_data, indent=8)
+    
+    component_content = f'''import {{ PageHeader }} from "./shared/PageHeader";
+import {{ ProjectCard }} from "./shared/ProjectCard";
+
+interface Project {{
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  github?: string;
+  demo?: string;
+  slug?: string;
+}}
+
+export function Projects() {{
+  const projects: Project[] = {projects_json};
+
+  return (
+    <section id="projects" className="border-b border-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-8 py-12 sm:py-20">
+        <PageHeader label="FEATURED WORK" title="Projects" />
+
+        {{/* Grid Layout */}}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {{projects.map((project, index) => (
+            <div key={{index}} className="lg:col-span-1">
+              <ProjectCard {{...project}} index={{index}} imageHeight="h-48 sm:h-64" />
+            </div>
+          ))}}
+        </div>
+
+        {{/* View All Projects Button */}}
+        <div className="mt-12 text-center">
+          <a
+            href="#/projects"
+            className="inline-flex items-center gap-2 px-6 py-3 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+          >
+            View All Projects →
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}}
+'''
+    
+    return component_content
+
+
+def update_projects_page_featured(project_index):
+    """Update ProjectsPage.tsx to respect featuredOnProjects flag"""
+    # This function returns instructions since we're modifying the existing component
+    # The ProjectsPage already uses PROJECT_INDEX, so it will automatically get the new fields
+    # We just need to ensure it sorts and filters properly
+    
+    return """
+ProjectsPage.tsx will automatically use the updated PROJECT_INDEX with new fields.
+The featured project logic should be updated to use featuredOnProjects flag.
+"""
+
+
 def main():
     """Main function to generate all project pages"""
     projects_dir = Path('assets/projects')
     pages_dir = Path('pages')
+    components_dir = Path('components')
     
     if not projects_dir.exists():
         print("Error: assets/projects/ directory not found")
@@ -507,7 +623,11 @@ def main():
     if not pages_dir.exists():
         pages_dir.mkdir(exist_ok=True)
     
-    project_files = list(projects_dir.glob('*.md'))
+    # Get all markdown files, excluding documentation files
+    project_files = [
+        f for f in projects_dir.glob('*.md') 
+        if f.name.upper() not in ['README.MD', 'HOW-TO-ADD-PROJECTS.MD']
+    ]
     
     if not project_files:
         print("No project markdown files found in assets/projects/ directory")
@@ -537,18 +657,55 @@ def main():
             print(f"✓ Generated {component_name}.tsx")
             
         except Exception as e:
-            print(f"✗ Error processing {project_file}: {e}")
+            print(f"✗ Error processing {{project_file}}: {{e}}")
             continue
     
     # Generate project index
+    project_index = []
     try:
         index_content = generate_project_index()
         index_file = pages_dir / "ProjectIndex.ts"
         with open(index_file, 'w', encoding='utf-8') as f:
             f.write(index_content)
         print("✓ Generated ProjectIndex.ts")
+        
+        # Parse the index to get project data for other components
+        # Read back the project files to get the full index
+        for project_file in project_files:
+            with open(project_file, 'r', encoding='utf-8') as f:
+                content = f.read()
+            try:
+                project_data = parse_project_markdown(content)
+                meta = project_data['meta']
+                filename = project_file.stem
+                
+                # Ensure display flags have default values
+                if 'featuredOnHome' not in meta:
+                    meta['featuredOnHome'] = False
+                if 'featuredOnProjects' not in meta:
+                    meta['featuredOnProjects'] = False
+                if 'displayOrder' not in meta:
+                    meta['displayOrder'] = 999
+                    
+                project_index.append({
+                    'slug': meta.get('slug', filename),
+                    'meta': meta
+                })
+            except:
+                continue
+                
     except Exception as e:
         print(f"✗ Error generating project index: {e}")
+    
+    # Generate Projects.tsx component for HomePage
+    try:
+        projects_component = generate_projects_component(project_index)
+        projects_file = components_dir / "Projects.tsx"
+        with open(projects_file, 'w', encoding='utf-8') as f:
+            f.write(projects_component)
+        print("✓ Generated Projects.tsx component")
+    except Exception as e:
+        print(f"✗ Error generating Projects component: {e}")
     
     print(f"\n✅ Project generation complete! Generated {len(generated_files)} files:")
     for file in generated_files:

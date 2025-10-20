@@ -11,11 +11,17 @@ export interface BlogMeta {
   heroImage?: string;
   tags: string[];
   slug: string;
+  excerpt?: string;
+  featuredOnHome?: boolean;
+  featuredOnBlog?: boolean;
+  displayOrder?: number;
+  external?: boolean;
+  externalUrl?: string;
 }
 
 export interface BlogIndexEntry {
   slug: string;
-  component: string;
+  component: string | null;
   meta: BlogMeta;
 }
 
@@ -37,7 +43,39 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
         "Architecture",
         "Backend"
       ],
-      "slug": "building-scalable-microservices"
+      "slug": "building-scalable-microservices",
+      "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
+      "featuredOnHome": true,
+      "featuredOnBlog": true,
+      "displayOrder": 2,
+      "external": false,
+      "externalUrl": null
+    }
+  },
+  {
+    "slug": "deep-learning-on-medium",
+    "component": null,
+    "meta": {
+      "title": "Deep Learning Fundamentals: A Complete Guide",
+      "category": "MACHINE LEARNING",
+      "date": "Oct 18, 2025",
+      "readTime": "12 min read",
+      "author": "Niraj Kamal K",
+      "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+      "heroImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+      "tags": [
+        "Deep Learning",
+        "Neural Networks",
+        "PyTorch",
+        "AI"
+      ],
+      "slug": "deep-learning-on-medium",
+      "excerpt": "A comprehensive guide to understanding deep learning fundamentals, from neural networks to advanced architectures like transformers and CNNs.",
+      "featuredOnHome": true,
+      "featuredOnBlog": false,
+      "displayOrder": 1,
+      "external": true,
+      "externalUrl": "https://medium.com/@yourusername/deep-learning-fundamentals"
     }
   },
   {
@@ -57,7 +95,13 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
         "Optimization",
         "Frontend"
       ],
-      "slug": "react-performance-optimization"
+      "slug": "react-performance-optimization",
+      "excerpt": "Discover advanced patterns and techniques to make your React applications blazingly fast and responsive.",
+      "featuredOnHome": false,
+      "featuredOnBlog": false,
+      "displayOrder": 3,
+      "external": false,
+      "externalUrl": null
     }
   }
 ];

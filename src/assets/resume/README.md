@@ -1,10 +1,10 @@
 # Resume Management
 
-This directory contains the resume PDF file displayed on the portfolio site.
+⚠️ **IMPORTANT: This directory is NOT used for resume files!**
 
-## 📄 Current Resume
+## � Correct Location
 
-The current resume file is `Niraj_Kamal_Resume.pdf`. This file is displayed on the resume page of the portfolio website.
+Resume files should be placed in **`public/resume/`** directory, NOT here.
 
 ## 🔄 Updating Your Resume
 
@@ -15,21 +15,29 @@ To update your resume:
    - Name it consistently (e.g., `Niraj_Kamal_Resume.pdf`)
    - Keep the file size reasonable (under 5MB is recommended)
 
-2. **Replace the existing file**:
-   - Simply replace the existing PDF file in this directory with your updated version
+2. **Place it in the correct location**:
+   - Navigate to `public/resume/` directory (at project root)
+   - Replace the existing PDF file with your updated version
    - Keep the same filename to avoid code changes
 
 3. **If changing the filename**:
    - Update the reference in the `ResumePage.tsx` component:
    ```tsx
    // In src/pages/ResumePage.tsx
-   const resumeUrl = "/src/assets/resume/[NEW_FILENAME].pdf";
+   const resumePdfPath = "/resume/[NEW_FILENAME].pdf";
    ```
 
 4. **Deploy the updated site**:
    ```bash
+   npm run build
    npm run deploy
    ```
+
+## 📂 Why `public/resume/` and not here?
+
+- Files in `public/` are copied to the root of `dist/` during build
+- This allows the resume to be served at `/resume/Niraj_Kamal_Resume.pdf`
+- Files in `src/assets/` are processed by the bundler and not suitable for large PDFs
 
 ## 📱 Resume Page Features
 

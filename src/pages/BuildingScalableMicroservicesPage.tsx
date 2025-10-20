@@ -21,7 +21,13 @@ export function BuildingScalableMicroservicesPage() {
         "Architecture",
         "Backend"
     ],
-    "slug": "building-scalable-microservices"
+    "slug": "building-scalable-microservices",
+    "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
+    "featuredOnHome": true,
+    "featuredOnBlog": true,
+    "displayOrder": 2,
+    "external": false,
+    "externalUrl": null
 };
 
   const tocItems = [

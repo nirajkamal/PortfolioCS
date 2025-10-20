@@ -36,7 +36,11 @@ export function AdasValidationSimulationPage() {
         "Industry Partners"
     ],
     "duration": "4 months",
-    "slug": "adas-validation-simulation"
+    "slug": "adas-validation-simulation",
+    "description": "Developed simulations for verification and validation of ADAS features using stochastic methods and adversarial models.",
+    "featuredOnHome": true,
+    "featuredOnProjects": true,
+    "displayOrder": 2
 };
 
   const tocItems = [

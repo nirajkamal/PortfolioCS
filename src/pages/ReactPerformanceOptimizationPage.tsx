@@ -21,7 +21,13 @@ export function ReactPerformanceOptimizationPage() {
         "Optimization",
         "Frontend"
     ],
-    "slug": "react-performance-optimization"
+    "slug": "react-performance-optimization",
+    "excerpt": "Discover advanced patterns and techniques to make your React applications blazingly fast and responsive.",
+    "featuredOnHome": false,
+    "featuredOnBlog": false,
+    "displayOrder": 3,
+    "external": false,
+    "externalUrl": null
 };
 
   const tocItems = [

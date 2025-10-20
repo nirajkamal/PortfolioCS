@@ -10,6 +10,8 @@ interface BlogCardProps {
   author: string;
   authorAvatar: string;
   slug?: string;
+  linkType?: 'internal' | 'external';
+  linkUrl?: string;
 }
 
 export function BlogCard({
@@ -21,13 +23,21 @@ export function BlogCard({
   author,
   authorAvatar,
   slug,
+  linkType = 'internal',
+  linkUrl,
 }: BlogCardProps) {
+  // Determine the final link URL
+  const finalUrl = linkUrl || (slug ? `#/blog/${slug}` : '#/blog/sample-post');
+  const isExternal = linkType === 'external';
+
   const handleCardClick = () => {
-    const url = slug ? `#/blog/${slug}` : '#/blog/sample-post';
-    console.log('Blog card clicked, navigating to:', url);
-    window.location.href = url;
-    // Ensure page scrolls to top when navigating
-    window.scrollTo(0, 0);
+    console.log('Blog card clicked, navigating to:', finalUrl);
+    if (isExternal) {
+      window.open(finalUrl, '_blank', 'noopener,noreferrer');
+    } else {
+      window.location.href = finalUrl;
+      window.scrollTo(0, 0);
+    }
   };
 
   return (
@@ -72,15 +82,18 @@ export function BlogCard({
 
         {/* Read More Button */}
         <a
-          href={slug ? `#/blog/${slug}` : '#/blog/sample-post'}
+          href={finalUrl}
+          target={isExternal ? '_blank' : undefined}
+          rel={isExternal ? 'noopener noreferrer' : undefined}
           className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors font-mono text-xs inline-flex"
           onClick={(e) => {
             e.stopPropagation();
-            // Add a small timeout to ensure the navigation happens first
-            setTimeout(() => window.scrollTo(0, 0), 10);
+            if (!isExternal) {
+              setTimeout(() => window.scrollTo(0, 0), 10);
+            }
           }}
         >
-          <span>Read article</span>
+          <span>{isExternal ? 'Read on Medium' : 'Read article'}</span>
           <ArrowRight className="w-3 h-3" />
         </a>
       </div>
