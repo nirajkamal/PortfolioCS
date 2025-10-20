@@ -367,12 +367,12 @@ export function {component_name}() {{
 
 def main():
     """Main function to process all blog markdown files"""
-    blogs_dir = Path('blogs')
+    blogs_dir = Path('assets/blogs')
     pages_dir = Path('pages')
     
     if not blogs_dir.exists():
-        print("Error: blogs/ directory not found!")
-        print("Create the blogs/ directory and add markdown files.")
+        print("Error: assets/blogs/ directory not found!")
+        print("Create the assets/blogs/ directory and add markdown files.")
         return
     
     if not pages_dir.exists():
@@ -382,7 +382,7 @@ def main():
     blog_files = list(blogs_dir.glob('*.md'))
     
     if not blog_files:
-        print("No markdown files found in blogs/ directory.")
+        print("No markdown files found in assets/blogs/ directory.")
         return
     
     generated_files = []

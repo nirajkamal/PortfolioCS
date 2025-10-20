@@ -418,7 +418,7 @@ export function {component_name}() {{
 
 def generate_project_index():
     """Generate index file with all project metadata and components"""
-    projects_dir = Path('projects')
+    projects_dir = Path('assets/projects')
     project_files = list(projects_dir.glob('*.md'))
     
     project_index = []
@@ -497,11 +497,11 @@ export interface ProjectIndexItem {{
 
 def main():
     """Main function to generate all project pages"""
-    projects_dir = Path('projects')
+    projects_dir = Path('assets/projects')
     pages_dir = Path('pages')
     
     if not projects_dir.exists():
-        print("Error: projects/ directory not found")
+        print("Error: assets/projects/ directory not found")
         return
     
     if not pages_dir.exists():
@@ -510,7 +510,7 @@ def main():
     project_files = list(projects_dir.glob('*.md'))
     
     if not project_files:
-        print("No project markdown files found in projects/ directory")
+        print("No project markdown files found in assets/projects/ directory")
         return
     
     generated_files = []

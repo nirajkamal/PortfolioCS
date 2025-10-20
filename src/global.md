@@ -1,6 +1,7 @@
 ---HEADER---
 name: Niraj Kamal K
 logo: NK
+orangeAccordion: false
 navigation:
 - Home | #/ | false
 - Blog | #/blog | false

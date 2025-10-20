@@ -22,7 +22,7 @@ export function Header() {
     },
     {
         "label": "Resume",
-        "href": "#/resume",
+        "href": "#resume",
         "isCTA": true
     }
 ];
@@ -40,7 +40,7 @@ export function Header() {
             <div className="w-10 h-10 border border-border flex items-center justify-center font-mono text-xs sm:text-sm">
               NK
             </div>
-            <span className="font-mono text-sm sm:text-base">Niraj Kamal K</span>
+            <span className="font-mono text-sm sm:text-base font-bold">Niraj Kamal K</span>
           </a>
 
           {/* Desktop Navigation */}

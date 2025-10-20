@@ -58,6 +58,9 @@ def parse_global_markdown(content):
                     current_section['data']['name'] = header_line.replace('name:', '').strip()
                 elif header_line.startswith('logo:'):
                     current_section['data']['logo'] = header_line.replace('logo:', '').strip()
+                elif header_line.startswith('orangeAccordion:'):
+                    value = header_line.replace('orangeAccordion:', '').strip().lower()
+                    current_section['data']['orangeAccordion'] = (value == 'true')
                 elif header_line.startswith('navigation:'):
                     current_section['data']['navigation'] = []
                     i += 1
@@ -632,6 +635,7 @@ def generate_header_component(header_data):
     name = header_data.get('name', 'Your Name')
     logo = header_data.get('logo', 'YN')
     navigation = header_data.get('navigation', [])
+    orange_accordion = header_data.get('orangeAccordion', False)
     
     # Generate navigation items
     nav_items = []
@@ -643,6 +647,10 @@ def generate_header_component(header_data):
         })
     
     nav_json = json.dumps(nav_items, indent=4)
+    
+    # Define styles based on orangeAccordion flag
+    mobile_button_style = "bg-accent-orange text-accent-orange-foreground hover:opacity-80" if orange_accordion else "hover:bg-foreground hover:text-background"
+    mobile_nav_style = '"bg-accent-orange text-accent-orange-foreground hover:opacity-80"' if orange_accordion else '"hover:bg-foreground hover:text-background"'
     
     return f'''import {{ useState }} from "react";
 import {{ Menu, X }} from "lucide-react";
@@ -665,7 +673,7 @@ export function Header() {{
             <div className="w-10 h-10 border border-border flex items-center justify-center font-mono text-xs sm:text-sm">
               {logo}
             </div>
-            <span className="font-mono text-sm sm:text-base">{name}</span>
+            <span className="font-mono text-sm sm:text-base font-bold">{name}</span>
           </a>
 
           {{/* Desktop Navigation */}}
@@ -688,7 +696,7 @@ export function Header() {{
           {{/* Mobile Menu Button */}}
           <button
             onClick={{() => setIsMenuOpen(!isMenuOpen)}}
-            className="md:hidden w-10 h-10 border border-border flex items-center justify-center hover:bg-foreground hover:text-background transition-colors"
+            className="md:hidden w-10 h-10 border border-border flex items-center justify-center {mobile_button_style} transition-colors"
             aria-label="Toggle menu"
           >
             {{isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}}
@@ -706,7 +714,7 @@ export function Header() {{
                 className={{`block px-4 py-3 font-mono transition-colors border-b border-border last:border-b-0 ${{
                   item.isCTA
                     ? "bg-accent-orange text-accent-orange-foreground hover:opacity-80"
-                    : "hover:bg-foreground hover:text-background"
+                    : {mobile_nav_style}
                 }}`}}
               >
                 {{item.label}}
