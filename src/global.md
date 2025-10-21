@@ -14,6 +14,7 @@ navigation:
 //comment: GET IN TOUCH
 - Let's build something amazing together. | | text
 - Contact | nirajkkamal@gmail.com | email
+- Phone | +1 404 449 9773 | phone
 
 ## Social
 //comment: CONNECT

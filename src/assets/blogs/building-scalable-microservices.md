@@ -4,7 +4,7 @@ category: BACKEND
 date: Oct 15, 2025
 readTime: 8 min read
 author: Niraj Kamal K
-authorAvatar: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 heroImage: https://images.unsplash.com/photo-1593442257276-1895e27c8ed6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODQ5MDI4fDA&ixlib=rb-4.1.0&q=80&w=1080
 tags: Node.js, Microservices, Architecture, Backend
 slug: building-scalable-microservices

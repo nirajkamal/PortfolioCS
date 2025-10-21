@@ -35,7 +35,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "date": "Oct 15, 2025",
       "readTime": "8 min read",
       "author": "Niraj Kamal K",
-      "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+      "authorAvatar": "/Niraj_Photo.png",
       "heroImage": "https://images.unsplash.com/photo-1593442257276-1895e27c8ed6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODQ5MDI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "tags": [
         "Node.js",
@@ -61,7 +61,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "date": "Oct 18, 2025",
       "readTime": "12 min read",
       "author": "Niraj Kamal K",
-      "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+      "authorAvatar": "/Niraj_Photo.png",
       "heroImage": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
       "tags": [
         "Deep Learning",
@@ -79,6 +79,33 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
     }
   },
   {
+    "slug": "pytorch-certification-course",
+    "component": "PytorchCertificationCoursePage",
+    "meta": {
+      "title": "Building PyTorch Foundation's Official Certification Course",
+      "category": "MACHINE LEARNING",
+      "date": "Oct 21, 2025",
+      "readTime": "10 min read",
+      "author": "Niraj Kamal K",
+      "authorAvatar": "/Niraj_Photo.png",
+      "heroImage": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+      "tags": [
+        "PyTorch",
+        "Deep Learning",
+        "Education",
+        "IBM Research",
+        "Certification"
+      ],
+      "slug": "pytorch-certification-course",
+      "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
+      "featuredOnHome": true,
+      "featuredOnBlog": true,
+      "displayOrder": 0,
+      "external": false,
+      "externalUrl": null
+    }
+  },
+  {
     "slug": "react-performance-optimization",
     "component": "ReactPerformanceOptimizationPage",
     "meta": {
@@ -87,7 +114,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "date": "Oct 5, 2025",
       "readTime": "6 min read",
       "author": "Niraj Kamal K",
-      "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+      "authorAvatar": "/Niraj_Photo.png",
       "heroImage": "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "tags": [
         "React",
@@ -108,9 +135,11 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
 
 // Import all generated blog page components
 import { BuildingScalableMicroservicesPage } from "./BuildingScalableMicroservicesPage";
+import { PytorchCertificationCoursePage } from "./PytorchCertificationCoursePage";
 import { ReactPerformanceOptimizationPage } from "./ReactPerformanceOptimizationPage";
 
 export const BLOG_COMPONENTS = {
   "building-scalable-microservices": BuildingScalableMicroservicesPage,
+  "pytorch-certification-course": PytorchCertificationCoursePage,
   "react-performance-optimization": ReactPerformanceOptimizationPage,
 };

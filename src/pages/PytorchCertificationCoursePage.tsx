@@ -5,27 +5,28 @@ import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { TableOfContents } from "../components/blog/TableOfContents";
 import { BlogContent, BlogContentBlock } from "../components/blog/BlogContent";
 
-export function BuildingScalableMicroservicesPage() {
+export function PytorchCertificationCoursePage() {
   // Blog post data generated from markdown
   const blogPost = {
-    "title": "Building Scalable Microservices with Node.js",
-    "category": "BACKEND",
-    "date": "Oct 15, 2025",
-    "readTime": "8 min read",
+    "title": "Building PyTorch Foundation's Official Certification Course",
+    "category": "MACHINE LEARNING",
+    "date": "Oct 21, 2025",
+    "readTime": "10 min read",
     "author": "Niraj Kamal K",
     "authorAvatar": "/Niraj_Photo.png",
-    "heroImage": "https://images.unsplash.com/photo-1593442257276-1895e27c8ed6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODQ5MDI4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+    "heroImage": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
     "tags": [
-        "Node.js",
-        "Microservices",
-        "Architecture",
-        "Backend"
+        "PyTorch",
+        "Deep Learning",
+        "Education",
+        "IBM Research",
+        "Certification"
     ],
-    "slug": "building-scalable-microservices",
-    "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
+    "slug": "pytorch-certification-course",
+    "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
     "featuredOnHome": true,
     "featuredOnBlog": true,
-    "displayOrder": 2,
+    "displayOrder": 0,
     "external": false,
     "externalUrl": null
 };
@@ -37,33 +38,28 @@ export function BuildingScalableMicroservicesPage() {
         "level": 2
     },
     {
-        "title": "What Are Microservices?",
-        "id": "what-are-microservices",
+        "title": "The Problem with Abstract PyTorch Courses",
+        "id": "the-problem",
         "level": 2
     },
     {
-        "title": "Key Benefits",
-        "id": "benefits",
-        "level": 3
-    },
-    {
-        "title": "Architecture Overview",
-        "id": "architecture",
+        "title": "A Visual, Beginner-Friendly Approach",
+        "id": "visual-approach",
         "level": 2
     },
     {
-        "title": "Implementation Guide",
-        "id": "implementation",
+        "title": "The Seven Labs",
+        "id": "seven-labs",
         "level": 2
     },
     {
-        "title": "Best Practices",
-        "id": "best-practices",
+        "title": "Official Launch at PyTorch Conference",
+        "id": "pytorch-conference",
         "level": 2
     },
     {
-        "title": "Conclusion",
-        "id": "conclusion",
+        "title": "Impact and Reflection",
+        "id": "impact",
         "level": 2
     }
 ];
@@ -76,110 +72,160 @@ export function BuildingScalableMicroservicesPage() {
     },
     {
         "type": "paragraph",
-        "content": "In modern software development, microservices architecture has become the gold standard for building scalable, maintainable applications. This comprehensive guide will walk you through the process of designing and implementing a production-ready microservices system using Node.js."
+        "content": "During an internship at IBM Research in Summer 2025, this project contributed to the <span style='color: #ff6b3d;'>PyTorch Foundation's official certification program</span> by designing and creating <span style='color: #ff6b3d;'>7 PyTorch labs</span> as part of a larger training curriculum. These labs became core components of the PyTorch Associate Training course, officially offered at the PyTorch Conference 2025."
     },
     {
         "type": "paragraph",
-        "content": "Whether you're migrating from a monolithic architecture or starting fresh, understanding the core principles and best practices is crucial for success. We'll cover everything from basic concepts to advanced patterns that can handle millions of requests per day."
-    },
-    {
-        "type": "quote",
-        "content": "\"The microservices architecture isn't just about breaking down a monolith\u2014it's about building systems that can evolve independently while working together seamlessly.\" - Martin Fowler",
-        "author": null
+        "content": "This wasn't just another tutorial series\u2014it fundamentally rethought how deep learning is taught to beginners, making the abstract concepts of PyTorch concrete and accessible through visual illustrations and hands-on practice."
     },
     {
         "type": "heading",
-        "content": "What Are Microservices?",
-        "id": "what-are-microservices"
+        "content": "The Problem with Abstract PyTorch Courses",
+        "id": "the-problem"
     },
     {
         "type": "paragraph",
-        "content": "Microservices are an architectural approach where an application is composed of small, independent services that communicate over well-defined APIs. Each service is responsible for a specific business capability and can be developed, deployed, and scaled independently."
+        "content": "Most PyTorch courses suffer from a critical flaw: <span style='color: #ff6b3d;'>they're too abstract</span>. While seasoned developers can easily distinguish between general Python patterns and PyTorch-specific idioms, beginners often struggle with fundamental questions:"
+    },
+    {
+        "type": "paragraph",
+        "content": "- <strong>Why is a neural network model defined in a class rather than a function?</strong> - <strong>What's the significance of inheriting from `nn.Module`?</strong> - <strong>Why do we need to call `super().__init__()`?</strong> - <strong>How does the forward pass actually work?</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "These aren't trivial questions. They represent the conceptual gap between knowing Python and truly understanding PyTorch's design philosophy. Traditional courses often gloss over these details, assuming students will figure them out through practice. That assumption leaves many beginners frustrated and confused."
+    },
+    {
+        "type": "heading",
+        "content": "A Visual, Beginner-Friendly Approach",
+        "id": "visual-approach"
+    },
+    {
+        "type": "paragraph",
+        "content": "The solution: create <span style='color: #ff6b3d;'>bite-sized lessons with detailed visual illustrations</span> that capture not just the code, but the critical details a beginner might miss. Each lab was designed to progressively build understanding, from foundational concepts to advanced techniques."
     },
     {
         "type": "image",
-        "content": "https://images.unsplash.com/photo-1593086784152-b060f8109e0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXIlMjBjb2RpbmclMjBzY3JlZW58ZW58MXx8fHwxNzYwODg3MDA0fDA&ixlib=rb-4.1.0&q=80&w=1080",
-        "alt": "Microservices architecture diagram showing independent services"
-    },
-    {
-        "type": "subheading",
-        "content": "Key Benefits",
-        "id": "benefits"
+        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/lab_structuree.png",
+        "alt": "Lab Structure"
     },
     {
         "type": "paragraph",
-        "content": "The microservices approach offers several compelling advantages: improved scalability through independent service scaling, enhanced fault isolation preventing cascade failures, technology flexibility allowing different tech stacks per service, and faster deployment cycles with independent release schedules."
+        "content": "Every lab follows a carefully designed flow that guides students through the learning process step by step. Each section builds upon the previous one, ensuring no conceptual gaps."
+    },
+    {
+        "type": "image",
+        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png",
+        "alt": "Model Class Definition"
     },
     {
         "type": "paragraph",
-        "content": "Each microservice can be scaled independently based on demand. If your user authentication service is experiencing high load, you can scale just that service without affecting others."
+        "content": "One of the key innovations was showing <span style='color: #ff6b3d;'>exactly how and why</span> we define models as classes. The illustration breaks down: - The inheritance from `nn.Module` and why it matters - The purpose of `__init__()` and `super().__init__()` - How layers are defined and registered - The forward pass implementation"
+    },
+    {
+        "type": "paragraph",
+        "content": "This visual approach helps beginners understand the pattern rather than just copying code."
+    },
+    {
+        "type": "image",
+        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png",
+        "alt": "DataLoader Explanation"
+    },
+    {
+        "type": "paragraph",
+        "content": "DataLoaders can be confusing for beginners. The visual approach explains: - What a DataLoader actually does - The batching process and why it matters - How shuffling works - The relationship between Dataset and DataLoader"
+    },
+    {
+        "type": "image",
+        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+        "alt": "Neural Network Diagram"
+    },
+    {
+        "type": "paragraph",
+        "content": "Understanding the neural network structure is crucial. The diagrams show: - Layer-by-layer architecture - Data flow through the network - Input/output dimensions at each layer - Activation functions and their placement"
+    },
+    {
+        "type": "paragraph",
+        "content": "These visual aids transform abstract concepts into concrete understanding."
     },
     {
         "type": "heading",
-        "content": "Architecture Overview",
-        "id": "architecture"
+        "content": "The Seven Labs",
+        "id": "seven-labs"
     },
     {
         "type": "paragraph",
-        "content": "A well-designed microservices architecture consists of several key components: API Gateway for request routing, Service Registry for service discovery, Load Balancers for traffic distribution, and Message Queues for asynchronous communication. Let's examine each component in detail."
+        "content": "As part of the PyTorch Associate Training program, 7 labs were created focusing on core PyTorch competencies. These labs complement additional content created by other contributors to form the complete certification curriculum."
     },
     {
-        "type": "code",
-        "content": "// Example API Gateway setup with Express\nconst express = require('express');\nconst { createProxyMiddleware } = require('http-proxy-middleware');\n\nconst app = express();\n\n// Route requests to different microservices\napp.use('/api/users', createProxyMiddleware({ \n  target: 'http://user-service:3001',\n  changeOrigin: true \n}));\n\napp.use('/api/orders', createProxyMiddleware({ \n  target: 'http://order-service:3002',\n  changeOrigin: true \n}));\n\napp.listen(3000, () => {\n  console.log('API Gateway running on port 3000');\n});",
-        "language": "javascript"
+        "type": "paragraph",
+        "content": "The 7 labs designed for this project are:"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>1. Intro to PyTorch</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>2. Building Neural Networks with PyTorch</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>3. Benchmarking Models</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>4. Leveraging Automatic Mixed Precision for Training and Inference</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>5. Activation Functions for Models</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>6. Creating Neural Network Checkpoints</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>7. Advanced Training Techniques</strong>"
+    },
+    {
+        "type": "paragraph",
+        "content": "Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts. These 7 labs form a core part of the full certification program, which includes additional modules created by other instructors."
     },
     {
         "type": "heading",
-        "content": "Implementation Guide",
-        "id": "implementation"
+        "content": "Official Launch at PyTorch Conference",
+        "id": "pytorch-conference"
     },
     {
         "type": "paragraph",
-        "content": "When implementing microservices with Node.js, start by identifying service boundaries based on business domains. Each service should have a clear, single responsibility. Use frameworks like Express or Fastify for HTTP services, and consider message brokers like RabbitMQ or Kafka for event-driven communication."
+        "content": "The course was officially launched at the <span style='color: #ff6b3d;'>PyTorch Conference 2025</span> as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice."
     },
     {
         "type": "paragraph",
-        "content": "Database strategy is crucial - follow the database-per-service pattern to ensure loose coupling. This means each microservice manages its own database, communicating with other services through APIs or events rather than direct database access."
+        "content": "<strong>Course Details:</strong> - <strong>Format</strong>: In-person, instructor-led training - <strong>Duration</strong>: Full day (8:30am \u2013 4:30pm) - <strong>Includes</strong>: Course materials, hands-on labs, and certification exam voucher"
     },
     {
-        "type": "code",
-        "content": "// Example microservice structure\nclass UserService {\n  constructor(database, eventBus) {\n    this.db = database;\n    this.eventBus = eventBus;\n  }\n\n  async createUser(userData) {\n    const user = await this.db.users.create(userData);\n    \n    // Publish event for other services\n    await this.eventBus.publish('user.created', {\n      userId: user.id,\n      email: user.email\n    });\n    \n    return user;\n  }\n}",
-        "language": "javascript"
+        "type": "paragraph",
+        "content": "The comprehensive curriculum was designed to prepare students for the PyTorch Certified Associate (PTCA) exam while providing practical skills for real-world deep learning projects."
+    },
+    {
+        "type": "paragraph",
+        "content": "<strong>Learn more</strong>: <a href='https://events.linuxfoundation.org/pytorch-conference/features-add-ons/training/#pytorch-associate-training' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>PyTorch Associate Training</a>"
     },
     {
         "type": "heading",
-        "content": "Best Practices",
-        "id": "best-practices"
+        "content": "Impact and Reflection",
+        "id": "impact"
     },
     {
         "type": "paragraph",
-        "content": "Implement comprehensive monitoring and logging from day one. Use distributed tracing tools like Jaeger or Zipkin to track requests across services. Implement circuit breakers with libraries like Opossum to handle service failures gracefully. Always use API versioning to maintain backwards compatibility."
+        "content": "Creating this certification course provided valuable lessons about <span style='color: #ff6b3d;'>education and technical communication</span>:"
     },
     {
         "type": "paragraph",
-        "content": "Without proper monitoring, debugging distributed systems becomes nearly impossible. Implement structured logging with correlation IDs that flow through all service calls."
-    },
-    {
-        "type": "quote",
-        "content": "\"In a microservices architecture, observability isn't optional\u2014it's the only way to understand what's happening in your system.\"",
-        "author": null
-    },
-    {
-        "type": "paragraph",
-        "content": "Security is paramount - implement authentication at the API Gateway level and use JWT tokens for service-to-service communication. Apply rate limiting to prevent abuse and use HTTPS for all external communications."
-    },
-    {
-        "type": "heading",
-        "content": "Conclusion",
-        "id": "conclusion"
-    },
-    {
-        "type": "paragraph",
-        "content": "Building microservices with Node.js provides a powerful foundation for scalable applications. While the architecture introduces complexity, the benefits of independent scaling, fault isolation, and deployment flexibility make it worthwhile for systems that need to handle significant traffic and evolve over time."
-    },
-    {
-        "type": "paragraph",
-        "content": "Start small, focus on clear service boundaries, and gradually refine your architecture based on real-world usage patterns. Remember that microservices are a means to an end - always prioritize solving actual business problems over architectural purity."
+        "content": "Seeing these labs become part of PyTorch Foundation's official certification program\u2014and knowing they'll help thousands of developers enter the field of deep learning\u2014is incredibly rewarding. The future of AI depends on making powerful tools like PyTorch accessible to everyone."
     }
 ];
 

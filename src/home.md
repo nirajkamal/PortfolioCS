@@ -51,7 +51,9 @@ period: 2018
  -- Gold Medalist in Inter-IIT Tech Meet for [orange](Computer Vision) and focused on computational graphics. 
 
 ## Blog  
-//comment: WRITINGS
+//comment: NOTE - This section is managed by buildblog.py
+//comment: The blog posts below are just placeholders for reference
+//comment: Actual blog content is generated from markdown files in assets/blogs/
 //title: Latest Articles
 
 ### Building Scalable Microservices with Node.js
@@ -60,7 +62,7 @@ readTime: 8 min
 category: BACKEND
 image: https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080
 author: David Adler
-authorAvatar: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 Learn how to design and implement [orange](microservices architecture) that can handle millions of requests with minimal latency.
 
 ### React Performance Optimization Techniques
@@ -69,7 +71,7 @@ readTime: 6 min
 category: FRONTEND
 image: https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080
 author: Nolan Sullivan
-authorAvatar: https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 Discover [orange](advanced patterns) and techniques to make your React applications blazingly fast and responsive.
 
 ### TypeScript Best Practices for 2025
@@ -78,20 +80,22 @@ readTime: 10 min
 category: TYPESCRIPT
 image: https://images.unsplash.com/photo-1758873271902-a63ecd5b5235?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMHByb2plY3R8ZW58MXx8fHwxNzYwOTE4MDEyfDA&ixlib=rb-4.1.0&q=80&w=1080
 author: Sagar Batchu
-authorAvatar: https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 A comprehensive guide to writing [orange](type-safe, maintainable code) with the latest TypeScript features.
 
 ### Designing Scalable Database Schemas
 date: Sep 15, 2025
 readTime: 12 min
 category: DATABASE
-image: https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwc3RhcnR1cCUyMG9mZmljZXxlbnwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080
+image: https://images.unsplash.com/photo-1628017973088-8feb5de8dddd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHx8fDE3NjA4OTc4NTd8MA&ixlib=rb-4.1.0&q=80&w=1080
 author: Ivan Gorshkov
-authorAvatar: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 Best practices for [orange](database design) that scales from startup to enterprise.
 
 ## Projects
-//comment: FEATURED WORK
+//comment: NOTE - This section is managed by build_projects.py
+//comment: The projects below are just placeholders for reference
+//comment: Actual project content is generated from markdown files in assets/projects/
 //title: Projects
 
 ### LLM for Code Generation

@@ -4,7 +4,7 @@ category: FRONTEND
 date: Oct 5, 2025
 readTime: 6 min read
 author: Niraj Kamal K
-authorAvatar: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 heroImage: https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080
 tags: React, Performance, Optimization, Frontend
 slug: react-performance-optimization

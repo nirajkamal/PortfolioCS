@@ -13,7 +13,7 @@ export function ReactPerformanceOptimizationPage() {
     "date": "Oct 5, 2025",
     "readTime": "6 min read",
     "author": "Niraj Kamal K",
-    "authorAvatar": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop",
+    "authorAvatar": "/Niraj_Photo.png",
     "heroImage": "https://images.unsplash.com/photo-1711599813951-89297e6201a8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb2RpbmclMjB3b3Jrc3BhY2V8ZW58MXx8fHwxNzYwODI4MTkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
     "tags": [
         "React",
@@ -278,13 +278,34 @@ export function ReactPerformanceOptimizationPage() {
                     // SHARE THIS ARTICLE
                   </p>
                   <div className="flex gap-3">
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={() => {
+                        const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(blogPost.title)}&url=${encodeURIComponent(window.location.href)}`;
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                      }}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       Twitter
                     </button>
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={() => {
+                        const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`;
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                      }}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       LinkedIn
                     </button>
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(window.location.href).then(() => {
+                          alert('Link copied to clipboard!');
+                        }).catch(err => {
+                          console.error('Failed to copy link:', err);
+                        });
+                      }}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       Copy Link
                     </button>
                   </div>

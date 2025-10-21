@@ -883,18 +883,16 @@ def main():
                 print("✓ Generated Timeline.tsx")
                 
             elif 'blog' in name or 'article' in name or 'writing' in name:
-                header_comment = section.get('header_comment') or '// WRITINGS'
-                header_title = section.get('header_title') or 'Blog'
-                blogs_code = generate_blogs_component(section['items'], header_comment, header_title)
-                Path('components/Blogs.tsx').write_text(blogs_code)
-                print("✓ Generated Blogs.tsx")
+                # Skip generating Blogs.tsx - it's managed by buildblog.py
+                # This prevents overwriting the auto-generated blog content
+                print("⚠ Skipping Blogs.tsx (managed by buildblog.py)")
+                pass
                 
             elif 'project' in name or 'portfolio' in name or 'work' in name:
-                header_comment = section.get('header_comment') or '// PORTFOLIO'
-                header_title = section.get('header_title') or 'Featured Projects'
-                projects_code = generate_projects_component(section['items'], header_comment, header_title)
-                Path('components/Projects.tsx').write_text(projects_code)
-                print("✓ Generated Projects.tsx")
+                # Skip generating Projects.tsx - it's managed by build_projects.py
+                # This prevents overwriting the auto-generated project content
+                print("⚠ Skipping Projects.tsx (managed by build_projects.py)")
+                pass
     
     # Read and parse global.md for header and footer
     global_file = Path('global.md')

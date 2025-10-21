@@ -4,7 +4,7 @@ category: MACHINE LEARNING
 date: Oct 18, 2025
 readTime: 12 min read
 author: Niraj Kamal K
-authorAvatar: https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop
+authorAvatar: /Niraj_Photo.png
 heroImage: https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080
 tags: Deep Learning, Neural Networks, PyTorch, AI
 slug: deep-learning-on-medium

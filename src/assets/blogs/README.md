@@ -26,7 +26,7 @@ category: FRONTEND | BACKEND | FULLSTACK | AI | etc.
 date: Oct 15, 2025
 readTime: 8 min read
 author: Your Name
-authorAvatar: https://example.com/avatar.jpg
+authorAvatar: ../assets/Niraj_Photo.png
 heroImage: https://example.com/hero-image.jpg
 tags: React, Performance, Optimization
 slug: url-friendly-slug

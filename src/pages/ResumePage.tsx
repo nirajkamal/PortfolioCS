@@ -102,24 +102,70 @@ export function ResumePage() {
             <div className="border-2 border-border bg-background p-6">
               <h3 className="font-mono text-sm text-muted-foreground mb-4">// CONTACT</h3>
               <div className="space-y-2 text-sm">
-                <p>Email: nirajkamal@example.com</p>
-                <p>Phone: +1 (555) 123-4567</p>
+                <p>Email: nirajkkamal@gmail.com</p>
+                <p>Phone: +1 404 449 9773</p>
                 <p>Location: Atlanta, GA</p>
+                <p>
+                  <a 
+                    href="https://www.linkedin.com/in/niraj-kamal-k-31687212a/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-[#ff6b3d] hover:underline"
+                  >
+                    LinkedIn Profile
+                  </a>
+                </p>
               </div>
             </div>
 
             {/* Key Skills */}
             <div className="border-2 border-border bg-background p-6">
               <h3 className="font-mono text-sm text-muted-foreground mb-4">// KEY SKILLS</h3>
-              <div className="flex flex-wrap gap-2">
-                {["React", "TypeScript", "Python", "Node.js", "AWS", "Docker"].map((skill) => (
-                  <span
-                    key={skill}
-                    className="px-2 py-1 border border-border font-mono text-xs"
-                  >
-                    {skill}
-                  </span>
-                ))}
+              <div className="space-y-4">
+                {/* Languages */}
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">Languages:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Python", "C++", "CUDA", "Nvidia HSDL", "OpenScenario 2.0", "HTML/CSS", "JavaScript", "SQL"].map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-1 border border-border font-mono text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Technologies */}
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">Technologies:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["PyTorch", "Linux", "NVIDIA Drivesim/Omniverse", "Git", "AWS HPC", "Simulations"].map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-1 border border-border font-mono text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                
+                {/* Robotics */}
+                <div>
+                  <p className="text-xs text-muted-foreground mb-2">Robotics & AI:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {["Computer Vision", "RL", "RCNN", "Perception", "Decision-making", "SIL"].map((skill) => (
+                      <span
+                        key={skill}
+                        className="px-2 py-1 border border-border font-mono text-xs"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -129,7 +175,12 @@ export function ResumePage() {
               <div className="space-y-2 text-sm">
                 <p className="font-semibold">Georgia Institute of Technology</p>
                 <p className="text-muted-foreground">MS Computer Science</p>
-                <p className="text-muted-foreground">2023-2025</p>
+                <p className="text-muted-foreground">2024 - May 2026</p>
+              </div>
+              <div className="h-4" />
+              <div className="space-y-2 text-sm">
+                <p className="font-semibold">Indian Institute of Technology (IIT) Roorkee</p>
+                <p className="text-muted-foreground">Undergrad - 2021</p>
               </div>
             </div>
 

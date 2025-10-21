@@ -352,13 +352,34 @@ export function {component_name}() {{
                     // SHARE THIS ARTICLE
                   </p>
                   <div className="flex gap-3">
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={{() => {{
+                        const url = `https://twitter.com/intent/tweet?text=${{encodeURIComponent(blogPost.title)}}&url=${{encodeURIComponent(window.location.href)}}`;
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                      }}}}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       Twitter
                     </button>
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={{() => {{
+                        const url = `https://www.linkedin.com/sharing/share-offsite/?url=${{encodeURIComponent(window.location.href)}}`;
+                        window.open(url, '_blank', 'noopener,noreferrer');
+                      }}}}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       LinkedIn
                     </button>
-                    <button className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono">
+                    <button 
+                      onClick={{() => {{
+                        navigator.clipboard.writeText(window.location.href).then(() => {{
+                          alert('Link copied to clipboard!');
+                        }}).catch(err => {{
+                          console.error('Failed to copy link:', err);
+                        }});
+                      }}}}
+                      className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono"
+                    >
                       Copy Link
                     </button>
                   </div>
