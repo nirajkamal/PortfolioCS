@@ -8,6 +8,7 @@ export interface BlogContentBlock {
   alt?: string;
   language?: string;
   author?: string; // For quotes
+  width?: string; // For images - e.g., "50%", "300px"
 }
 
 interface BlogContentProps {
@@ -15,8 +16,42 @@ interface BlogContentProps {
 }
 
 export function BlogContent({ blocks }: BlogContentProps) {
+  const handleAnchorClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const target = e.target as HTMLElement;
+    if (target.tagName === 'A') {
+      const href = target.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        e.preventDefault();
+        e.stopPropagation();
+        const elementId = href.substring(1);
+        // Use setTimeout to ensure the DOM is ready
+        setTimeout(() => {
+          const element = document.getElementById(elementId);
+          if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+            window.history.replaceState(null, '', window.location.pathname + href);
+          }
+        }, 0);
+        return false;
+      }
+    }
+  };
+
   return (
-    <div className="space-y-8 blog-content-container">
+    <div 
+      className="space-y-8 blog-content-container" 
+      onClick={handleAnchorClick}
+      onClickCapture={(e) => {
+        const target = e.target as HTMLElement;
+        if (target.tagName === 'A') {
+          const href = target.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            e.preventDefault();
+            e.stopPropagation();
+          }
+        }
+      }}
+    >
       {blocks.map((block, index) => {
         switch (block.type) {
           case "heading":
@@ -79,7 +114,7 @@ export function BlogContent({ blocks }: BlogContentProps) {
           case "image":
           case "gif":
             return (
-              <figure key={index} className="border-2 border-border overflow-hidden">
+              <figure key={index} className="border-2 border-border overflow-hidden" style={block.width ? { width: block.width, margin: '0 auto' } : {}}>
                 <ImageWithFallback
                   src={block.content}
                   alt={block.alt || "Blog image"}

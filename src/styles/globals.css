@@ -349,3 +349,28 @@ h4 span[style*="color: #ff6b3d"] {
   background-color: var(--secondary) !important;
   opacity: 0.5 !important;
 }
+
+/* Blog content link styling - orange with underline */
+.blog-content-container a {
+  color: #ff6b3d;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+}
+
+.blog-content-container a:hover {
+  color: #ff5722;
+}
+
+.blog-content-container a u {
+  text-decoration: underline;
+  color: #ff6b3d;
+}
+
+/* Blog content emphasis styling */
+.blog-content-container strong {
+  font-weight: 700;
+}
+
+.blog-content-container em {
+  font-style: italic;
+}

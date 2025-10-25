@@ -14,7 +14,7 @@ export function PytorchCertificationCoursePage() {
     "readTime": "10 min read",
     "author": "Niraj Kamal K",
     "authorAvatar": "/Niraj_Photo.png",
-    "heroImage": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+    "heroImage": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
     "tags": [
         "PyTorch",
         "Deep Learning",
@@ -38,6 +38,21 @@ export function PytorchCertificationCoursePage() {
         "level": 2
     },
     {
+        "title": "Inspiration: The Snack-Sized Learning Approach",
+        "id": "snack-inspiration",
+        "level": 2
+    },
+    {
+        "title": "Lab Structure and Flow",
+        "id": "lab-structure",
+        "level": 3
+    },
+    {
+        "title": "Behind the Scenes",
+        "id": "behind-scenes",
+        "level": 2
+    },
+    {
         "title": "The Problem with Abstract PyTorch Courses",
         "id": "the-problem",
         "level": 2
@@ -46,6 +61,16 @@ export function PytorchCertificationCoursePage() {
         "title": "A Visual, Beginner-Friendly Approach",
         "id": "visual-approach",
         "level": 2
+    },
+    {
+        "title": "Visualizing Model Architecture",
+        "id": "visualizing-model",
+        "level": 3
+    },
+    {
+        "title": "Making DataLoaders Intuitive",
+        "id": "making-dataloaders",
+        "level": 3
     },
     {
         "title": "The Seven Labs",
@@ -61,6 +86,11 @@ export function PytorchCertificationCoursePage() {
         "title": "Impact and Reflection",
         "id": "impact",
         "level": 2
+    },
+    {
+        "title": "Appendix: The Lesson Common Pattern",
+        "id": "appendix",
+        "level": 2
     }
 ];
 
@@ -72,11 +102,78 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "During an internship at IBM Research in Summer 2025, this project contributed to the <span style='color: #ff6b3d;'>PyTorch Foundation's official certification program</span> by designing and creating <span style='color: #ff6b3d;'>7 PyTorch labs</span> as part of a larger training curriculum. These labs became core components of the PyTorch Associate Training course, officially offered at the PyTorch Conference 2025."
+        "content": "During an internship at IBM Research in Summer 2025, under the guidance of <a href='https://www.linkedin.com/in/spzala/' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>Sahdev Zala</u></a> and <a href='https://www.linkedin.com/in/brad-topol-6273536/' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>Brad Topol</u></a> (both my mentors and manager), I contributed to the <a href='https://events.linuxfoundation.org/pytorch-conference/features-add-ons/training/#pytorch-associate-training' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>PyTorch Foundation's official certification program</u></a> by designing and creating <strong>7 PyTorch labs</strong> as part of a larger training curriculum. These labs became core components of the PyTorch Associate Training course, officially offered at the PyTorch Conference 2025."
     },
     {
         "type": "paragraph",
-        "content": "This wasn't just another tutorial series\u2014it fundamentally rethought how deep learning is taught to beginners, making the abstract concepts of PyTorch concrete and accessible through visual illustrations and hands-on practice."
+        "content": "This course rethinks how deep learning is taught to beginners, making abstract PyTorch concepts concrete and accessible through <strong>visual illustrations and hands-on practice</strong>."
+    },
+    {
+        "type": "quote",
+        "content": "**Note**: All images and content shown in this blog post are drafts and early iterations from the design process. The final, polished versions of these materials are part of the official PyTorch Foundation Certification Course.",
+        "author": null
+    },
+    {
+        "type": "subheading",
+        "content": "Inspiration: The Snack-Sized Learning Approach",
+        "id": "snack-inspiration"
+    },
+    {
+        "type": "paragraph",
+        "content": "The structure and philosophy behind these labs were deeply inspired by the <a href='https://github.com/ibm-granite-community/granite-snack-cookbook' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>Granite Snack Cookbook</u></a>,a collection of bite-sized, practical tutorials that break down complex AI concepts into digestible lessons. Each \"recipe\" in the Snack Cookbook focuses on a single concept with minimal code - typically just 1-2 code blocks per step - making it perfect for beginners who can feel overwhelmed by information density."
+    },
+    {
+        "type": "paragraph",
+        "content": "I adopted this same philosophy for the PyTorch labs: <strong>each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations</strong>. This approach is especially beneficial for beginners because:"
+    },
+    {
+        "type": "paragraph",
+        "content": "- <strong>Lower cognitive load</strong>: Each step focuses on one core concept, reducing mental overhead. - <strong>Immediate reinforcement</strong>: Small code blocks paired with visuals help concepts stick. - <strong>Progressive scaffolding</strong>: Each lesson builds naturally on the previous one. - <strong>Practical examples</strong>: Every step is grounded in working code, not abstract theory."
+    },
+    {
+        "type": "subheading",
+        "content": "Lab Structure and Flow",
+        "id": "lab-structure"
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/typical_lab_structure.png",
+        "alt": "Typical Lab Structure"
+    },
+    {
+        "type": "paragraph",
+        "content": "Every lab follows a carefully designed flow that guides students through 5-7 structured steps. This image shows how each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations."
+    },
+    {
+        "type": "heading",
+        "content": "Behind the Scenes",
+        "id": "behind-scenes"
+    },
+    {
+        "type": "paragraph",
+        "content": "The creation of these labs involved extensive design work, including Figma prototypes, storyboards, and iterative refinements. This behind-the-scenes process was crucial in ensuring each lab delivered maximum pedagogical value."
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/shabby_figma_drafts_behind_the_scenes.png",
+        "alt": "Shabby Figma Drafts Behind the Scenes"
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png",
+        "alt": "Lesson Design - Storyboard vs Actual Lesson Draft"
+    },
+    {
+        "type": "paragraph",
+        "content": "These design iterations ensured that the visuals, code examples, and explanations were optimized for learning. We refined the curriculum multiple times to achieve the best possible outcomes for students."
+    },
+    {
+        "type": "paragraph",
+        "content": "Throughout this process, a common structural pattern emerged across most lessons  -  a consistent flow that helped students build mental models of how PyTorch lessons should be organized and approached. This structural consistency made the curriculum coherent and predictable, turning what could be a chaotic learning journey into a guided, step\u2011by\u2011step progression."
+    },
+    {
+        "type": "paragraph",
+        "content": "<a href='#appendix' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>View the detailed lesson common pattern in the appendix \u2192</u></a>"
     },
     {
         "type": "heading",
@@ -85,7 +182,7 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "Most PyTorch courses suffer from a critical flaw: <span style='color: #ff6b3d;'>they're too abstract</span>. While seasoned developers can easily distinguish between general Python patterns and PyTorch-specific idioms, beginners often struggle with fundamental questions:"
+        "content": "Most PyTorch courses suffer from a critical flaw: *they're too abstract*. While seasoned developers can easily distinguish between general Python patterns and PyTorch-specific idioms, beginners often struggle with fundamental questions:"
     },
     {
         "type": "paragraph",
@@ -102,51 +199,56 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "The solution: create <span style='color: #ff6b3d;'>bite-sized lessons with detailed visual illustrations</span> that capture not just the code, but the critical details a beginner might miss. Each lab was designed to progressively build understanding, from foundational concepts to advanced techniques."
+        "content": "The solution: create <strong>bite-sized lessons with detailed visual illustrations</strong> that capture not just the code, but the critical details a beginner might miss. Each lab was designed to progressively build understanding, from foundational concepts to advanced techniques."
+    },
+    {
+        "type": "subheading",
+        "content": "Visualizing Model Architecture",
+        "id": "visualizing-model"
     },
     {
         "type": "image",
-        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/lab_structuree.png",
-        "alt": "Lab Structure"
-    },
-    {
-        "type": "paragraph",
-        "content": "Every lab follows a carefully designed flow that guides students through the learning process step by step. Each section builds upon the previous one, ensuring no conceptual gaps."
-    },
-    {
-        "type": "image",
-        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png",
         "alt": "Model Class Definition"
     },
     {
         "type": "paragraph",
-        "content": "One of the key innovations was showing <span style='color: #ff6b3d;'>exactly how and why</span> we define models as classes. The illustration breaks down: - The inheritance from `nn.Module` and why it matters - The purpose of `__init__()` and `super().__init__()` - How layers are defined and registered - The forward pass implementation"
+        "content": "One of the key innovations was showing <strong>exactly how and why</strong> we define models as classes. The illustration breaks down: - The inheritance from `nn.Module` and why it matters. - The purpose of `__init__()` and `super().__init__()`. - How layers are defined and registered. - The forward pass implementation. - A visual intuition that model layers are initiated in `__init__` and connected in `forward()`."
     },
     {
         "type": "paragraph",
         "content": "This visual approach helps beginners understand the pattern rather than just copying code."
     },
     {
+        "type": "subheading",
+        "content": "Making DataLoaders Intuitive",
+        "id": "making-dataloaders"
+    },
+    {
+        "type": "paragraph",
+        "content": "DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:"
+    },
+    {
         "type": "image",
-        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_draft_not_in_actual_lesson.png",
+        "alt": "DataLoader Batching Process"
+    },
+    {
+        "type": "paragraph",
+        "content": "The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with: - What a DataLoader actually does under the hood? - How batching works and why it's essential for training efficiency? - The step-by-step process of converting individual samples into batches. - Why batch sizes matter for both memory and convergence?"
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png",
         "alt": "DataLoader Explanation"
     },
     {
         "type": "paragraph",
-        "content": "DataLoaders can be confusing for beginners. The visual approach explains: - What a DataLoader actually does - The batching process and why it matters - How shuffling works - The relationship between Dataset and DataLoader"
-    },
-    {
-        "type": "image",
-        "content": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
-        "alt": "Neural Network Diagram"
+        "content": "The second visualization takes a broader view of the DataLoader: - The relationship between Dataset and DataLoader. - How shuffling works and when to use it? - Multi-worker data loading for performance. - Pin memory optimization for GPU training."
     },
     {
         "type": "paragraph",
-        "content": "Understanding the neural network structure is crucial. The diagrams show: - Layer-by-layer architecture - Data flow through the network - Input/output dimensions at each layer - Activation functions and their placement"
-    },
-    {
-        "type": "paragraph",
-        "content": "These visual aids transform abstract concepts into concrete understanding."
+        "content": "<span className='font-mono text-muted-foreground text-sm'>// Note: These visualizations were part of my iteration process during the internship. While they provided valuable pedagogical insights, the final course curriculum continued to evolve after my internship ended, with subsequent improvements and refinements.</span>"
     },
     {
         "type": "heading",
@@ -191,6 +293,14 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
+        "content": "- <strong>Linear Layer Networks</strong>: Understanding fully connected layers and basic neural network architecture - <strong>Convolutional Neural Networks (CNNs)</strong>: Building convolutional layers and understanding spatial data processing"
+    },
+    {
+        "type": "paragraph",
+        "content": "Students learn to construct complex architectures and understand why PyTorch uses this pattern."
+    },
+    {
+        "type": "paragraph",
         "content": "Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts. These 7 labs form a core part of the full certification program, which includes additional modules created by other instructors."
     },
     {
@@ -200,7 +310,12 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "The course was officially launched at the <span style='color: #ff6b3d;'>PyTorch Conference 2025</span> as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice."
+        "content": "The course was officially launched at the <a href='https://events.linuxfoundation.org/pytorch-conference/' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>PyTorch Conference 2025</u></a> as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice."
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/course_launch_at_pytorch_conference.png",
+        "alt": "Course Launch at PyTorch Conference"
     },
     {
         "type": "paragraph",
@@ -212,7 +327,7 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "<strong>Learn more</strong>: <a href='https://events.linuxfoundation.org/pytorch-conference/features-add-ons/training/#pytorch-associate-training' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>PyTorch Associate Training</a>"
+        "content": "<strong>Learn more</strong>: <a href='https://events.linuxfoundation.org/pytorch-conference/features-add-ons/training/#pytorch-associate-training' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>PyTorch Associate Training</u></a>"
     },
     {
         "type": "heading",
@@ -221,11 +336,35 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "Creating this certification course provided valuable lessons about <span style='color: #ff6b3d;'>education and technical communication</span>:"
+        "content": "Creating this certification course under the mentorship of Sahdev Zala and Brad Topol provided valuable lessons about <strong>education and technical communication</strong>:"
     },
     {
         "type": "paragraph",
-        "content": "Seeing these labs become part of PyTorch Foundation's official certification program\u2014and knowing they'll help thousands of developers enter the field of deep learning\u2014is incredibly rewarding. The future of AI depends on making powerful tools like PyTorch accessible to everyone."
+        "content": "Seeing these labs become part of PyTorch Foundation's official certification program - and knowing they'll help thousands of developers enter the field of deep learning - is incredibly rewarding. The future of AI depends on making powerful tools like PyTorch accessible to everyone."
+    },
+    {
+        "type": "heading",
+        "content": "Beyond the Certification Course",
+        "id": "beyond-certification"
+    },
+    {
+        "type": "paragraph",
+        "content": "While the certification curriculum was the centerpiece of my internship, it represented only about one-third of my contributions. During the same period, I tackled several other high-impact projects:"
+    },
+    {
+        "type": "paragraph",
+        "content": "These parallel contributions meant working across multiple areas of deep learning infrastructure simultaneously: from designing beginner-friendly education to contributing to production systems to advancing documentation standards. This breadth gave me unique insights into how PyTorch fits into the larger ecosystem and informed how I explained concepts to students."
+    },
+    {
+        "type": "heading",
+        "content": "Appendix: The Lesson Common Pattern",
+        "id": "appendix"
+    },
+    {
+        "type": "image",
+        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png",
+        "alt": "Lesson Common Pattern",
+        "width": "50%"
     }
 ];
 
@@ -235,7 +374,7 @@ export function PytorchCertificationCoursePage() {
 
       {/* Hero Section */}
       <section>
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-20 pb-8">
           {/* Back Button */}
           <a
             href="#/blog"
@@ -332,7 +471,7 @@ export function PytorchCertificationCoursePage() {
 
       {/* Main Content */}
       <section className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-12 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Table of Contents - Desktop */}
             <aside className="hidden lg:block lg:col-span-3">

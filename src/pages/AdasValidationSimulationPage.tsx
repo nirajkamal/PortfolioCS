@@ -304,7 +304,7 @@ export function AdasValidationSimulationPage() {
 
       {/* Hero Section */}
       <section>
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-20 pb-8">
           {/* Back Button */}
           <a
             href="#/projects"
@@ -410,7 +410,7 @@ export function AdasValidationSimulationPage() {
 
       {/* Main Content */}
       <section className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-12 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Table of Contents - Desktop */}
             <aside className="hidden lg:block lg:col-span-3">

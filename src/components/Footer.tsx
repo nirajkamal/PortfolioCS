@@ -23,9 +23,6 @@ export function Footer() {
               <Mail className="w-4 h-4" />
               <span>nirajkkamal@gmail.com</span>
             </a>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              Phone +1 404 449 9773
-            </p>
           </div>
           <div className="bg-background p-6 sm:p-8 border-r border-b border-border md:[&:nth-child(3n)]:border-r-0 md:last:border-b-0">
             <p className="font-mono text-muted-foreground mb-4 text-xs sm:text-sm">// CONNECT</p>

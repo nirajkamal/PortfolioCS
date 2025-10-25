@@ -46,7 +46,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "slug": "building-scalable-microservices",
       "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
       "featuredOnHome": true,
-      "featuredOnBlog": true,
+      "featuredOnBlog": false,
       "displayOrder": 2,
       "external": false,
       "externalUrl": null
@@ -88,7 +88,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "readTime": "10 min read",
       "author": "Niraj Kamal K",
       "authorAvatar": "/Niraj_Photo.png",
-      "heroImage": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+      "heroImage": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
       "tags": [
         "PyTorch",
         "Deep Learning",

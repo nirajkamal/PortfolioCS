@@ -168,15 +168,23 @@ def parse_blog_markdown(content):
         
         # Parse images
         elif line.startswith('!['):
-            image_match = re.match(r'!\[([^\]]*)\]\(([^)]+)\)', line)
+            # Match image markdown and optional width specification
+            # Format: ![alt](url.png){width:50%} or ![alt](url.png)
+            image_match = re.match(r'!\[([^\]]*)\]\(([^)]+)\)(?:\{width:([^}]+)\})?', line)
             if image_match:
                 alt_text = image_match.group(1)
                 image_url = image_match.group(2)
-                blog_data['content_blocks'].append({
+                width = image_match.group(3)
+                
+                block = {
                     'type': 'image',
                     'content': image_url,
                     'alt': alt_text
-                })
+                }
+                if width:
+                    block['width'] = width
+                
+                blog_data['content_blocks'].append(block)
         
         i += 1
     
@@ -206,6 +214,8 @@ def generate_blog_post_component(blog_data, blog_slug):
             block_tsx['language'] = block['language']
         if 'alt' in block:
             block_tsx['alt'] = block['alt']
+        if 'width' in block:
+            block_tsx['width'] = block['width']
         
         content_blocks_tsx.append(block_tsx)
     
@@ -237,7 +247,7 @@ export function {component_name}() {{
 
       {{/* Hero Section */}}
       <section>
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-20 pb-8">
           {{/* Back Button */}}
           <a
             href="#/blog"
@@ -334,7 +344,7 @@ export function {component_name}() {{
 
       {{/* Main Content */}}
       <section className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-12 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {{/* Table of Contents - Desktop */}}
             <aside className="hidden lg:block lg:col-span-3">

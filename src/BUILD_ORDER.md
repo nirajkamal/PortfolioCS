@@ -39,6 +39,16 @@ This script:
   - `Header.tsx`
   - `Footer.tsx`
 
+### 4. Production Build: Copy Images & Build
+```bash
+npm run build
+```
+This automatically:
+1. **Runs `npm run copy-images`** (prebuild hook) - Copies all blog images from `src/assets/blogs/` to `public/blogs/`
+2. **Runs `vite build`** - Creates production build
+
+**Important**: Blog images must use paths like `/blogs/Pytorch_Course/image.png` (not `/src/assets/blogs/...`) to work in production.
+
 ## Why This Order Matters
 
 1. **Blog Management**: The `Blogs.tsx` component displays actual blog posts from `BlogIndex.ts`, not dummy data from `home.md`
@@ -81,4 +91,9 @@ cd src
 python buildblog.py && python build_projects.py && python build.py
 ```
 
-This ensures all components are properly generated in the correct order.
+Then build for production:
+```bash
+npm run build
+```
+
+This ensures all components are properly generated in the correct order, and images are automatically copied to the public folder.

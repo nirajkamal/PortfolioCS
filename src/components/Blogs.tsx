@@ -23,7 +23,7 @@ export function Blogs() {
                 "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
                 "date": "Oct 21, 2025",
                 "readTime": "10 min read",
-                "image": "/src/assets/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+                "image": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
                 "category": "MACHINE LEARNING",
                 "author": "Niraj Kamal K",
                 "authorAvatar": "/Niraj_Photo.png",

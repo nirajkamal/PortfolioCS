@@ -110,7 +110,8 @@ export function ResumePage() {
                     href="https://www.linkedin.com/in/niraj-kamal-k-31687212a/" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-[#ff6b3d] hover:underline"
+                    style={{ color: '#ff6b3d', textDecoration: 'underline' }}
+                    className="hover:opacity-80 transition-opacity"
                   >
                     LinkedIn Profile
                   </a>

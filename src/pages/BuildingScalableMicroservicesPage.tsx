@@ -24,7 +24,7 @@ export function BuildingScalableMicroservicesPage() {
     "slug": "building-scalable-microservices",
     "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
     "featuredOnHome": true,
-    "featuredOnBlog": true,
+    "featuredOnBlog": false,
     "displayOrder": 2,
     "external": false,
     "externalUrl": null
@@ -189,7 +189,7 @@ export function BuildingScalableMicroservicesPage() {
 
       {/* Hero Section */}
       <section>
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-20 pb-8">
           {/* Back Button */}
           <a
             href="#/blog"
@@ -286,7 +286,7 @@ export function BuildingScalableMicroservicesPage() {
 
       {/* Main Content */}
       <section className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-8 py-20">
+        <div className="max-w-7xl mx-auto px-8 py-12 pt-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
             {/* Table of Contents - Desktop */}
             <aside className="hidden lg:block lg:col-span-3">
