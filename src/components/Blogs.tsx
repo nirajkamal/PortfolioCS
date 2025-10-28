@@ -32,19 +32,6 @@ export function Blogs() {
                 "linkUrl": "#/blog/pytorch-certification-course"
         },
         {
-                "title": "Deep Learning Fundamentals: A Complete Guide",
-                "excerpt": "A comprehensive guide to understanding deep learning fundamentals, from neural networks to advanced architectures like transformers and CNNs.",
-                "date": "Oct 18, 2025",
-                "readTime": "12 min read",
-                "image": "https://images.unsplash.com/photo-1677442136019-21780ecad995?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-                "category": "MACHINE LEARNING",
-                "author": "Niraj Kamal K",
-                "authorAvatar": "/Niraj_Photo.png",
-                "slug": "deep-learning-on-medium",
-                "linkType": "external",
-                "linkUrl": "https://medium.com/@yourusername/deep-learning-fundamentals"
-        },
-        {
                 "title": "Building Scalable Microservices with Node.js",
                 "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
                 "date": "Oct 15, 2025",
@@ -56,6 +43,19 @@ export function Blogs() {
                 "slug": "building-scalable-microservices",
                 "linkType": "internal",
                 "linkUrl": "#/blog/building-scalable-microservices"
+        },
+        {
+                "title": "Summer 2020 Diaries: TU Dresden",
+                "excerpt": "Reflections on my summer internship at TU Dresden's Knowledge Architecture Laboratory, working on digital and programmable architecture during the COVID-19 pandemic.",
+                "date": "Dec 11, 2020",
+                "readTime": "8 min read",
+                "image": "https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+                "category": "ARCHITECTURE & RESEARCH",
+                "author": "Niraj K. Karunanidhi",
+                "authorAvatar": "/Niraj_Photo.png",
+                "slug": "tu-dresden-summer-2020",
+                "linkType": "external",
+                "linkUrl": "https://watchout.iitr.ac.in/2020/12/summer-diaries-TU-Dresden"
         }
 ];
 

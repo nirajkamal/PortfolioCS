@@ -57,6 +57,8 @@
       },
       "scripts": {
             "dev": "vite",
+            "copy-images": "node scripts/copy-blog-images.js",
+            "prebuild": "npm run copy-images",
             "build": "vite build",
             "predeploy": "npm run build",
             "deploy": "gh-pages -d dist"
