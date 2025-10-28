@@ -11,54 +11,14 @@
       <link rel="apple-touch-icon" href="/favicon.png" />
       
       <!-- Analytics Scripts -->
-      <!-- Google Analytics - Global site tag (gtag.js) -->
+      <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-C8TTDD5LTS"></script>
       <script>
-        // Initialize dataLayer before any gtag calls
         window.dataLayer = window.dataLayer || [];
-        
-        // Define gtag function
-        function gtag() {
-          dataLayer.push(arguments);
-        }
-        
-        // Configure gtag with current timestamp
+        function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        
-        // Configure Google Analytics with your measurement ID
+
         gtag('config', 'G-C8TTDD5LTS');
-        
-        // Debug logging
-        console.log('🔍 Google Analytics Loading...');
-        console.log('📊 Measurement ID: G-C8TTDD5LTS');
-        console.log('🌐 Current URL:', window.location.href);
-        
-        // Verify gtag is available globally
-        window.gtag = gtag;
-        
-        // Test function for manual verification
-        window.testGoogleAnalytics = function() {
-          if (typeof window.gtag === 'function') {
-            console.log('✅ Google Analytics is loaded and ready');
-            // Send a test event
-            gtag('event', 'test_manual', {
-              event_category: 'debug',
-              event_label: 'console_test',
-              custom_parameter: 'testing_ga'
-            });
-            console.log('📤 Test event sent to GA');
-            return 'SUCCESS: Google Analytics is working!';
-          } else {
-            console.error('❌ Google Analytics gtag function not available');
-            return 'ERROR: Google Analytics not working';
-          }
-        };
-        
-        // Auto-test after a short delay to ensure script is loaded
-        setTimeout(function() {
-          console.log('🔄 Auto-testing Google Analytics...');
-          window.testGoogleAnalytics();
-        }, 2000);
       </script>
       
       <!-- Add other analytics tools here -->
