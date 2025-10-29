@@ -112,7 +112,6 @@ Visualizations of a broader view of the DataLoader:
 
 
 
-
 ## Official Launch at PyTorch Conference {#pytorch-conference}
 
 The course was officially launched at the [<u>PyTorch Conference 2025</u>](https://events.linuxfoundation.org/pytorch-conference/) as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice.
