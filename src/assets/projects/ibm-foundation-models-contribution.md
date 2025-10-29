@@ -19,6 +19,7 @@ description: Enhanced IBM's Foundation Models Stack with optimized attention mec
 featuredOnHome: false
 featuredOnProjects: false
 displayOrder: 3
+active: false
 ---META---
 
 ---TOC---
@@ -236,3 +237,10 @@ class TestAttentionMechanisms(unittest.TestCase):
 - Best practices for open source collaboration
 
 The project significantly enhanced my understanding of foundation models and contributed valuable optimizations to the broader AI research community.
+
+## Resources
+
+Explore the Foundation Models Stack and related resources:
+
+- **IBM FMS Repository**: [dev](https://github.com/foundation-model-stack/foundation-model-stack)
+- **Project Demo**: [dev](https://fms.example.com)

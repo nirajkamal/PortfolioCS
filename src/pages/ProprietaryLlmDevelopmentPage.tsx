@@ -80,12 +80,12 @@ export function ProprietaryLlmDevelopmentPage() {
   const contentBlocks: BlogContentBlock[] = [
         {
                 "type": "heading",
-                "content": "Project Overview",
-                "id": "project-overview"
+                "id": "project-overview",
+                "content": "Project Overview"
         },
         {
                 "type": "paragraph",
-                "content": "Led the development of a proprietary in-house Large Language Model for <span style='color: #ff6b3d;'>code generation</span> and natural language processing tasks. This project involved designing and implementing a scalable training pipeline capable of handling massive datasets and coordinating distributed training across multiple high-performance GPUs."
+                "content": "Led the development of a proprietary in-house Large Language Model for <a href='code generation' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> and natural language processing tasks. This project involved designing and implementing a scalable training pipeline capable of handling massive datasets and coordinating distributed training across multiple high-performance GPUs."
         },
         {
                 "type": "paragraph",
@@ -93,50 +93,50 @@ export function ProprietaryLlmDevelopmentPage() {
         },
         {
                 "type": "heading",
-                "content": "Technical Architecture",
-                "id": "technical-architecture"
+                "id": "technical-architecture",
+                "content": "Technical Architecture"
         },
         {
-                "type": "subheading",
-                "content": "Model Design",
-                "id": "model-design"
+                "type": "heading3",
+                "id": "model-design",
+                "content": "Model Design"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Architecture</strong>: Transformer-based decoder model with custom attention mechanisms - <strong>Parameters</strong>: 7B parameter model optimized for code generation - <strong>Context Length</strong>: 8,192 tokens with sliding window attention - <strong>Vocabulary</strong>: Custom tokenizer trained on code and natural language corpus"
         },
         {
-                "type": "subheading",
-                "content": "Infrastructure Stack",
-                "id": "infrastructure-stack"
+                "type": "heading3",
+                "id": "infrastructure-stack",
+                "content": "Infrastructure Stack"
         },
         {
                 "type": "code",
-                "content": "# Training Configuration\nmodel_config = {\n    \"hidden_size\": 4096,\n    \"num_layers\": 32,\n    \"num_attention_heads\": 32,\n    \"intermediate_size\": 11008,\n    \"vocab_size\": 32000,\n    \"max_position_embeddings\": 8192\n}\n\n# Distributed Training Setup\ntraining_config = {\n    \"batch_size\": 64,\n    \"micro_batch_size\": 8,\n    \"gradient_accumulation_steps\": 8,\n    \"learning_rate\": 1e-4,\n    \"warmup_steps\": 2000,\n    \"total_steps\": 100000\n}",
-                "language": "python"
+                "language": "python",
+                "content": "# Training Configuration\nmodel_config = {\n    \"hidden_size\": 4096,\n    \"num_layers\": 32,\n    \"num_attention_heads\": 32,\n    \"intermediate_size\": 11008,\n    \"vocab_size\": 32000,\n    \"max_position_embeddings\": 8192\n}\n\n# Distributed Training Setup\ntraining_config = {\n    \"batch_size\": 64,\n    \"micro_batch_size\": 8,\n    \"gradient_accumulation_steps\": 8,\n    \"learning_rate\": 1e-4,\n    \"warmup_steps\": 2000,\n    \"total_steps\": 100000\n}"
         },
         {
                 "type": "heading",
-                "content": "Training Infrastructure",
-                "id": "training-infrastructure"
+                "id": "training-infrastructure",
+                "content": "Training Infrastructure"
         },
         {
-                "type": "subheading",
-                "content": "Hardware Configuration",
-                "id": "hardware-configuration"
+                "type": "heading3",
+                "id": "hardware-configuration",
+                "content": "Hardware Configuration"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>GPUs</strong>: 8x NVIDIA A100 80GB GPUs - <strong>Memory</strong>: 640GB total GPU memory - <strong>Interconnect</strong>: NVLink for high-speed GPU communication - <strong>Storage</strong>: High-speed NVMe SSDs for data loading"
         },
         {
-                "type": "subheading",
-                "content": "Distributed Training Strategy",
-                "id": "distributed-training-strategy"
+                "type": "heading3",
+                "id": "distributed-training-strategy",
+                "content": "Distributed Training Strategy"
         },
         {
                 "type": "paragraph",
-                "content": "Implemented <span style='color: #ff6b3d;'>parallel distributed training</span> using PyTorch's DistributedDataParallel (DDP) with the following optimizations:"
+                "content": "Implemented <a href='parallel distributed training' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> using PyTorch's DistributedDataParallel (DDP) with the following optimizations:"
         },
         {
                 "type": "paragraph",
@@ -144,27 +144,27 @@ export function ProprietaryLlmDevelopmentPage() {
         },
         {
                 "type": "code",
-                "content": "# Distributed Training Setup\ndef setup_distributed_training():\n    torch.distributed.init_process_group(\n        backend='nccl',\n        world_size=8,\n        rank=local_rank\n    )\n    \n    model = torch.nn.parallel.DistributedDataParallel(\n        model.cuda(local_rank),\n        device_ids=[local_rank],\n        find_unused_parameters=False\n    )\n    \n    return model",
-                "language": "python"
+                "language": "python",
+                "content": "# Distributed Training Setup\ndef setup_distributed_training():\n    torch.distributed.init_process_group(\n        backend='nccl',\n        world_size=8,\n        rank=local_rank\n    )\n    \n    model = torch.nn.parallel.DistributedDataParallel(\n        model.cuda(local_rank),\n        device_ids=[local_rank],\n        find_unused_parameters=False\n    )\n    \n    return model"
         },
         {
                 "type": "heading",
-                "content": "Performance Metrics",
-                "id": "performance-metrics"
+                "id": "performance-metrics",
+                "content": "Performance Metrics"
         },
         {
-                "type": "subheading",
-                "content": "Training Performance",
-                "id": "training-performance"
+                "type": "heading3",
+                "id": "training-performance",
+                "content": "Training Performance"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Training Speed</strong>: 1.2 tokens/second/GPU (9.6 total tokens/second) - <strong>Memory Efficiency</strong>: 78GB GPU memory utilization per A100 - <strong>Convergence</strong>: Achieved target perplexity in 2.1M steps - <strong>Throughput</strong>: Processed 2.1B tokens during training"
         },
         {
-                "type": "subheading",
-                "content": "Model Quality",
-                "id": "model-quality"
+                "type": "heading3",
+                "id": "model-quality",
+                "content": "Model Quality"
         },
         {
                 "type": "paragraph",
@@ -172,31 +172,31 @@ export function ProprietaryLlmDevelopmentPage() {
         },
         {
                 "type": "heading",
-                "content": "Challenges & Solutions",
-                "id": "challenges--solutions"
+                "id": "challenges--solutions",
+                "content": "Challenges & Solutions"
         },
         {
-                "type": "subheading",
-                "content": "Memory Optimization",
-                "id": "memory-optimization"
+                "type": "heading3",
+                "id": "memory-optimization",
+                "content": "Memory Optimization"
         },
         {
                 "type": "paragraph",
                 "content": "<strong>Challenge</strong>: Training 7B parameter model on limited GPU memory <strong>Solution</strong>: Implemented gradient checkpointing and ZeRO optimizer states"
         },
         {
-                "type": "subheading",
-                "content": "Training Stability",
-                "id": "training-stability"
+                "type": "heading3",
+                "id": "training-stability",
+                "content": "Training Stability"
         },
         {
                 "type": "paragraph",
                 "content": "<strong>Challenge</strong>: Maintaining stable training across distributed setup <strong>Solution</strong>: Custom learning rate scheduling and gradient clipping"
         },
         {
-                "type": "subheading",
-                "content": "Data Pipeline",
-                "id": "data-pipeline"
+                "type": "heading3",
+                "id": "data-pipeline",
+                "content": "Data Pipeline"
         },
         {
                 "type": "paragraph",
@@ -204,35 +204,48 @@ export function ProprietaryLlmDevelopmentPage() {
         },
         {
                 "type": "heading",
-                "content": "Results & Impact",
-                "id": "results--impact"
+                "id": "results--impact",
+                "content": "Results & Impact"
         },
         {
-                "type": "subheading",
-                "content": "Technical Achievements",
-                "id": "technical-achievements"
+                "type": "heading3",
+                "id": "technical-achievements",
+                "content": "Technical Achievements"
         },
         {
                 "type": "paragraph",
-                "content": "- Successfully trained a <span style='color: #ff6b3d;'>high-performance LLM</span> from scratch - Achieved 23% better code generation accuracy than baseline models - Reduced training time by 40% through infrastructure optimizations - Implemented efficient inference pipeline supporting 100+ concurrent users"
+                "content": "- Successfully trained a <a href='high-performance LLM' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> from scratch - Achieved 23% better code generation accuracy than baseline models - Reduced training time by 40% through infrastructure optimizations - Implemented efficient inference pipeline supporting 100+ concurrent users"
         },
         {
-                "type": "subheading",
-                "content": "Business Impact",
-                "id": "business-impact"
+                "type": "heading3",
+                "id": "business-impact",
+                "content": "Business Impact"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Cost Reduction</strong>: 60% reduction in external API costs - <strong>Performance</strong>: 3x faster code generation compared to previous solutions - <strong>Scalability</strong>: Support for 10x increase in user base - <strong>IP Protection</strong>: Complete control over model and training data"
         },
         {
-                "type": "subheading",
-                "content": "Key Learnings",
-                "id": "key-learnings"
+                "type": "heading3",
+                "id": "key-learnings",
+                "content": "Key Learnings"
         },
         {
                 "type": "paragraph",
                 "content": "- Importance of data quality over quantity in LLM training - Critical role of hardware optimization in distributed training - Value of custom tokenization for domain-specific tasks - Need for comprehensive evaluation frameworks"
+        },
+        {
+                "type": "heading",
+                "id": "resources",
+                "content": "Resources"
+        },
+        {
+                "type": "paragraph",
+                "content": "Explore the project code and try the model:"
+        },
+        {
+                "type": "paragraph",
+                "content": "- <strong>Source Code</strong>: <a href='#/development?demo=https://github.com/example/llm-project' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a> - <strong>Live Demo</strong>: <a href='#/development?demo=https://llm-demo.example.com' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a>"
         },
         {
                 "type": "paragraph",
@@ -373,9 +386,7 @@ export function ProprietaryLlmDevelopmentPage() {
                   <div className="flex gap-3">
                     {projectData.github && (
                       <a
-                        href={projectData.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github)}&demo=${encodeURIComponent(projectData.demo || '')}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <Github className="w-4 h-4" />
@@ -384,9 +395,7 @@ export function ProprietaryLlmDevelopmentPage() {
                     )}
                     {projectData.demo && (
                       <a
-                        href={projectData.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github || '')}&demo=${encodeURIComponent(projectData.demo)}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />

@@ -11,12 +11,61 @@ import os
 
 
 def parse_styled_text(text):
-    """Parse text for orange styling and links (reuse from build.py)"""
+    """Parse text for orange styling and links
+    
+    Special tags:
+    - [dev](url) - Routes through development page
+    - [orange](text) - Orange colored text
+    - [comment](text) - Code comment style
+    - [link](url) - Regular external link
+    - [orange-link](url) - Orange external link
+    """
     if not text:
         return text
     
-    # Replace **bold** with bold styled span
+    # Replace **bold** with bold styled span (must be before *italic* to avoid conflicts)
     text = re.sub(r'\*\*(.*?)\*\*', r"<strong>\1</strong>", text)
+    
+    # Replace *italic* with italic styled span - but avoid matching underscores in code like __init__
+    # Only match single asterisks around words, not underscores
+    text = re.sub(r'(?<!\*)\*([^\*]+?)\*(?!\*)', r"<em>\1</em>", text)
+    
+    # Handle [dev](url) - route through development page
+    # Format: [dev](url) where url is the link to send to dev page
+    text = re.sub(
+        r'\[dev\]\(([^)]+)\)',
+        lambda m: f"<a href='#/development?demo={m.group(1)}' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a>",
+        text
+    )
+    
+    # Protect markdown links before processing underscores
+    # This prevents underscores in URLs from being converted to italics
+    link_placeholder_map = {}
+    link_counter = [0]
+    
+    def protect_link(match):
+        link_counter[0] += 1
+        # Use a placeholder WITHOUT underscores to avoid getting italicized
+        placeholder = f"LINKPLACEHOLDER{link_counter[0]}"
+        link_placeholder_map[placeholder] = match.group(0)
+        return placeholder
+    
+    # Temporarily replace markdown links [text](url) with placeholders
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', protect_link, text)
+    
+    # Now safely apply underscore italic formatting without affecting URLs
+    text = re.sub(r'(?<!_)_([^_]+?)_(?!_)', r"<em>\1</em>", text)
+    
+    # Restore the links and convert them to HTML
+    for placeholder, original_link in link_placeholder_map.items():
+        # Parse the markdown link [text](url)
+        link_match = re.match(r'\[([^\]]+)\]\(([^)]+)\)', original_link)
+        if link_match:
+            link_text = link_match.group(1)
+            link_url = link_match.group(2)
+            # Convert to HTML link
+            html_link = f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>{link_text}</a>"
+            text = text.replace(placeholder, html_link)
     
     # Replace [orange](text) with orange styled span
     text = re.sub(r'\[orange\]\((.*?)\)', r"<span style='color: #ff6b3d;'>\1</span>", text)
@@ -29,9 +78,6 @@ def parse_styled_text(text):
     
     # Replace [orange-link](url) with orange styled links
     text = re.sub(r'\[orange-link\]\((.*?)\)', r"<a href='\1' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>\1</a>", text)
-    
-    # Replace [text](url) with links (standard markdown link syntax)
-    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r"<a href='\2' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>\1</a>", text)
     
     return text
 
@@ -90,18 +136,22 @@ def parse_blog_markdown(content):
                 i += 1
         
         # Parse content sections
-        elif line.startswith('##'):
-            # Extract heading with id
-            heading_match = re.match(r'^(#{1,6})\s*(.*?)\s*\{#([^}]+)\}$', line)
+        elif line.startswith('##') or line.startswith('###'):
+            # Extract heading with or without id
+            heading_match = re.match(r'^(#{1,6})\s*(.*?)\s*(?:\{#([^}]+)\})?$', line)
             if heading_match:
                 level = len(heading_match.group(1))
                 title = heading_match.group(2).strip()
                 heading_id = heading_match.group(3)
                 
+                # Generate id from title if not provided
+                if not heading_id:
+                    heading_id = title.lower().replace(' ', '-').replace('.', '').replace(',', '')
+                
                 if level == 2:
                     content_type = 'heading'
                 elif level == 3:
-                    content_type = 'subheading'
+                    content_type = 'heading3'
                 else:
                     content_type = 'heading3'
                 
@@ -111,6 +161,7 @@ def parse_blog_markdown(content):
                     'content': title
                 })
             i += 1
+            continue  # Skip the final i += 1 at the end of the loop
             
         # Parse paragraphs
         elif line and not line.startswith(('#', '>', '```', '![', '---')):
@@ -145,10 +196,10 @@ def parse_blog_markdown(content):
             if quote_lines:
                 blog_data['content_blocks'].append({
                     'type': 'quote',
-                    'content': ' '.join(quote_lines),
+                    'content': parse_styled_text(' '.join(quote_lines)),
                     'author': author
                 })
-            i -= 1
+            continue  # Skip the final i += 1 at the end of the loop
         
         # Parse code blocks
         elif line.startswith('```'):
@@ -165,6 +216,7 @@ def parse_blog_markdown(content):
                 'language': language,
                 'content': '\n'.join(code_lines)
             })
+            continue  # Skip the final i += 1 at the end of the loop
         
         # Parse images
         elif line.startswith('!['):
@@ -232,6 +284,7 @@ import {{ Footer }} from "../components/Footer";
 import {{ ImageWithFallback }} from "../components/figma/ImageWithFallback";
 import {{ TableOfContents }} from "../components/blog/TableOfContents";
 import {{ BlogContent, BlogContentBlock }} from "../components/blog/BlogContent";
+import {{ GiscusComments }} from "../components/GiscusComments";
 
 export function {component_name}() {{
   // Blog post data generated from markdown
@@ -400,6 +453,19 @@ export function {component_name}() {{
         </div>
       </section>
 
+      {{/* Comments Section */}}
+      <section className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          <div className="mb-8 inline-block border-2 border-border px-6 py-4 bg-background shadow-retro">
+            <p className="font-mono text-muted-foreground mb-2">// DISCUSSION</p>
+            <h2 className="font-bold">Comments</h2>
+          </div>
+          <div className="mt-8">
+            <GiscusComments />
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
@@ -522,6 +588,7 @@ export interface BlogMeta {{
   displayOrder?: number;
   external?: boolean;
   externalUrl?: string;
+  active?: boolean;
 }}
 
 export interface BlogIndexEntry {{
@@ -550,7 +617,7 @@ def generate_blogs_component(blog_index):
     # Filter and sort blogs for home page
     featured_blogs = [
         b for b in blog_index 
-        if b['meta'].get('featuredOnHome', False)
+        if b['meta'].get('featuredOnHome', False) and b['meta'].get('active', True)
     ]
     
     # Sort by display order

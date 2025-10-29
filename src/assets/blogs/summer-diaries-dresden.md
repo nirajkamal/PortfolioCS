@@ -14,6 +14,7 @@ featuredOnBlog: true
 displayOrder: 2
 external: true
 externalUrl: https://watchout.iitr.ac.in/2020/12/summer-diaries-TU-Dresden
+active: true
 ---
 
 ## Summer 2020 Diaries: TU Dresden

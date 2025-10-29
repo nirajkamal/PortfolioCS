@@ -374,3 +374,33 @@ h4 span[style*="color: #ff6b3d"] {
 .blog-content-container em {
   font-style: italic;
 }
+
+/* Giscus Comments Styling - Match site theme */
+.giscus {
+  color-scheme: light dark;
+}
+
+.giscus-frame {
+  width: 100%;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background-color: var(--background);
+}
+
+/* Light mode Giscus */
+.giscus[data-theme="light"] {
+  color-scheme: light;
+}
+
+/* Dark mode Giscus */
+.dark .giscus,
+.giscus[data-theme="dark"] {
+  color-scheme: dark;
+}
+
+/* Giscus container styling */
+.giscus-container {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--border);
+}

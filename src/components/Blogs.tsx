@@ -19,19 +19,6 @@ interface BlogPost {
 export function Blogs() {
   const posts: BlogPost[] = [
         {
-                "title": "Building PyTorch Foundation's Official Certification Course",
-                "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
-                "date": "Oct 21, 2025",
-                "readTime": "10 min read",
-                "image": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
-                "category": "MACHINE LEARNING",
-                "author": "Niraj Kamal K",
-                "authorAvatar": "/Niraj_Photo.png",
-                "slug": "pytorch-certification-course",
-                "linkType": "internal",
-                "linkUrl": "#/blog/pytorch-certification-course"
-        },
-        {
                 "title": "Building Scalable Microservices with Node.js",
                 "excerpt": "Learn how to design and implement microservices architecture that can handle millions of requests with minimal latency.",
                 "date": "Oct 15, 2025",
@@ -56,6 +43,19 @@ export function Blogs() {
                 "slug": "tu-dresden-summer-2020",
                 "linkType": "external",
                 "linkUrl": "https://watchout.iitr.ac.in/2020/12/summer-diaries-TU-Dresden"
+        },
+        {
+                "title": "Contributing to PyTorch Foundation's Certification Training Course",
+                "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
+                "date": "Oct 21, 2025",
+                "readTime": "15 min read",
+                "image": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
+                "category": "MACHINE LEARNING",
+                "author": "Niraj Kamal K",
+                "authorAvatar": "/Niraj_Photo.png",
+                "slug": "pytorch-certification-course",
+                "linkType": "internal",
+                "linkUrl": "#/blog/pytorch-certification-course"
         }
 ];
 

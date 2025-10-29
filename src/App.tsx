@@ -5,6 +5,7 @@ import { BlogPage } from "./pages/BlogPage";
 import { ProjectsPage } from "./pages/ProjectsPage";
 import { ResumePage } from "./pages/ResumePage";
 import { BlogPostPage } from "./pages/BlogPostPage";
+import { StillInDevelopmentPage } from "./pages/StillInDevelopmentPage";
 import { BLOG_COMPONENTS } from "./pages/BlogIndex";
 import { PROJECT_COMPONENTS } from "./pages/ProjectIndex";
 
@@ -23,6 +24,11 @@ export default function App() {
   }, []);
 
   const renderPage = () => {
+    // Check for development page route (e.g., #/development)
+    if (currentPath.startsWith("#/development")) {
+      return <StillInDevelopmentPage />;
+    }
+
     // Check for project route (e.g., #/project/project-slug)
     if (currentPath.startsWith("#/project/")) {
       const projectSlug = currentPath.replace("#/project/", "");

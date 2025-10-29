@@ -17,6 +17,7 @@ export interface BlogMeta {
   displayOrder?: number;
   external?: boolean;
   externalUrl?: string;
+  active?: boolean;
 }
 
 export interface BlogIndexEntry {
@@ -56,10 +57,10 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
     "slug": "pytorch-certification-course",
     "component": "PytorchCertificationCoursePage",
     "meta": {
-      "title": "Building PyTorch Foundation's Official Certification Course",
+      "title": "Contributing to PyTorch Foundation's Certification Training Course",
       "category": "MACHINE LEARNING",
       "date": "Oct 21, 2025",
-      "readTime": "10 min read",
+      "readTime": "15 min read",
       "author": "Niraj Kamal K",
       "authorAvatar": "/Niraj_Photo.png",
       "heroImage": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png",
@@ -74,7 +75,7 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "excerpt": "How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.",
       "featuredOnHome": true,
       "featuredOnBlog": true,
-      "displayOrder": 0,
+      "displayOrder": 3,
       "external": false,
       "externalUrl": null
     }
@@ -128,7 +129,8 @@ export const BLOG_INDEX: BlogIndexEntry[] = [
       "featuredOnBlog": true,
       "displayOrder": 2,
       "external": true,
-      "externalUrl": "https://watchout.iitr.ac.in/2020/12/summer-diaries-TU-Dresden"
+      "externalUrl": "https://watchout.iitr.ac.in/2020/12/summer-diaries-TU-Dresden",
+      "active": true
     }
   }
 ];

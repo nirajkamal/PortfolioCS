@@ -40,15 +40,17 @@ export function ProjectsPage() {
   });
 
   // Get all projects from the generated index
-  const realProjects: Project[] = PROJECT_INDEX.map(entry => convertProjectMetaToProject(entry.meta));
+  const activeProjectIndex = PROJECT_INDEX.filter(entry => entry.meta.active !== false);
+  const realProjects: Project[] = activeProjectIndex
+    .map(entry => convertProjectMetaToProject(entry.meta));
 
   // Use only projects from the markdown files (source of truth: src/assets/projects/*.md)
   const allProjects = realProjects;
 
   // Sort projects by displayOrder
   const sortedProjects = [...allProjects].sort((a, b) => {
-    const orderA = PROJECT_INDEX.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
-    const orderB = PROJECT_INDEX.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
+    const orderA = activeProjectIndex.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
+    const orderB = activeProjectIndex.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
     return orderA - orderB;
   });
 
@@ -71,7 +73,8 @@ export function ProjectsPage() {
   };
 
   // Featured project (first project with featuredOnProjects flag, or first project)
-  const featuredProjectMeta = PROJECT_INDEX.find(p => p.meta.featuredOnProjects) || PROJECT_INDEX[0];
+  const activeProjects = PROJECT_INDEX.filter(p => p.meta.active !== false);
+  const featuredProjectMeta = activeProjects.find(p => p.meta.featuredOnProjects) || activeProjects[0];
   const featuredProject = featuredProjectMeta ? convertProjectMetaToProject(featuredProjectMeta.meta) : sortedProjects[0];
 
   return (
@@ -114,7 +117,7 @@ export function ProjectsPage() {
                 <div className="flex gap-2 sm:gap-3 font-mono">
                   {featuredProject.github && (
                     <a
-                      href={featuredProject.github}
+                      href={`#/development?name=${encodeURIComponent(featuredProject.title)}&github=${encodeURIComponent(featuredProject.github)}&demo=${encodeURIComponent(featuredProject.demo || '')}`}
                       className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs sm:text-sm"
                     >
                       <Github className="w-4 h-4" />
@@ -123,7 +126,7 @@ export function ProjectsPage() {
                   )}
                   {featuredProject.demo && (
                     <a
-                      href={featuredProject.demo}
+                      href={`#/development?name=${encodeURIComponent(featuredProject.title)}&github=${encodeURIComponent(featuredProject.github || '')}&demo=${encodeURIComponent(featuredProject.demo)}`}
                       className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs sm:text-sm"
                     >
                       <ExternalLink className="w-4 h-4" />

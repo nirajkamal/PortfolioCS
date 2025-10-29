@@ -100,7 +100,7 @@ export function ProjectCard({
           )}
           {github && (
             <a
-              href={github}
+              href={`#/development?name=${encodeURIComponent(title)}&github=${encodeURIComponent(github)}&demo=${encodeURIComponent(demo || '')}`}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs"
               onClick={(e) => e.stopPropagation()}
             >
@@ -110,7 +110,7 @@ export function ProjectCard({
           )}
           {demo && (
             <a
-              href={demo}
+              href={`#/development?name=${encodeURIComponent(title)}&github=${encodeURIComponent(github || '')}&demo=${encodeURIComponent(demo)}`}
               className="flex items-center gap-2 px-3 sm:px-4 py-2 border-2 border-border hover:bg-foreground hover:text-background transition-colors text-xs"
               onClick={(e) => e.stopPropagation()}
             >

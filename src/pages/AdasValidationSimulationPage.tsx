@@ -84,12 +84,12 @@ export function AdasValidationSimulationPage() {
   const contentBlocks: BlogContentBlock[] = [
         {
                 "type": "heading",
-                "content": "Project Overview",
-                "id": "project-overview"
+                "id": "project-overview",
+                "content": "Project Overview"
         },
         {
                 "type": "paragraph",
-                "content": "Developed comprehensive simulations for verification and validation of Advanced Driver Assistance Systems (ADAS) using <span style='color: #ff6b3d;'>stochastic methods</span> and adversarial models. This research project focused on creating robust testing environments that could expose edge cases and failure modes in autonomous driving systems before real-world deployment."
+                "content": "Developed comprehensive simulations for verification and validation of Advanced Driver Assistance Systems (ADAS) using <a href='stochastic methods' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> and adversarial models. This research project focused on creating robust testing environments that could expose edge cases and failure modes in autonomous driving systems before real-world deployment."
         },
         {
                 "type": "paragraph",
@@ -97,22 +97,22 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "heading",
-                "content": "Technical Approach",
-                "id": "technical-approach"
+                "id": "technical-approach",
+                "content": "Technical Approach"
         },
         {
-                "type": "subheading",
-                "content": "Problem Definition",
-                "id": "problem-definition"
+                "type": "heading3",
+                "id": "problem-definition",
+                "content": "Problem Definition"
         },
         {
                 "type": "paragraph",
                 "content": "ADAS systems face significant challenges in real-world deployment due to: - <strong>Edge Cases</strong>: Rare but critical scenarios that are difficult to test - <strong>Environmental Variability</strong>: Weather, lighting, and road conditions - <strong>Human Behavior</strong>: Unpredictable actions by other drivers and pedestrians - <strong>Sensor Limitations</strong>: Performance degradation under adverse conditions"
         },
         {
-                "type": "subheading",
-                "content": "Solution Architecture",
-                "id": "solution-architecture"
+                "type": "heading3",
+                "id": "solution-architecture",
+                "content": "Solution Architecture"
         },
         {
                 "type": "paragraph",
@@ -120,18 +120,18 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "code",
-                "content": "# Core simulation architecture\nclass ADASSSimulator:\n    def __init__(self):\n        self.environment = CARLAEnvironment()\n        self.adas_system = ADASTSystemUnderTest()\n        self.stochastic_generator = StochasticScenarioGenerator()\n        self.adversarial_engine = AdversarialTestEngine()\n        \n    def run_validation_suite(self, num_scenarios=1000):\n        \"\"\"Run comprehensive validation with both methods\"\"\"\n        \n        # Stochastic testing\n        stochastic_results = []\n        for i in range(num_scenarios // 2):\n            scenario = self.stochastic_generator.generate_scenario()\n            result = self.simulate_scenario(scenario)\n            stochastic_results.append(result)\n            \n        # Adversarial testing  \n        adversarial_results = []\n        for i in range(num_scenarios // 2):\n            adversarial_scenario = self.adversarial_engine.generate_attack()\n            result = self.simulate_scenario(adversarial_scenario)\n            adversarial_results.append(result)\n            \n        return self.analyze_results(stochastic_results, adversarial_results)",
-                "language": "python"
+                "language": "python",
+                "content": "# Core simulation architecture\nclass ADASSSimulator:\n    def __init__(self):\n        self.environment = CARLAEnvironment()\n        self.adas_system = ADASTSystemUnderTest()\n        self.stochastic_generator = StochasticScenarioGenerator()\n        self.adversarial_engine = AdversarialTestEngine()\n        \n    def run_validation_suite(self, num_scenarios=1000):\n        \"\"\"Run comprehensive validation with both methods\"\"\"\n        \n        # Stochastic testing\n        stochastic_results = []\n        for i in range(num_scenarios // 2):\n            scenario = self.stochastic_generator.generate_scenario()\n            result = self.simulate_scenario(scenario)\n            stochastic_results.append(result)\n            \n        # Adversarial testing  \n        adversarial_results = []\n        for i in range(num_scenarios // 2):\n            adversarial_scenario = self.adversarial_engine.generate_attack()\n            result = self.simulate_scenario(adversarial_scenario)\n            adversarial_results.append(result)\n            \n        return self.analyze_results(stochastic_results, adversarial_results)"
         },
         {
                 "type": "heading",
-                "content": "Stochastic Methods",
-                "id": "stochastic-methods"
+                "id": "stochastic-methods",
+                "content": "Stochastic Methods"
         },
         {
-                "type": "subheading",
-                "content": "Monte Carlo Simulation",
-                "id": "monte-carlo-simulation"
+                "type": "heading3",
+                "id": "monte-carlo-simulation",
+                "content": "Monte Carlo Simulation"
         },
         {
                 "type": "paragraph",
@@ -139,13 +139,13 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "code",
-                "content": "def monte_carlo_validation(self, system, num_trials=10000):\n    \"\"\"\n    Monte Carlo simulation for ADAS validation\n    \"\"\"\n    results = []\n    \n    for trial in range(num_trials):\n        # Random scenario generation\n        scenario = {\n            'weather': random.choice(['sunny', 'rainy', 'foggy', 'snowy']),\n            'time_of_day': random.uniform(0, 24),\n            'traffic_density': random.exponential(scale=2.0),\n            'road_condition': random.choice(['dry', 'wet', 'icy']),\n            'visibility': random.normal(loc=100, scale=20)\n        }\n        \n        # Add random pedestrians and vehicles\n        scenario['pedestrians'] = self.generate_random_pedestrians()\n        scenario['vehicles'] = self.generate_random_vehicles()\n        \n        # Run simulation\n        result = self.run_simulation(system, scenario)\n        results.append(result)\n        \n        # Statistical analysis every 1000 trials\n        if trial % 1000 == 0:\n            self.update_statistical_metrics(results)\n    \n    return self.compute_confidence_intervals(results)",
-                "language": "python"
+                "language": "python",
+                "content": "def monte_carlo_validation(self, system, num_trials=10000):\n    \"\"\"\n    Monte Carlo simulation for ADAS validation\n    \"\"\"\n    results = []\n    \n    for trial in range(num_trials):\n        # Random scenario generation\n        scenario = {\n            'weather': random.choice(['sunny', 'rainy', 'foggy', 'snowy']),\n            'time_of_day': random.uniform(0, 24),\n            'traffic_density': random.exponential(scale=2.0),\n            'road_condition': random.choice(['dry', 'wet', 'icy']),\n            'visibility': random.normal(loc=100, scale=20)\n        }\n        \n        # Add random pedestrians and vehicles\n        scenario['pedestrians'] = self.generate_random_pedestrians()\n        scenario['vehicles'] = self.generate_random_vehicles()\n        \n        # Run simulation\n        result = self.run_simulation(system, scenario)\n        results.append(result)\n        \n        # Statistical analysis every 1000 trials\n        if trial % 1000 == 0:\n            self.update_statistical_metrics(results)\n    \n    return self.compute_confidence_intervals(results)"
         },
         {
-                "type": "subheading",
-                "content": "Statistical Analysis",
-                "id": "statistical-analysis"
+                "type": "heading3",
+                "id": "statistical-analysis",
+                "content": "Statistical Analysis"
         },
         {
                 "type": "paragraph",
@@ -153,13 +153,13 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "heading",
-                "content": "Adversarial Models",
-                "id": "adversarial-models"
+                "id": "adversarial-models",
+                "content": "Adversarial Models"
         },
         {
-                "type": "subheading",
-                "content": "Adversarial Scenario Generation",
-                "id": "adversarial-scenario-generation"
+                "type": "heading3",
+                "id": "adversarial-scenario-generation",
+                "content": "Adversarial Scenario Generation"
         },
         {
                 "type": "paragraph",
@@ -167,13 +167,13 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "code",
-                "content": "class AdversarialScenarioGenerator:\n    def __init__(self, adas_model):\n        self.adas_model = adas_model\n        self.optimizer = GeneticAlgorithm()\n        \n    def generate_adversarial_scenario(self, objective='maximize_failure_rate'):\n        \"\"\"\n        Generate scenarios designed to challenge the ADAS system\n        \"\"\"\n        \n        # Define search space\n        search_space = {\n            'vehicle_positions': FloatVector(bounds=[(0, 100), (0, 100)]),\n            'vehicle_speeds': FloatVector(bounds=[(0, 30), (0, 30)]), \n            'lighting_conditions': CategoricalChoice(['low', 'medium', 'high']),\n            'weather_intensity': Float(bounds=(0, 1)),\n            'road_curvature': Float(bounds=(-0.1, 0.1))\n        }\n        \n        # Optimize for adversarial conditions\n        best_scenario = self.optimizer.optimize(\n            objective_function=self.evaluate_scenario_adversity,\n            search_space=search_space,\n            generations=50\n        )\n        \n        return best_scenario\n    \n    def evaluate_scenario_adversity(self, scenario):\n        \"\"\"Evaluate how challenging a scenario is for the ADAS system\"\"\"\n        \n        # Run ADAS system on scenario\n        performance = self.adas_model.evaluate(scenario)\n        \n        # Return inverse of performance (higher is more adversarial)\n        return 1.0 - performance['safety_score']",
-                "language": "python"
+                "language": "python",
+                "content": "class AdversarialScenarioGenerator:\n    def __init__(self, adas_model):\n        self.adas_model = adas_model\n        self.optimizer = GeneticAlgorithm()\n        \n    def generate_adversarial_scenario(self, objective='maximize_failure_rate'):\n        \"\"\"\n        Generate scenarios designed to challenge the ADAS system\n        \"\"\"\n        \n        # Define search space\n        search_space = {\n            'vehicle_positions': FloatVector(bounds=[(0, 100), (0, 100)]),\n            'vehicle_speeds': FloatVector(bounds=[(0, 30), (0, 30)]), \n            'lighting_conditions': CategoricalChoice(['low', 'medium', 'high']),\n            'weather_intensity': Float(bounds=(0, 1)),\n            'road_curvature': Float(bounds=(-0.1, 0.1))\n        }\n        \n        # Optimize for adversarial conditions\n        best_scenario = self.optimizer.optimize(\n            objective_function=self.evaluate_scenario_adversity,\n            search_space=search_space,\n            generations=50\n        )\n        \n        return best_scenario\n    \n    def evaluate_scenario_adversity(self, scenario):\n        \"\"\"Evaluate how challenging a scenario is for the ADAS system\"\"\"\n        \n        # Run ADAS system on scenario\n        performance = self.adas_model.evaluate(scenario)\n        \n        # Return inverse of performance (higher is more adversarial)\n        return 1.0 - performance['safety_score']"
         },
         {
-                "type": "subheading",
-                "content": "Gradient-Based Attacks",
-                "id": "gradient-based-attacks"
+                "type": "heading3",
+                "id": "gradient-based-attacks",
+                "content": "Gradient-Based Attacks"
         },
         {
                 "type": "paragraph",
@@ -181,18 +181,18 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "code",
-                "content": "def gradient_based_attack(self, scenario, target_failure_mode):\n    \"\"\"\n    Find minimal changes to scenario that cause specific failure\n    \"\"\"\n    \n    # Convert scenario to tensor\n    scenario_tensor = torch.tensor(scenario, requires_grad=True)\n    \n    # Define loss function for target failure\n    def attack_loss(scenario):\n        prediction = self.adas_model(scenario)\n        return -torch.log(prediction[target_failure_mode])\n    \n    # Gradient descent to find adversarial scenario\n    optimizer = torch.optim.Adam([scenario_tensor], lr=0.01)\n    \n    for iteration in range(100):\n        loss = attack_loss(scenario_tensor)\n        loss.backward()\n        optimizer.step()\n        \n        # Ensure physical constraints\n        scenario_tensor = self.enforce_constraints(scenario_tensor)\n        \n    return scenario_tensor.detach().numpy()",
-                "language": "python"
+                "language": "python",
+                "content": "def gradient_based_attack(self, scenario, target_failure_mode):\n    \"\"\"\n    Find minimal changes to scenario that cause specific failure\n    \"\"\"\n    \n    # Convert scenario to tensor\n    scenario_tensor = torch.tensor(scenario, requires_grad=True)\n    \n    # Define loss function for target failure\n    def attack_loss(scenario):\n        prediction = self.adas_model(scenario)\n        return -torch.log(prediction[target_failure_mode])\n    \n    # Gradient descent to find adversarial scenario\n    optimizer = torch.optim.Adam([scenario_tensor], lr=0.01)\n    \n    for iteration in range(100):\n        loss = attack_loss(scenario_tensor)\n        loss.backward()\n        optimizer.step()\n        \n        # Ensure physical constraints\n        scenario_tensor = self.enforce_constraints(scenario_tensor)\n        \n    return scenario_tensor.detach().numpy()"
         },
         {
                 "type": "heading",
-                "content": "Simulation Framework",
-                "id": "simulation-framework"
+                "id": "simulation-framework",
+                "content": "Simulation Framework"
         },
         {
-                "type": "subheading",
-                "content": "CARLA Integration",
-                "id": "carla-integration"
+                "type": "heading3",
+                "id": "carla-integration",
+                "content": "CARLA Integration"
         },
         {
                 "type": "paragraph",
@@ -203,9 +203,9 @@ export function AdasValidationSimulationPage() {
                 "content": "- <strong>Realistic Physics</strong>: High-fidelity vehicle dynamics and sensor modeling - <strong>Weather System</strong>: Dynamic weather conditions affecting sensor performance - <strong>Traffic Simulation</strong>: Realistic traffic patterns and pedestrian behavior - <strong>Sensor Modeling</strong>: Accurate models of cameras, LiDAR, and radar systems"
         },
         {
-                "type": "subheading",
-                "content": "Performance Metrics",
-                "id": "performance-metrics"
+                "type": "heading3",
+                "id": "performance-metrics",
+                "content": "Performance Metrics"
         },
         {
                 "type": "paragraph",
@@ -213,18 +213,18 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "code",
-                "content": "class PerformanceEvaluator:\n    def __init__(self):\n        self.metrics = {\n            'safety': SafetyMetrics(),\n            'comfort': ComfortMetrics(), \n            'efficiency': EfficiencyMetrics(),\n            'robustness': RobustnessMetrics()\n        }\n    \n    def evaluate_adas_performance(self, simulation_results):\n        \"\"\"Comprehensive performance evaluation\"\"\"\n        \n        results = {}\n        \n        # Safety metrics\n        results['collision_rate'] = self.metrics['safety'].collision_rate(simulation_results)\n        results['near_miss_rate'] = self.metrics['safety'].near_miss_rate(simulation_results)\n        results['emergency_brake_rate'] = self.metrics['safety'].emergency_brake_rate(simulation_results)\n        \n        # Comfort metrics  \n        results['jerk_magnitude'] = self.metrics['comfort'].jerk_magnitude(simulation_results)\n        results['acceleration_smoothness'] = self.metrics['comfort'].acceleration_smoothness(simulation_results)\n        \n        # Efficiency metrics\n        results['fuel_consumption'] = self.metrics['efficiency'].fuel_consumption(simulation_results)\n        results['travel_time'] = self.metrics['efficiency'].travel_time(simulation_results)\n        \n        # Robustness metrics\n        results['sensor_degradation_handling'] = self.metrics['robustness'].sensor_degradation_handling(simulation_results)\n        results['weather_adaptation'] = self.metrics['robustness'].weather_adaptation(simulation_results)\n        \n        return results",
-                "language": "python"
+                "language": "python",
+                "content": "class PerformanceEvaluator:\n    def __init__(self):\n        self.metrics = {\n            'safety': SafetyMetrics(),\n            'comfort': ComfortMetrics(), \n            'efficiency': EfficiencyMetrics(),\n            'robustness': RobustnessMetrics()\n        }\n    \n    def evaluate_adas_performance(self, simulation_results):\n        \"\"\"Comprehensive performance evaluation\"\"\"\n        \n        results = {}\n        \n        # Safety metrics\n        results['collision_rate'] = self.metrics['safety'].collision_rate(simulation_results)\n        results['near_miss_rate'] = self.metrics['safety'].near_miss_rate(simulation_results)\n        results['emergency_brake_rate'] = self.metrics['safety'].emergency_brake_rate(simulation_results)\n        \n        # Comfort metrics  \n        results['jerk_magnitude'] = self.metrics['comfort'].jerk_magnitude(simulation_results)\n        results['acceleration_smoothness'] = self.metrics['comfort'].acceleration_smoothness(simulation_results)\n        \n        # Efficiency metrics\n        results['fuel_consumption'] = self.metrics['efficiency'].fuel_consumption(simulation_results)\n        results['travel_time'] = self.metrics['efficiency'].travel_time(simulation_results)\n        \n        # Robustness metrics\n        results['sensor_degradation_handling'] = self.metrics['robustness'].sensor_degradation_handling(simulation_results)\n        results['weather_adaptation'] = self.metrics['robustness'].weather_adaptation(simulation_results)\n        \n        return results"
         },
         {
                 "type": "heading",
-                "content": "Validation Results",
-                "id": "validation-results"
+                "id": "validation-results",
+                "content": "Validation Results"
         },
         {
-                "type": "subheading",
-                "content": "Statistical Findings",
-                "id": "statistical-findings"
+                "type": "heading3",
+                "id": "statistical-findings",
+                "content": "Statistical Findings"
         },
         {
                 "type": "paragraph",
@@ -235,9 +235,9 @@ export function AdasValidationSimulationPage() {
                 "content": "- <strong>Failure Rate</strong>: 0.02% collision rate under normal conditions, 0.3% under adversarial conditions - <strong>Critical Scenarios</strong>: Identified 15 specific scenario types with elevated risk - <strong>Sensor Dependency</strong>: 67% performance degradation under heavy rain conditions - <strong>Edge Case Coverage</strong>: Achieved 94% coverage of known edge cases"
         },
         {
-                "type": "subheading",
-                "content": "Performance Improvements",
-                "id": "performance-improvements"
+                "type": "heading3",
+                "id": "performance-improvements",
+                "content": "Performance Improvements"
         },
         {
                 "type": "paragraph",
@@ -248,9 +248,9 @@ export function AdasValidationSimulationPage() {
                 "content": "1. <strong>Sensor Fusion</strong>: Enhanced algorithms reduced failure rate by 40% 2. <strong>Weather Adaptation</strong>: Improved performance in adverse conditions by 60% 3. <strong>Predictive Modeling</strong>: Better anticipation of pedestrian behavior 4. <strong>Robustness</strong>: Increased resilience to sensor failures"
         },
         {
-                "type": "subheading",
-                "content": "Validation Confidence",
-                "id": "validation-confidence"
+                "type": "heading3",
+                "id": "validation-confidence",
+                "content": "Validation Confidence"
         },
         {
                 "type": "paragraph",
@@ -258,22 +258,22 @@ export function AdasValidationSimulationPage() {
         },
         {
                 "type": "heading",
-                "content": "Impact & Future Work",
-                "id": "impact--future-work"
+                "id": "impact--future-work",
+                "content": "Impact & Future Work"
         },
         {
-                "type": "subheading",
-                "content": "Technical Contributions",
-                "id": "technical-contributions"
+                "type": "heading3",
+                "id": "technical-contributions",
+                "content": "Technical Contributions"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Novel Methodology</strong>: First comprehensive framework combining stochastic and adversarial validation - <strong>Open Source Tools</strong>: Released simulation framework for research community - <strong>Industry Adoption</strong>: Framework adopted by 3 major automotive manufacturers - <strong>Academic Impact</strong>: 2 peer-reviewed publications and 1 conference presentation"
         },
         {
-                "type": "subheading",
-                "content": "Future Directions",
-                "id": "future-directions"
+                "type": "heading3",
+                "id": "future-directions",
+                "content": "Future Directions"
         },
         {
                 "type": "paragraph",
@@ -284,17 +284,30 @@ export function AdasValidationSimulationPage() {
                 "content": "1. <strong>Deep Reinforcement Learning</strong>: Training adversarial agents using RL 2. <strong>Multi-Agent Systems</strong>: Simulating complex interactions between multiple autonomous vehicles 3. <strong>Real-Time Validation</strong>: Developing online validation methods for deployed systems 4. <strong>Federated Learning</strong>: Collaborative validation across multiple organizations"
         },
         {
-                "type": "subheading",
-                "content": "Key Insights",
-                "id": "key-insights"
+                "type": "heading3",
+                "id": "key-insights",
+                "content": "Key Insights"
         },
         {
                 "type": "paragraph",
-                "content": "- <span style='color: #ff6b3d;'>Stochastic methods</span> are essential for comprehensive coverage of the scenario space - Adversarial testing reveals critical failure modes not found through traditional testing - Simulation-based validation can significantly reduce real-world testing requirements - Statistical rigor is crucial for building confidence in autonomous system safety"
+                "content": "- <a href='Stochastic methods' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> are essential for comprehensive coverage of the scenario space - Adversarial testing reveals critical failure modes not found through traditional testing - Simulation-based validation can significantly reduce real-world testing requirements - Statistical rigor is crucial for building confidence in autonomous system safety"
         },
         {
                 "type": "paragraph",
                 "content": "This project demonstrated the critical importance of advanced simulation methods in validating complex autonomous systems and provided a foundation for future research in this rapidly evolving field."
+        },
+        {
+                "type": "heading",
+                "id": "resources",
+                "content": "Resources"
+        },
+        {
+                "type": "paragraph",
+                "content": "Explore the code and try the simulation:"
+        },
+        {
+                "type": "paragraph",
+                "content": "- <strong>Source Code</strong>: <a href='#/development?demo=https://github.com/example/adas-simulation' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a> - <strong>Live Demo</strong>: <a href='#/development?demo=https://adas-sim-demo.example.com' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a>"
         }
 ];
 
@@ -431,9 +444,7 @@ export function AdasValidationSimulationPage() {
                   <div className="flex gap-3">
                     {projectData.github && (
                       <a
-                        href={projectData.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github)}&demo=${encodeURIComponent(projectData.demo || '')}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <Github className="w-4 h-4" />
@@ -442,9 +453,7 @@ export function AdasValidationSimulationPage() {
                     )}
                     {projectData.demo && (
                       <a
-                        href={projectData.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github || '')}&demo=${encodeURIComponent(projectData.demo)}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />

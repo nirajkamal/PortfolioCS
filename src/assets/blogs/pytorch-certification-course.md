@@ -1,8 +1,8 @@
 ---META---
-title: Building PyTorch Foundation's Official Certification Course
+title: Contributing to PyTorch Foundation's Certification Training Course
 category: MACHINE LEARNING
 date: Oct 21, 2025
-readTime: 10 min read
+readTime: 15 min read
 author: Niraj Kamal K
 authorAvatar: /Niraj_Photo.png
 heroImage: /blogs/Pytorch_Course/10_21_2025_Reflection_Post/Neural_Network_diagram.png
@@ -11,7 +11,7 @@ slug: pytorch-certification-course
 excerpt: How I designed 7 hands-on PyTorch labs for the official PyTorch Foundation Certification program during my internship at IBM Research, making deep learning accessible through visual illustrations and practical examples.
 featuredOnHome: true
 featuredOnBlog: true
-displayOrder: 0
+displayOrder: 3
 external: false
 ---
 
@@ -40,7 +40,7 @@ This course rethinks how deep learning is taught to beginners, making abstract P
 
 ### Inspiration: The Snack-Sized Learning Approach {#snack-inspiration}
 
-The structure and philosophy behind these labs were deeply inspired by the [<u>Granite Snack Cookbook</u>](https://github.com/ibm-granite-community/granite-snack-cookbook),a collection of bite-sized, practical tutorials that break down complex AI concepts into digestible lessons. Each "recipe" in the Snack Cookbook focuses on a single concept with minimal code - typically just 1-2 code blocks per step - making it perfect for beginners who can feel overwhelmed by information density.
+The structure and philosophy behind these labs were inspired by a project my other team-mates were working on - the [<u>Granite Snack Cookbook</u>](https://github.com/ibm-granite-community/granite-snack-cookbook/blob/main/recipes/Fine_Tuning/FineTuning_with_Unsloth.ipynb), a collection of bite-sized, practical tutorials that break down complex AI concepts into digestible lessons. Each "recipe" in the Snack Cookbook focuses on a single concept with minimal code - typically just 1-2 code blocks per step - making it perfect for beginners who can feel overwhelmed by information density.
 
 I adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations**. This approach is especially beneficial for beginners because:
 
@@ -49,7 +49,7 @@ I adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 sma
 - **Progressive scaffolding**: Each lesson builds naturally on the previous one. 
 - **Practical examples**: Every step is grounded in working code, not abstract theory. 
 
-### Lab Structure and Flow {#lab-structure}
+### Jupyter Lab Structure and Flow {#lab-structure}
 
 ![Typical Lab Structure](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/typical_lab_structure.png)
 
@@ -61,7 +61,7 @@ The creation of these labs involved extensive design work, including Figma proto
 
 ![Shabby Figma Drafts Behind the Scenes](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/shabby_figma_drafts_behind_the_scenes.png)
 
-![Lesson Design - Storyboard vs Actual Lesson Draft](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
+![Lesson Design - Storyboard vs Preliminary Lesson Draft](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
 
 These design iterations ensured that the visuals, code examples, and explanations were optimized for learning. We refined the curriculum multiple times to achieve the best possible outcomes for students.
 
@@ -82,13 +82,13 @@ These aren't trivial questions. They represent the conceptual gap between knowin
 
 ## A Visual, Beginner-Friendly Approach {#visual-approach}
 
-The solution: create **bite-sized lessons with detailed visual illustrations** that capture not just the code, but the critical details a beginner might miss. Each lab was designed to progressively build understanding, from foundational concepts to advanced techniques.
+The solution: create **bite-sized lessons with detailed visual illustrations** that capture not just the code, but the critical details a beginner might miss. Each lab was designed to progressively build understanding, from foundational concepts to advanced techniques. Here are some examples of how this visual approach was implemented:
 
 ### Visualizing Model Architecture {#visualizing-model}
 
-![Model Class Definition](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png)
+![Model Class Definition (Early Draft)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png)
 
-One of the key innovations was showing **exactly how and why** we define models as classes. The illustration breaks down:
+One of the key differences was showing **exactly how and why** we define models as classes. The illustration breaks down:
 - The inheritance from `nn.Module` and why it matters. 
 - The purpose of `__init__()` and `super().__init__()`. 
 - How layers are defined and registered. 
@@ -97,11 +97,11 @@ One of the key innovations was showing **exactly how and why** we define models 
 
 This visual approach helps beginners understand the pattern rather than just copying code.
 
-### Making DataLoaders Intuitive {#making-dataloaders}
+### Making DataLoaders Intuitive (Preliminary drafts of visual aids for the lessons) {#making-dataloaders}
 
 DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:
 
-![DataLoader Batching Process](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_draft_not_in_actual_lesson.png)
+![DataLoader Batching Process - Not Included in Actual Lessons](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_draft_not_in_actual_lesson.png)
 
 The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with:
 - What a DataLoader actually does under the hood? 
@@ -109,7 +109,7 @@ The first visualization breaks down the batching process - one of the most criti
 - The step-by-step process of converting individual samples into batches. 
 - Why batch sizes matter for both memory and convergence? 
 
-![DataLoader Explanation](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png)
+![DataLoader Explanation (Early Draft)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png)
 
 The second visualization takes a broader view of the DataLoader:
 - The relationship between Dataset and DataLoader. 
@@ -117,7 +117,7 @@ The second visualization takes a broader view of the DataLoader:
 - Multi-worker data loading for performance. 
 - Pin memory optimization for GPU training. 
 
-[comment](Note: These visualizations were part of my iteration process during the internship. While they provided valuable pedagogical insights, the final course curriculum continued to evolve after my internship ended, with subsequent improvements and refinements.)
+*(Note: These visualizations were part of my iteration process during the internship. While they provided valuable pedagogical insights, the final course curriculum continued to evolve after my internship ended, with subsequent improvements and refinements.)*
 
 ## The Seven Labs {#seven-labs}
 
@@ -127,7 +127,7 @@ The 7 labs designed for this project are:
 
 **1. Intro to PyTorch**
 
-**2. Building Neural Networks with PyTorch**
+**2. Building Neural Networks with PyTorch (2 labs DNN and CNN)**
 
 **3. Benchmarking Models**
 
@@ -139,32 +139,8 @@ The 7 labs designed for this project are:
 
 **7. Advanced Training Techniques**
 
-### Lab 1: Intro to PyTorch
-Foundation concepts including tensors, operations, and PyTorch's computational graph. Students build their first simple neural network from scratch, understanding each component.
 
-### Lab 2: Building Neural Networks with PyTorch
-Deep dive into the `nn.Module` class, layer composition, and forward/backward passes. This lab includes two parts:
-- **Linear Layer Networks**: Understanding fully connected layers and basic neural network architecture
-- **Convolutional Neural Networks (CNNs)**: Building convolutional layers and understanding spatial data processing
-
-Students learn to construct complex architectures and understand why PyTorch uses this pattern.
-
-### Lab 3: Benchmarking Models
-Performance measurement, profiling tools, and optimization techniques. Students learn to identify bottlenecks in their models and measure improvements quantitatively.
-
-### Lab 4: Leveraging Automatic Mixed Precision
-Advanced training technique for faster computation and reduced memory usage. Students implement AMP for both training and inference, understanding when and why to use it.
-
-### Lab 5: Activation Functions for Models
-Comprehensive exploration of activation functions - ReLU, Sigmoid, Tanh, GELU - and when to use each. Includes custom activation implementations and their impact on training.
-
-### Lab 6: Creating Neural Network Checkpoints
-Model saving, loading, and transfer learning best practices. Students learn proper model persistence for production deployment.
-
-### Lab 7: Advanced Training Techniques
-Bringing it all together with learning rate schedulers, gradient clipping, and advanced optimization strategies for production-ready models.
-
-Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts. These 7 labs form a core part of the full certification program, which includes additional modules created by other instructors.
+Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts.
 
 ## Official Launch at PyTorch Conference {#pytorch-conference}
 
@@ -199,24 +175,22 @@ Reading about neural networks is valuable, but building them from scratch cement
 
 ---
 
-Seeing these labs become part of PyTorch Foundation's official certification program - and knowing they'll help thousands of developers enter the field of deep learning - is incredibly rewarding. The future of AI depends on making powerful tools like PyTorch accessible to everyone.
+Seeing these labs become part of PyTorch Foundation's official certification program - and knowing they'll help thousands of developers enter the field of deep learning - is incredibly rewarding. 
 
 ## Beyond the Certification Course {#beyond-certification}
 
-While the certification curriculum was the centerpiece of my internship, it represented only about one-third of my contributions. During the same period, I tackled several other high-impact projects:
+While the certification curriculum was a part of my internship, it represented only about one-third of my contributions. During the same period, I tackled other projects:
 
-### PyTorch Repository Contributions
-I contributed directly to the [<u>PyTorch core repository</u>](https://github.com/pytorch/pytorch), working on infrastructure improvements and feature development. These contributions involved engaging with the community, understanding PyTorch's architecture, and implementing changes that benefit the entire ecosystem.
 
 ### 2nd Place in PyTorch Docathon
-I participated in PyTorch Foundation's Docathon and placed **2nd in the competition**. This involved creating comprehensive documentation and educational content to help developers better understand PyTorch's capabilities. The docathon experience reinforced the importance of clear, well-structured documentation and inspired my approach to creating the certification course.
+I participated in PyTorch Foundation's Docathon and placed **2nd in the competition**. This involved creating comprehensive documentation and educational content to help developers better understand PyTorch's capabilities. I also helped in software development around the sphynx documentation framework.
 
 ### IBM Foundation Models Stack Contribution
 I contributed to IBM's Foundation Models Stack with a **PR for supporting prefill and decode steps for decoder-only LLMs**. This work involved understanding the nuances of different LLM architectures and implementing features that enable more flexible model inference patterns. This experience with production-grade deep learning systems enriched my perspective on teaching PyTorch - I understood not just the basics, but how these concepts scale in real-world systems.
 
 ---
 
-These parallel contributions meant working across multiple areas of deep learning infrastructure simultaneously: from designing beginner-friendly education to contributing to production systems to advancing documentation standards. This breadth gave me unique insights into how PyTorch fits into the larger ecosystem and informed how I explained concepts to students.
+These parallel contributions meant working across multiple areas of deep learning infrastructure simultaneously. This breadth gave me unique insights into how PyTorch fits into the larger ecosystem and informed how I explained concepts to students.
 
 ## Appendix: The Lesson Common Pattern {#appendix}
 

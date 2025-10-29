@@ -149,4 +149,11 @@ def setup_distributed_training():
 - Value of custom tokenization for domain-specific tasks
 - Need for comprehensive evaluation frameworks
 
+## Resources
+
+Explore the project code and try the model:
+
+- **Source Code**: [dev](https://github.com/example/llm-project)
+- **Live Demo**: [dev](https://llm-demo.example.com)
+
 The project established a foundation for future LLM research and development within the organization, demonstrating the feasibility of training specialized models for specific use cases.

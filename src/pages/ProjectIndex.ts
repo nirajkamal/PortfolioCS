@@ -21,6 +21,7 @@ export interface ProjectMeta {
   featuredOnHome?: boolean;
   featuredOnProjects?: boolean;
   displayOrder?: number;
+  active?: boolean;
 }
 
 export interface ProjectIndexItem {
@@ -73,6 +74,7 @@ export const PROJECT_INDEX: ProjectIndexItem[] = [
       "displayOrder": 2
     }
   },
+
   {
     "slug": "ibm-foundation-models-contribution",
     "meta": {
@@ -108,7 +110,8 @@ export const PROJECT_INDEX: ProjectIndexItem[] = [
       "description": "Enhanced IBM's Foundation Models Stack with optimized attention mechanisms and contributed to PyTorch core.",
       "featuredOnHome": false,
       "featuredOnProjects": false,
-      "displayOrder": 3
+      "displayOrder": 3,
+      "active": false
     }
   },
   {

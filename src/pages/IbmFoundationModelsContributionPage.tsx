@@ -40,7 +40,8 @@ export function IbmFoundationModelsContributionPage() {
     "description": "Enhanced IBM's Foundation Models Stack with optimized attention mechanisms and contributed to PyTorch core.",
     "featuredOnHome": false,
     "featuredOnProjects": false,
-    "displayOrder": 3
+    "displayOrder": 3,
+    "active": false
 };
 
   const tocItems = [
@@ -79,12 +80,12 @@ export function IbmFoundationModelsContributionPage() {
   const contentBlocks: BlogContentBlock[] = [
         {
                 "type": "heading",
-                "content": "Project Overview",
-                "id": "project-overview"
+                "id": "project-overview",
+                "content": "Project Overview"
         },
         {
                 "type": "paragraph",
-                "content": "Contributed to IBM's Foundation Model Stack by enhancing attention mechanisms and implementing performance optimizations. This work involved deep collaboration with IBM Research teams and resulted in <span style='color: #ff6b3d;'>6 pull requests</span> to PyTorch core, focusing on transformer architecture improvements and memory efficiency."
+                "content": "Contributed to IBM's Foundation Model Stack by enhancing attention mechanisms and implementing performance optimizations. This work involved deep collaboration with IBM Research teams and resulted in <a href='6 pull requests' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> to PyTorch core, focusing on transformer architecture improvements and memory efficiency."
         },
         {
                 "type": "paragraph",
@@ -92,22 +93,22 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "heading",
-                "content": "Contribution Areas",
-                "id": "contribution-areas"
+                "id": "contribution-areas",
+                "content": "Contribution Areas"
         },
         {
-                "type": "subheading",
-                "content": "Core Enhancements",
-                "id": "core-enhancements"
+                "type": "heading3",
+                "id": "core-enhancements",
+                "content": "Core Enhancements"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Attention Mechanisms</strong>: Implemented novel attention patterns for improved efficiency - <strong>Memory Optimization</strong>: Reduced memory footprint by 25% during training - <strong>Performance Scaling</strong>: Enhanced multi-GPU training performance - <strong>API Design</strong>: Improved developer experience with cleaner interfaces"
         },
         {
-                "type": "subheading",
-                "content": "Research Contributions",
-                "id": "research-contributions"
+                "type": "heading3",
+                "id": "research-contributions",
+                "content": "Research Contributions"
         },
         {
                 "type": "paragraph",
@@ -115,13 +116,13 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "heading",
-                "content": "Attention Mechanism Enhancements",
-                "id": "attention-mechanism-enhancements"
+                "id": "attention-mechanism-enhancements",
+                "content": "Attention Mechanism Enhancements"
         },
         {
-                "type": "subheading",
-                "content": "Flash Attention Integration",
-                "id": "flash-attention-integration"
+                "type": "heading3",
+                "id": "flash-attention-integration",
+                "content": "Flash Attention Integration"
         },
         {
                 "type": "paragraph",
@@ -129,13 +130,13 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "code",
-                "content": "class FlashAttentionLayer(nn.Module):\n    def __init__(self, hidden_size, num_heads, dropout=0.1):\n        super().__init__()\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.head_dim = hidden_size // num_heads\n        \n        self.qkv_proj = nn.Linear(hidden_size, 3 * hidden_size)\n        self.out_proj = nn.Linear(hidden_size, hidden_size)\n        self.dropout = dropout\n        \n    def forward(self, x, attention_mask=None):\n        batch_size, seq_len, _ = x.shape\n        \n        # Efficient QKV computation\n        qkv = self.qkv_proj(x)\n        q, k, v = qkv.chunk(3, dim=-1)\n        \n        # Flash attention implementation\n        attention_output = flash_attention_func(\n            q, k, v, \n            dropout_p=self.dropout if self.training else 0.0,\n            causal=True,\n            return_attn_probs=False\n        )\n        \n        return self.out_proj(attention_output)",
-                "language": "python"
+                "language": "python",
+                "content": "class FlashAttentionLayer(nn.Module):\n    def __init__(self, hidden_size, num_heads, dropout=0.1):\n        super().__init__()\n        self.hidden_size = hidden_size\n        self.num_heads = num_heads\n        self.head_dim = hidden_size // num_heads\n        \n        self.qkv_proj = nn.Linear(hidden_size, 3 * hidden_size)\n        self.out_proj = nn.Linear(hidden_size, hidden_size)\n        self.dropout = dropout\n        \n    def forward(self, x, attention_mask=None):\n        batch_size, seq_len, _ = x.shape\n        \n        # Efficient QKV computation\n        qkv = self.qkv_proj(x)\n        q, k, v = qkv.chunk(3, dim=-1)\n        \n        # Flash attention implementation\n        attention_output = flash_attention_func(\n            q, k, v, \n            dropout_p=self.dropout if self.training else 0.0,\n            causal=True,\n            return_attn_probs=False\n        )\n        \n        return self.out_proj(attention_output)"
         },
         {
-                "type": "subheading",
-                "content": "Sliding Window Attention",
-                "id": "sliding-window-attention"
+                "type": "heading3",
+                "id": "sliding-window-attention",
+                "content": "Sliding Window Attention"
         },
         {
                 "type": "paragraph",
@@ -143,18 +144,18 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "code",
-                "content": "def sliding_window_attention(query, key, value, window_size=512):\n    \"\"\"\n    Efficient sliding window attention for long sequences\n    \"\"\"\n    seq_len = query.size(1)\n    \n    # Create sliding window masks\n    attention_mask = create_sliding_window_mask(\n        seq_len, window_size, query.device\n    )\n    \n    # Compute attention with windowed approach\n    scores = torch.matmul(query, key.transpose(-2, -1))\n    scores = scores.masked_fill(attention_mask == 0, float('-inf'))\n    \n    attention_weights = F.softmax(scores, dim=-1)\n    output = torch.matmul(attention_weights, value)\n    \n    return output",
-                "language": "python"
+                "language": "python",
+                "content": "def sliding_window_attention(query, key, value, window_size=512):\n    \"\"\"\n    Efficient sliding window attention for long sequences\n    \"\"\"\n    seq_len = query.size(1)\n    \n    # Create sliding window masks\n    attention_mask = create_sliding_window_mask(\n        seq_len, window_size, query.device\n    )\n    \n    # Compute attention with windowed approach\n    scores = torch.matmul(query, key.transpose(-2, -1))\n    scores = scores.masked_fill(attention_mask == 0, float('-inf'))\n    \n    attention_weights = F.softmax(scores, dim=-1)\n    output = torch.matmul(attention_weights, value)\n    \n    return output"
         },
         {
                 "type": "heading",
-                "content": "PyTorch Contributions",
-                "id": "pytorch-contributions"
+                "id": "pytorch-contributions",
+                "content": "PyTorch Contributions"
         },
         {
-                "type": "subheading",
-                "content": "Pull Request #1: Memory-Efficient Attention",
-                "id": "pull-request-#1:-memory-efficient-attention"
+                "type": "heading3",
+                "id": "pull-request-#1:-memory-efficient-attention",
+                "content": "Pull Request #1: Memory-Efficient Attention"
         },
         {
                 "type": "paragraph",
@@ -162,22 +163,22 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "code",
-                "content": "# Before optimization\ndef standard_attention(q, k, v):\n    scores = torch.matmul(q, k.transpose(-2, -1))\n    attention = F.softmax(scores, dim=-1)\n    return torch.matmul(attention, v)\n\n# After optimization  \ndef memory_efficient_attention(q, k, v):\n    with torch.no_grad():\n        scores = torch.matmul(q, k.transpose(-2, -1))\n    \n    # Checkpoint the softmax computation\n    attention = checkpoint(F.softmax, scores, dim=-1)\n    return torch.matmul(attention, v)",
-                "language": "python"
+                "language": "python",
+                "content": "# Before optimization\ndef standard_attention(q, k, v):\n    scores = torch.matmul(q, k.transpose(-2, -1))\n    attention = F.softmax(scores, dim=-1)\n    return torch.matmul(attention, v)\n\n# After optimization  \ndef memory_efficient_attention(q, k, v):\n    with torch.no_grad():\n        scores = torch.matmul(q, k.transpose(-2, -1))\n    \n    # Checkpoint the softmax computation\n    attention = checkpoint(F.softmax, scores, dim=-1)\n    return torch.matmul(attention, v)"
         },
         {
-                "type": "subheading",
-                "content": "Pull Request #2: Gradient Accumulation Fix",
-                "id": "pull-request-#2:-gradient-accumulation-fix"
+                "type": "heading3",
+                "id": "pull-request-#2:-gradient-accumulation-fix",
+                "content": "Pull Request #2: Gradient Accumulation Fix"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Issue</strong>: Incorrect gradient accumulation in distributed training - <strong>Solution</strong>: Fixed gradient synchronization timing - <strong>Impact</strong>: Resolved training instability issues"
         },
         {
-                "type": "subheading",
-                "content": "Pull Request #3-6: Additional Optimizations",
-                "id": "pull-request-#3-6:-additional-optimizations"
+                "type": "heading3",
+                "id": "pull-request-#3-6:-additional-optimizations",
+                "content": "Pull Request #3-6: Additional Optimizations"
         },
         {
                 "type": "paragraph",
@@ -185,13 +186,13 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "heading",
-                "content": "Technical Implementation",
-                "id": "technical-implementation"
+                "id": "technical-implementation",
+                "content": "Technical Implementation"
         },
         {
-                "type": "subheading",
-                "content": "Performance Benchmarks",
-                "id": "performance-benchmarks"
+                "type": "heading3",
+                "id": "performance-benchmarks",
+                "content": "Performance Benchmarks"
         },
         {
                 "type": "paragraph",
@@ -199,13 +200,13 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "code",
-                "content": "def benchmark_attention_mechanisms():\n    \"\"\"\n    Benchmark different attention implementations\n    \"\"\"\n    models = {\n        'standard': StandardAttention(),\n        'flash': FlashAttention(),\n        'sliding_window': SlidingWindowAttention()\n    }\n    \n    results = {}\n    for name, model in models.items():\n        # Memory usage\n        memory_before = torch.cuda.memory_allocated()\n        output = model(test_input)\n        memory_after = torch.cuda.memory_allocated()\n        \n        # Speed benchmark\n        start_time = time.time()\n        for _ in range(100):\n            _ = model(test_input)\n        end_time = time.time()\n        \n        results[name] = {\n            'memory_mb': (memory_after - memory_before) / 1024 / 1024,\n            'speed_ms': (end_time - start_time) * 10,\n            'accuracy': compute_accuracy(output, ground_truth)\n        }\n    \n    return results",
-                "language": "python"
+                "language": "python",
+                "content": "def benchmark_attention_mechanisms():\n    \"\"\"\n    Benchmark different attention implementations\n    \"\"\"\n    models = {\n        'standard': StandardAttention(),\n        'flash': FlashAttention(),\n        'sliding_window': SlidingWindowAttention()\n    }\n    \n    results = {}\n    for name, model in models.items():\n        # Memory usage\n        memory_before = torch.cuda.memory_allocated()\n        output = model(test_input)\n        memory_after = torch.cuda.memory_allocated()\n        \n        # Speed benchmark\n        start_time = time.time()\n        for _ in range(100):\n            _ = model(test_input)\n        end_time = time.time()\n        \n        results[name] = {\n            'memory_mb': (memory_after - memory_before) / 1024 / 1024,\n            'speed_ms': (end_time - start_time) * 10,\n            'accuracy': compute_accuracy(output, ground_truth)\n        }\n    \n    return results"
         },
         {
-                "type": "subheading",
-                "content": "Integration Testing",
-                "id": "integration-testing"
+                "type": "heading3",
+                "id": "integration-testing",
+                "content": "Integration Testing"
         },
         {
                 "type": "paragraph",
@@ -213,53 +214,66 @@ export function IbmFoundationModelsContributionPage() {
         },
         {
                 "type": "code",
-                "content": "class TestAttentionMechanisms(unittest.TestCase):\n    def test_flash_attention_correctness(self):\n        \"\"\"Test Flash Attention produces correct results\"\"\"\n        standard_attn = StandardAttention()\n        flash_attn = FlashAttention()\n        \n        input_tensor = torch.randn(2, 512, 768)\n        \n        standard_output = standard_attn(input_tensor)\n        flash_output = flash_attn(input_tensor)\n        \n        # Assert outputs are approximately equal\n        self.assertTrue(torch.allclose(\n            standard_output, flash_output, rtol=1e-3\n        ))\n    \n    def test_memory_efficiency(self):\n        \"\"\"Test memory usage improvements\"\"\"\n        # Memory profiling test implementation\n        pass",
-                "language": "python"
+                "language": "python",
+                "content": "class TestAttentionMechanisms(unittest.TestCase):\n    def test_flash_attention_correctness(self):\n        \"\"\"Test Flash Attention produces correct results\"\"\"\n        standard_attn = StandardAttention()\n        flash_attn = FlashAttention()\n        \n        input_tensor = torch.randn(2, 512, 768)\n        \n        standard_output = standard_attn(input_tensor)\n        flash_output = flash_attn(input_tensor)\n        \n        # Assert outputs are approximately equal\n        self.assertTrue(torch.allclose(\n            standard_output, flash_output, rtol=1e-3\n        ))\n    \n    def test_memory_efficiency(self):\n        \"\"\"Test memory usage improvements\"\"\"\n        # Memory profiling test implementation\n        pass"
         },
         {
                 "type": "heading",
-                "content": "Impact & Recognition",
-                "id": "impact--recognition"
+                "id": "impact--recognition",
+                "content": "Impact & Recognition"
         },
         {
-                "type": "subheading",
-                "content": "Quantitative Results",
-                "id": "quantitative-results"
+                "type": "heading3",
+                "id": "quantitative-results",
+                "content": "Quantitative Results"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>Memory Reduction</strong>: 25% decrease in training memory usage - <strong>Speed Improvement</strong>: 18% faster training on multi-GPU setups - <strong>Model Quality</strong>: Maintained 99.7% accuracy compared to baseline - <strong>Community Adoption</strong>: Features used in 15+ downstream projects"
         },
         {
-                "type": "subheading",
-                "content": "Open Source Contributions",
-                "id": "open-source-contributions"
+                "type": "heading3",
+                "id": "open-source-contributions",
+                "content": "Open Source Contributions"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>6 PyTorch PRs</strong>: All successfully merged into main branch - <strong>Documentation</strong>: Authored 12 pages of technical documentation - <strong>Code Reviews</strong>: Participated in 50+ code reviews - <strong>Community Support</strong>: Answered 100+ GitHub issues"
         },
         {
-                "type": "subheading",
-                "content": "Recognition",
-                "id": "recognition"
+                "type": "heading3",
+                "id": "recognition",
+                "content": "Recognition"
         },
         {
                 "type": "paragraph",
                 "content": "- <strong>IBM Research Intern Award</strong>: Top 5% performance rating - <strong>PyTorch Contributor</strong>: Recognized as active PyTorch contributor - <strong>Conference Presentation</strong>: Presented work at ML Systems Workshop - <strong>Patent Filing</strong>: Co-inventor on 2 pending patents"
         },
         {
-                "type": "subheading",
-                "content": "Technical Learning",
-                "id": "technical-learning"
+                "type": "heading3",
+                "id": "technical-learning",
+                "content": "Technical Learning"
         },
         {
                 "type": "paragraph",
-                "content": "- Deep understanding of <span style='color: #ff6b3d;'>transformer architectures</span> and attention mechanisms - Experience with large-scale distributed training systems - Proficiency in PyTorch internals and CUDA programming - Best practices for open source collaboration"
+                "content": "- Deep understanding of <a href='transformer architectures' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> and attention mechanisms - Experience with large-scale distributed training systems - Proficiency in PyTorch internals and CUDA programming - Best practices for open source collaboration"
         },
         {
                 "type": "paragraph",
                 "content": "The project significantly enhanced my understanding of foundation models and contributed valuable optimizations to the broader AI research community."
+        },
+        {
+                "type": "heading",
+                "id": "resources",
+                "content": "Resources"
+        },
+        {
+                "type": "paragraph",
+                "content": "Explore the Foundation Models Stack and related resources:"
+        },
+        {
+                "type": "paragraph",
+                "content": "- <strong>IBM FMS Repository</strong>: <a href='#/development?demo=https://github.com/foundation-model-stack/foundation-model-stack' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a> - <strong>Project Demo</strong>: <a href='#/development?demo=https://fms.example.com' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a>"
         }
 ];
 
@@ -396,9 +410,7 @@ export function IbmFoundationModelsContributionPage() {
                   <div className="flex gap-3">
                     {projectData.github && (
                       <a
-                        href={projectData.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github)}&demo=${encodeURIComponent(projectData.demo || '')}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <Github className="w-4 h-4" />
@@ -407,9 +419,7 @@ export function IbmFoundationModelsContributionPage() {
                     )}
                     {projectData.demo && (
                       <a
-                        href={projectData.demo}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={`#/development?name=${encodeURIComponent(projectData.title)}&github=${encodeURIComponent(projectData.github || '')}&demo=${encodeURIComponent(projectData.demo)}`}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />

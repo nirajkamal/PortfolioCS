@@ -290,3 +290,10 @@ The project established several promising research directions:
 - Statistical rigor is crucial for building confidence in autonomous system safety
 
 This project demonstrated the critical importance of advanced simulation methods in validating complex autonomous systems and provided a foundation for future research in this rapidly evolving field.
+
+## Resources
+
+Explore the code and try the simulation:
+
+- **Source Code**: [dev](https://github.com/example/adas-simulation)
+- **Live Demo**: [dev](https://adas-sim-demo.example.com)

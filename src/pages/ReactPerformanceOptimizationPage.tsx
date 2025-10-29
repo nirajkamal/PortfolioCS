@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { TableOfContents } from "../components/blog/TableOfContents";
 import { BlogContent, BlogContentBlock } from "../components/blog/BlogContent";
+import { GiscusComments } from "../components/GiscusComments";
 
 export function ReactPerformanceOptimizationPage() {
   // Blog post data generated from markdown
@@ -71,7 +72,7 @@ export function ReactPerformanceOptimizationPage() {
     },
     {
         "type": "paragraph",
-        "content": "React applications can become slow as they grow in complexity. Understanding <span style='color: #ff6b3d;'>performance optimization</span> techniques is crucial for maintaining a smooth user experience. In this guide, we'll explore advanced patterns and techniques to make your React applications blazingly fast and responsive."
+        "content": "React applications can become slow as they grow in complexity. Understanding <a href='performance optimization' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>orange</a> techniques is crucial for maintaining a smooth user experience. In this guide, we'll explore advanced patterns and techniques to make your React applications blazingly fast and responsive."
     },
     {
         "type": "paragraph",
@@ -92,13 +93,9 @@ export function ReactPerformanceOptimizationPage() {
         "language": "javascript"
     },
     {
-        "type": "heading",
-        "content": "Memoization Techniques",
-        "id": "memoization"
-    },
-    {
-        "type": "paragraph",
-        "content": "React provides several built-in memoization hooks that can dramatically improve performance when used correctly."
+        "type": "code",
+        "content": "\n## Memoization Techniques {#memoization}\n\nReact provides several built-in memoization hooks that can dramatically improve performance when used correctly.\n\n### React.memo for Component Memoization\n",
+        "language": "text"
     },
     {
         "type": "code",
@@ -106,22 +103,9 @@ export function ReactPerformanceOptimizationPage() {
         "language": "javascript"
     },
     {
-        "type": "paragraph",
-        "content": "Use `useMemo` for expensive calculations and `useCallback` for stable function references."
-    },
-    {
-        "type": "quote",
-        "content": "\"Premature optimization is the root of all evil, but when you do optimize, make sure you're optimizing the right things.\" - Donald Knuth",
-        "author": null
-    },
-    {
-        "type": "heading",
-        "content": "Code Splitting",
-        "id": "code-splitting"
-    },
-    {
-        "type": "paragraph",
-        "content": "Split your application into smaller chunks that load on demand. This reduces the initial bundle size and improves loading times."
+        "type": "code",
+        "content": "\n### useMemo and useCallback\n\nUse `useMemo` for expensive calculations and `useCallback` for stable function references.\n\n> \"Premature optimization is the root of all evil, but when you do optimize, make sure you're optimizing the right things.\" - Donald Knuth\n\n## Code Splitting {#code-splitting}\n\nSplit your application into smaller chunks that load on demand. This reduces the initial bundle size and improves loading times.\n",
+        "language": "text"
     },
     {
         "type": "code",
@@ -129,13 +113,9 @@ export function ReactPerformanceOptimizationPage() {
         "language": "javascript"
     },
     {
-        "type": "heading",
-        "content": "Virtual DOM Optimization",
-        "id": "virtual-dom"
-    },
-    {
-        "type": "paragraph",
-        "content": "Understanding how React's Virtual DOM works helps you write more efficient components. Always provide stable keys for lists and avoid creating new objects in render methods."
+        "type": "code",
+        "content": "\n## Virtual DOM Optimization {#virtual-dom}\n\nUnderstanding how React's Virtual DOM works helps you write more efficient components. Always provide stable keys for lists and avoid creating new objects in render methods.\n",
+        "language": "text"
     },
     {
         "type": "code",
@@ -143,17 +123,9 @@ export function ReactPerformanceOptimizationPage() {
         "language": "javascript"
     },
     {
-        "type": "heading",
-        "content": "Conclusion",
-        "id": "conclusion"
-    },
-    {
-        "type": "paragraph",
-        "content": "React performance optimization is an ongoing process. Start by measuring performance with React DevTools Profiler, identify bottlenecks, and apply the appropriate optimization techniques. Remember that <span style='color: #ff6b3d;'>premature optimization</span> can lead to complex code without significant benefits."
-    },
-    {
-        "type": "paragraph",
-        "content": "Focus on user-perceived performance and measure the impact of your optimizations. The best optimization is often the simplest one that solves the actual problem."
+        "type": "code",
+        "content": "\n## Conclusion {#conclusion}\n\nReact performance optimization is an ongoing process. Start by measuring performance with React DevTools Profiler, identify bottlenecks, and apply the appropriate optimization techniques. Remember that [orange](premature optimization) can lead to complex code without significant benefits.\n\nFocus on user-perceived performance and measure the impact of your optimizations. The best optimization is often the simplest one that solves the actual problem.",
+        "language": "text"
     }
 ];
 
@@ -312,6 +284,19 @@ export function ReactPerformanceOptimizationPage() {
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Comments Section */}
+      <section className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          <div className="mb-8 inline-block border-2 border-border px-6 py-4 bg-background shadow-retro">
+            <p className="font-mono text-muted-foreground mb-2">// DISCUSSION</p>
+            <h2 className="font-bold">Comments</h2>
+          </div>
+          <div className="mt-8">
+            <GiscusComments />
           </div>
         </div>
       </section>

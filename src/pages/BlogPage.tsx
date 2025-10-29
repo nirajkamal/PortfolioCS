@@ -44,12 +44,14 @@ export function BlogPage() {
   });
 
   // Get all blog posts from the generated index (source of truth: src/assets/blogs/*.md)
-  const allPosts: BlogPost[] = BLOG_INDEX.map(entry => convertBlogMetaToBlogPost(entry.meta));
+  const activeBlogIndex = BLOG_INDEX.filter(entry => entry.meta.active !== false);
+  const allPosts: BlogPost[] = activeBlogIndex
+    .map(entry => convertBlogMetaToBlogPost(entry.meta));
 
   // Sort by displayOrder
   const sortedPosts = [...allPosts].sort((a, b) => {
-    const orderA = BLOG_INDEX.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
-    const orderB = BLOG_INDEX.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
+    const orderA = activeBlogIndex.find(p => p.meta.title === a.title)?.meta.displayOrder || 999;
+    const orderB = activeBlogIndex.find(p => p.meta.title === b.title)?.meta.displayOrder || 999;
     return orderA - orderB;
   });
 

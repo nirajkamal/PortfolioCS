@@ -11,19 +11,68 @@ from pathlib import Path
 from datetime import datetime
 
 
-def parse_styled_text(text):
-    """Parse text for orange styling, links, and comment-style lines"""
+def parse_styled_text(text, project_title=""):
+    """Parse text for orange styling, links, and comment-style lines
+    
+    Special tags:
+    - [dev](url) - Routes through development page
+    - [orange](text) - Orange colored text
+    - [comment](text) - Code comment style
+    - [link](url) - Regular external link
+    - [orange-link](url) - Orange external link
+    """
     if not text:
         return text
     
-    # Replace **bold** with bold styled span
+    # Replace **bold** with bold styled span (must be before *italic* to avoid conflicts)
     text = re.sub(r'\*\*(.*?)\*\*', r"<strong>\1</strong>", text)
+    
+    # Replace *italic* with italic styled span - but avoid matching underscores in code like __init__
+    # Only match single asterisks around words, not underscores
+    text = re.sub(r'(?<!\*)\*([^\*]+?)\*(?!\*)', r"<em>\1</em>", text)
+    
+    # Handle [dev](url) - route through development page
+    # Format: [dev](url) where url is the link to send to dev page
+    text = re.sub(
+        r'\[dev\]\(([^)]+)\)',
+        lambda m: f"<a href='#/development?demo={m.group(1)}' style='color: #ff6b3d; text-decoration: underline;'>View Resource</a>",
+        text
+    )
+    
+    # Protect markdown links before processing underscores
+    # This prevents underscores in URLs from being converted to italics
+    link_placeholder_map = {}
+    link_counter = [0]
+    
+    def protect_link(match):
+        link_counter[0] += 1
+        # Use a placeholder WITHOUT underscores to avoid getting italicized
+        placeholder = f"LINKPLACEHOLDER{link_counter[0]}"
+        link_placeholder_map[placeholder] = match.group(0)
+        return placeholder
+    
+    # Temporarily replace markdown links [text](url) with placeholders
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', protect_link, text)
+    
+    # Now safely apply underscore italic formatting without affecting URLs
+    text = re.sub(r'(?<!_)_([^_]+?)_(?!_)', r"<em>\1</em>", text)
+    
+    # Restore the links and convert them to HTML
+    for placeholder, original_link in link_placeholder_map.items():
+        # Parse the markdown link [text](url)
+        link_match = re.match(r'\[([^\]]+)\]\(([^)]+)\)', original_link)
+        if link_match:
+            link_text = link_match.group(1)
+            link_url = link_match.group(2)
+            # Convert to HTML link
+            html_link = f"<a href='{link_url}' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>{link_text}</a>"
+            text = text.replace(placeholder, html_link)
     
     # Replace [orange](text) with orange styled span (using inline styles for reliability)
     text = re.sub(r'\[orange\]\((.*?)\)', r"<span style='color: #ff6b3d;'>\1</span>", text)
     
     # Replace [comment](text) with comment-style text
-    text = re.sub(r'\[comment\]\((.*?)\)', r"<span class='font-mono text-muted-foreground text-sm'>// \1</span>", text)
+    text = re.sub(r'\[comment\]\((.*?)\)', r"<span className='font-mono text-muted-foreground text-sm'>// \1</span>", text)
     
     # Replace [link](url) with regular links (using inline styles)
     text = re.sub(r'\[link\]\((.*?)\)', r"<a href='\1' target='_blank' rel='noopener noreferrer' style='text-decoration: underline;'>\1</a>", text)
@@ -31,198 +80,199 @@ def parse_styled_text(text):
     # Replace [orange-link](url) with orange styled links (using inline styles)
     text = re.sub(r'\[orange-link\]\((.*?)\)', r"<a href='\1' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>\1</a>", text)
     
-    # Replace [text](url) with links (standard markdown link syntax, using inline styles)
-    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r"<a href='\2' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>\1</a>", text)
-    
     return text
 
 
 def parse_project_markdown(content):
     """Parse project markdown content into structured data"""
-    # Split content into sections
-    sections = content.split('---META---')
-    if len(sections) < 3:
-        raise ValueError("Invalid project format: Missing META section")
-    
-    meta_content = sections[1].strip()
-    remaining_content = '---'.join(sections[2:])
-    
-    # Parse metadata
-    meta = {}
-    for line in meta_content.split('\n'):
-        line = line.strip()
-        if ':' in line:
-            key, value = line.split(':', 1)
-            key = key.strip()
-            value = value.strip()
-            
-            # Handle arrays (tags, technologies, team)
-            if key in ['tags', 'technologies', 'team'] and value.startswith('[') and value.endswith(']'):
-                # Parse JSON array
-                try:
-                    meta[key] = json.loads(value)
-                except json.JSONDecodeError:
-                    # Fallback to simple string split
-                    meta[key] = [item.strip().strip('"\'') for item in value[1:-1].split(',')]
-            # Handle booleans
-            elif value.lower() in ['true', 'false']:
-                meta[key] = value.lower() == 'true'
-            # Handle numbers
-            elif value.isdigit():
-                meta[key] = int(value)
-            else:
-                meta[key] = value
-    
-    # Split TOC and content
-    toc_split = remaining_content.split('---TOC---')
-    if len(toc_split) >= 3:
-        toc_content = toc_split[1].strip()
-        main_content = '---'.join(toc_split[2:]).strip()
-    else:
-        toc_content = ""
-        main_content = remaining_content.strip()
-    
-    # Parse TOC
-    toc_items = []
-    if toc_content:
-        for line in toc_content.split('\n'):
-            line = line.strip()
-            if line.startswith('-') and '[' in line and '](' in line:
-                # Extract title and id from [title](#id) format
-                match = re.search(r'\[([^\]]+)\]\(#([^)]+)\)', line)
-                if match:
-                    title = match.group(1)
-                    id_val = match.group(2)
-                    level = line.count('  ') + 2  # Determine heading level
-                    toc_items.append({
-                        'title': title,
-                        'id': id_val,
-                        'level': level
-                    })
-    
-    # Parse main content into blocks
-    content_blocks = []
-    current_block = ""
-    current_type = "paragraph"
-    
-    lines = main_content.split('\n')
+    lines = content.split('\n')
     i = 0
     
+    # Initialize project data
+    project_data = {
+        'meta': {},
+        'toc': [],
+        'content_blocks': []
+    }
+    
     while i < len(lines):
-        line = lines[i]
+        line = lines[i].strip()
         
-        # Code blocks
-        if line.startswith('```'):
-            if current_block.strip():
-                content_blocks.append({
-                    'type': current_type,
-                    'content': parse_styled_text(current_block.strip())
-                })
-                current_block = ""
-            
-            # Find language if specified
-            language = line[3:].strip() or 'text'
+        # Parse META section
+        if line == '---META---':
             i += 1
+            while i < len(lines) and not lines[i].strip().startswith('---'):
+                meta_line = lines[i].strip()
+                if ':' in meta_line:
+                    key, value = meta_line.split(':', 1)
+                    key = key.strip()
+                    value = value.strip()
+                    
+                    # Handle arrays (tags, technologies, team)
+                    if key in ['tags', 'technologies', 'team'] and value.startswith('[') and value.endswith(']'):
+                        # Parse JSON array
+                        try:
+                            project_data['meta'][key] = json.loads(value)
+                        except json.JSONDecodeError:
+                            # Fallback to simple string split
+                            project_data['meta'][key] = [item.strip().strip('"\'') for item in value[1:-1].split(',')]
+                    # Handle booleans
+                    elif value.lower() in ['true', 'false']:
+                        project_data['meta'][key] = value.lower() == 'true'
+                    # Handle numbers
+                    elif value.isdigit():
+                        project_data['meta'][key] = int(value)
+                    else:
+                        project_data['meta'][key] = value
+                i += 1
+        
+        # Parse TOC section
+        elif line == '---TOC---':
+            i += 1
+            # TOC ends when we hit a blank line followed by content, or a markdown heading
+            while i < len(lines):
+                toc_line = lines[i].strip()
+                # TOC ends at a blank line followed by a heading, or at --- markers, or at actual content
+                if not toc_line or toc_line.startswith('---') or toc_line.startswith('#'):
+                    # Don't increment i, let the main loop handle this line
+                    # But if we hit the closing ---TOC---, skip it
+                    if toc_line == '---TOC---':
+                        i += 1
+                    break
+                    
+                if toc_line.startswith('-') and '[' in toc_line and '](' in toc_line:
+                    # Extract title and id from [title](#id) format
+                    match = re.search(r'\[([^\]]+)\]\(#([^)]+)\)', toc_line)
+                    if match:
+                        title = match.group(1)
+                        id_val = match.group(2)
+                        level = toc_line.count('  ') + 2  # Determine heading level
+                        project_data['toc'].append({
+                            'title': title,
+                            'id': id_val,
+                            'level': level
+                        })
+                i += 1
+            continue  # Skip the final i += 1 at the end of the loop
+        
+        # Parse content sections
+        elif line.startswith('##') or line.startswith('###'):
+            # Extract heading with or without id
+            heading_match = re.match(r'^(#{1,6})\s*(.*?)\s*(?:\{#([^}]+)\})?$', line)
+            if heading_match:
+                level = len(heading_match.group(1))
+                title = heading_match.group(2).strip()
+                heading_id = heading_match.group(3)
+                
+                # Generate id from title if not provided
+                if not heading_id:
+                    heading_id = title.lower().replace(' ', '-').replace('.', '').replace(',', '').replace('&', '').replace('/', '').replace('(', '').replace(')', '')
+                
+                if level == 2:
+                    content_type = 'heading'
+                elif level == 3:
+                    content_type = 'heading3'
+                else:
+                    content_type = 'heading3'
+                
+                project_data['content_blocks'].append({
+                    'type': content_type,
+                    'id': heading_id,
+                    'content': parse_styled_text(title)
+                })
+            i += 1
+            continue  # Skip the final i += 1 at the end of the loop
             
-            # Collect code content
-            code_content = []
-            while i < len(lines) and not lines[i].startswith('```'):
-                code_content.append(lines[i])
+        # Parse paragraphs
+        elif line and not line.startswith(('#', '>', '```', '![', '---')):
+            paragraph_lines = [line]
+            i += 1
+            # Collect continuation lines
+            while i < len(lines) and lines[i].strip() and not lines[i].strip().startswith(('#', '>', '```', '![', '---')):
+                paragraph_lines.append(lines[i].strip())
                 i += 1
             
-            content_blocks.append({
+            content = ' '.join(paragraph_lines)
+            project_data['content_blocks'].append({
+                'type': 'paragraph',
+                'content': parse_styled_text(content)
+            })
+            continue  # Skip the final i += 1 at the end of the loop
+        
+        # Parse quotes
+        elif line.startswith('>'):
+            quote_lines = []
+            author = None
+            
+            # Collect quote lines
+            while i < len(lines) and lines[i].strip().startswith('>'):
+                quote_line = lines[i].strip()[1:].strip()
+                if quote_line.startswith('-'):
+                    author = quote_line[1:].strip()
+                else:
+                    quote_lines.append(quote_line)
+                i += 1
+            
+            if quote_lines:
+                project_data['content_blocks'].append({
+                    'type': 'quote',
+                    'content': parse_styled_text(' '.join(quote_lines)),
+                    'author': author
+                })
+            continue  # Skip the final i += 1 at the end of the loop
+        
+        # Parse code blocks
+        elif line.startswith('```'):
+            language = line[3:].strip() or 'text'
+            i += 1
+            code_lines = []
+            
+            # Collect code lines until closing ```
+            while i < len(lines) and not lines[i].strip().startswith('```'):
+                code_lines.append(lines[i])
+                i += 1
+            
+            # Skip the closing ``` line
+            if i < len(lines) and lines[i].strip().startswith('```'):
+                i += 1
+            
+            project_data['content_blocks'].append({
                 'type': 'code',
-                'content': '\n'.join(code_content),
-                'language': language
+                'language': language,
+                'content': '\n'.join(code_lines)
             })
-            
-            current_block = ""
-            current_type = "paragraph"
+            continue  # Skip the final i += 1 at the end of the loop
         
-        # Headings
-        elif line.startswith('##'):
-            if current_block.strip():
-                content_blocks.append({
-                    'type': current_type,
-                    'content': parse_styled_text(current_block.strip())
-                })
-                current_block = ""
-            
-            # Determine heading level and extract id
-            heading_text = line.lstrip('#').strip()
-            heading_id = heading_text.lower().replace(' ', '-').replace('&', '').replace('/', '').replace('(', '').replace(')', '')
-            
-            if line.startswith('## '):
-                heading_type = 'heading'
-            elif line.startswith('### '):
-                heading_type = 'subheading'
-            else:
-                heading_type = 'heading3'
-            
-            content_blocks.append({
-                'type': heading_type,
-                'content': parse_styled_text(heading_text),
-                'id': heading_id
-            })
-            current_type = "paragraph"
-        
-        # Images
-        elif line.strip().startswith('!['):
-            if current_block.strip():
-                content_blocks.append({
-                    'type': current_type,
-                    'content': parse_styled_text(current_block.strip())
-                })
-                current_block = ""
-            
-            # Parse image
-            match = re.search(r'!\[([^\]]*)\]\(([^)]+)\)', line)
-            if match:
-                alt_text = match.group(1)
-                image_url = match.group(2)
-                content_blocks.append({
+        # Parse images
+        elif line.startswith('!['):
+            # Match image markdown and optional width specification
+            # Format: ![alt](url.png){width:50%} or ![alt](url.png)
+            image_match = re.match(r'!\[([^\]]*)\]\(([^)]+)\)(?:\{width:([^}]+)\})?', line)
+            if image_match:
+                alt_text = image_match.group(1)
+                image_url = image_match.group(2)
+                width = image_match.group(3)
+                
+                block = {
                     'type': 'image',
                     'content': image_url,
                     'alt': alt_text
-                })
-            current_type = "paragraph"
-        
-        # Regular content
-        else:
-            if line.strip() == "":
-                if current_block.strip():
-                    content_blocks.append({
-                        'type': current_type,
-                        'content': parse_styled_text(current_block.strip())
-                    })
-                    current_block = ""
-                    current_type = "paragraph"
-            else:
-                if current_block:
-                    current_block += " "
-                current_block += line.strip()
+                }
+                if width:
+                    block['width'] = width
+                
+                project_data['content_blocks'].append(block)
         
         i += 1
     
-    # Add remaining content
-    if current_block.strip():
-        content_blocks.append({
-            'type': current_type,
-            'content': parse_styled_text(current_block.strip())
-        })
-    
-    return {
-        'meta': meta,
-        'toc': toc_items,
-        'content': content_blocks
-    }
+    return project_data
 
 
 def generate_project_page_component(project_data, filename):
     """Generate a React component for a project page with blog-style hero section"""
     meta = project_data['meta']
     toc_items = project_data['toc']
-    content_blocks = project_data['content']
+    content_blocks = project_data['content_blocks']
     
     # Generate component name from filename
     component_name = ''.join([word.capitalize() for word in filename.replace('.md', '').replace('-', ' ').split()])
@@ -385,9 +435,7 @@ export function {component_name}() {{
                   <div className="flex gap-3">
                     {{projectData.github && (
                       <a
-                        href={{projectData.github}}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={{`#/development?name=${{encodeURIComponent(projectData.title)}}&github=${{encodeURIComponent(projectData.github)}}&demo=${{encodeURIComponent(projectData.demo || '')}}`}}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <Github className="w-4 h-4" />
@@ -396,9 +444,7 @@ export function {component_name}() {{
                     )}}
                     {{projectData.demo && (
                       <a
-                        href={{projectData.demo}}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={{`#/development?name=${{encodeURIComponent(projectData.title)}}&github=${{encodeURIComponent(projectData.github || '')}}&demo=${{encodeURIComponent(projectData.demo)}}`}}
                         className="px-4 py-2 border-2 border-border bg-background hover:bg-foreground hover:text-background transition-colors font-mono inline-flex items-center gap-2"
                       >
                         <ExternalLink className="w-4 h-4" />
@@ -492,6 +538,7 @@ export interface ProjectMeta {{
   featuredOnHome?: boolean;
   featuredOnProjects?: boolean;
   displayOrder?: number;
+  active?: boolean;
 }}
 
 export interface ProjectIndexItem {{
@@ -523,7 +570,7 @@ def generate_projects_component(project_index):
     # Filter and sort projects for home page
     featured_projects = [
         p for p in project_index 
-        if p['meta'].get('featuredOnHome', False)
+        if p['meta'].get('featuredOnHome', False) and p['meta'].get('active', True)
     ]
     
     # Sort by display order

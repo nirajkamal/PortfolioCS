@@ -4,6 +4,7 @@ import { Footer } from "../components/Footer";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { TableOfContents } from "../components/blog/TableOfContents";
 import { BlogContent, BlogContentBlock } from "../components/blog/BlogContent";
+import { GiscusComments } from "../components/GiscusComments";
 
 export function BuildingScalableMicroservicesPage() {
   // Blog post data generated from markdown
@@ -102,13 +103,18 @@ export function BuildingScalableMicroservicesPage() {
         "alt": "Microservices architecture diagram showing independent services"
     },
     {
-        "type": "subheading",
+        "type": "heading3",
         "content": "Key Benefits",
         "id": "benefits"
     },
     {
         "type": "paragraph",
         "content": "The microservices approach offers several compelling advantages: improved scalability through independent service scaling, enhanced fault isolation preventing cascade failures, technology flexibility allowing different tech stacks per service, and faster deployment cycles with independent release schedules."
+    },
+    {
+        "type": "heading3",
+        "content": "Scalability Benefits",
+        "id": "scalability-benefits"
     },
     {
         "type": "paragraph",
@@ -129,17 +135,9 @@ export function BuildingScalableMicroservicesPage() {
         "language": "javascript"
     },
     {
-        "type": "heading",
-        "content": "Implementation Guide",
-        "id": "implementation"
-    },
-    {
-        "type": "paragraph",
-        "content": "When implementing microservices with Node.js, start by identifying service boundaries based on business domains. Each service should have a clear, single responsibility. Use frameworks like Express or Fastify for HTTP services, and consider message brokers like RabbitMQ or Kafka for event-driven communication."
-    },
-    {
-        "type": "paragraph",
-        "content": "Database strategy is crucial - follow the database-per-service pattern to ensure loose coupling. This means each microservice manages its own database, communicating with other services through APIs or events rather than direct database access."
+        "type": "code",
+        "content": "\n## Implementation Guide {#implementation}\n\nWhen implementing microservices with Node.js, start by identifying service boundaries based on business domains. Each service should have a clear, single responsibility. Use frameworks like Express or Fastify for HTTP services, and consider message brokers like RabbitMQ or Kafka for event-driven communication.\n\nDatabase strategy is crucial - follow the database-per-service pattern to ensure loose coupling. This means each microservice manages its own database, communicating with other services through APIs or events rather than direct database access.\n",
+        "language": "text"
     },
     {
         "type": "code",
@@ -147,39 +145,9 @@ export function BuildingScalableMicroservicesPage() {
         "language": "javascript"
     },
     {
-        "type": "heading",
-        "content": "Best Practices",
-        "id": "best-practices"
-    },
-    {
-        "type": "paragraph",
-        "content": "Implement comprehensive monitoring and logging from day one. Use distributed tracing tools like Jaeger or Zipkin to track requests across services. Implement circuit breakers with libraries like Opossum to handle service failures gracefully. Always use API versioning to maintain backwards compatibility."
-    },
-    {
-        "type": "paragraph",
-        "content": "Without proper monitoring, debugging distributed systems becomes nearly impossible. Implement structured logging with correlation IDs that flow through all service calls."
-    },
-    {
-        "type": "quote",
-        "content": "\"In a microservices architecture, observability isn't optional\u2014it's the only way to understand what's happening in your system.\"",
-        "author": null
-    },
-    {
-        "type": "paragraph",
-        "content": "Security is paramount - implement authentication at the API Gateway level and use JWT tokens for service-to-service communication. Apply rate limiting to prevent abuse and use HTTPS for all external communications."
-    },
-    {
-        "type": "heading",
-        "content": "Conclusion",
-        "id": "conclusion"
-    },
-    {
-        "type": "paragraph",
-        "content": "Building microservices with Node.js provides a powerful foundation for scalable applications. While the architecture introduces complexity, the benefits of independent scaling, fault isolation, and deployment flexibility make it worthwhile for systems that need to handle significant traffic and evolve over time."
-    },
-    {
-        "type": "paragraph",
-        "content": "Start small, focus on clear service boundaries, and gradually refine your architecture based on real-world usage patterns. Remember that microservices are a means to an end - always prioritize solving actual business problems over architectural purity."
+        "type": "code",
+        "content": "\n## Best Practices {#best-practices}\n\nImplement comprehensive monitoring and logging from day one. Use distributed tracing tools like Jaeger or Zipkin to track requests across services. Implement circuit breakers with libraries like Opossum to handle service failures gracefully. Always use API versioning to maintain backwards compatibility.\n\n#### Monitoring & Observability\n\nWithout proper monitoring, debugging distributed systems becomes nearly impossible. Implement structured logging with correlation IDs that flow through all service calls.\n\n> \"In a microservices architecture, observability isn't optional\u2014it's the only way to understand what's happening in your system.\"\n\nSecurity is paramount - implement authentication at the API Gateway level and use JWT tokens for service-to-service communication. Apply rate limiting to prevent abuse and use HTTPS for all external communications.\n\n## Conclusion {#conclusion}\n\nBuilding microservices with Node.js provides a powerful foundation for scalable applications. While the architecture introduces complexity, the benefits of independent scaling, fault isolation, and deployment flexibility make it worthwhile for systems that need to handle significant traffic and evolve over time.\n\nStart small, focus on clear service boundaries, and gradually refine your architecture based on real-world usage patterns. Remember that microservices are a means to an end - always prioritize solving actual business problems over architectural purity.",
+        "language": "text"
     }
 ];
 
@@ -338,6 +306,19 @@ export function BuildingScalableMicroservicesPage() {
                 </div>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      {/* Comments Section */}
+      <section className="border-b border-border">
+        <div className="max-w-7xl mx-auto px-8 py-12">
+          <div className="mb-8 inline-block border-2 border-border px-6 py-4 bg-background shadow-retro">
+            <p className="font-mono text-muted-foreground mb-2">// DISCUSSION</p>
+            <h2 className="font-bold">Comments</h2>
+          </div>
+          <div className="mt-8">
+            <GiscusComments />
           </div>
         </div>
       </section>
