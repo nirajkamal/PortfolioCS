@@ -42,7 +42,9 @@ This course rethinks how deep learning is taught to beginners, making abstract P
 
 The structure and philosophy behind these labs were inspired by a project my other team-mates were working on - the [<u>Granite Snack Cookbook</u>](https://github.com/ibm-granite-community/granite-snack-cookbook/blob/main/recipes/Fine_Tuning/FineTuning_with_Unsloth.ipynb), a collection of bite-sized, practical tutorials that break down complex AI concepts into digestible lessons. Each "recipe" in the Snack Cookbook focuses on a single concept with minimal code - typically just 1-2 code blocks per step - making it perfect for beginners who can feel overwhelmed by information density.
 
-I adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations**. This approach is especially beneficial for beginners because:
+[<u>View the typical common pattern in Jupyter Labs →</u>](#appendix)
+
+We adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations**. This approach is especially beneficial for beginners because:
 
 - **Lower cognitive load**: Each step focuses on one core concept, reducing mental overhead. 
 - **Immediate reinforcement**: Small code blocks paired with visuals help concepts stick. 
@@ -51,15 +53,12 @@ I adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 sma
 
 ### Jupyter Lab Structure and Flow {#lab-structure}
 
-![Typical Lab Structure](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/typical_lab_structure.png)
-
 Every lab follows a carefully designed flow that guides students through 5-7 structured steps. This image shows how each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations.
 
 ## Behind the Scenes {#behind-scenes}
 
 The creation of these labs involved extensive design work, including Figma prototypes, storyboards, and iterative refinements. This behind-the-scenes process was crucial in ensuring each lab delivered maximum pedagogical value.
 
-![Shabby Figma Drafts Behind the Scenes](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/shabby_figma_drafts_behind_the_scenes.png)
 
 ![Lesson Design - Storyboard vs Preliminary Lesson Draft](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
 
@@ -67,7 +66,6 @@ These design iterations ensured that the visuals, code examples, and explanation
 
 Throughout this process, a common structural pattern emerged across most lessons  -  a consistent flow that helped students build mental models of how PyTorch lessons should be organized and approached. This structural consistency made the curriculum coherent and predictable, turning what could be a chaotic learning journey into a guided, step‑by‑step progression.
 
-[<u>View the detailed lesson common pattern in the appendix →</u>](#appendix)
 
 ## The Problem with Abstract PyTorch Courses {#the-problem}
 
@@ -86,8 +84,6 @@ The solution: create **bite-sized lessons with detailed visual illustrations** t
 
 ### Visualizing Model Architecture {#visualizing-model}
 
-![Model Class Definition (Early Draft)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png)
-
 One of the key differences was showing **exactly how and why** we define models as classes. The illustration breaks down:
 - The inheritance from `nn.Module` and why it matters. 
 - The purpose of `__init__()` and `super().__init__()`. 
@@ -101,46 +97,21 @@ This visual approach helps beginners understand the pattern rather than just cop
 
 DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:
 
-![DataLoader Batching Process - Not Included in Actual Lessons](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_draft_not_in_actual_lesson.png)
-
 The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with:
 - What a DataLoader actually does under the hood? 
 - How batching works and why it's essential for training efficiency? 
 - The step-by-step process of converting individual samples into batches. 
 - Why batch sizes matter for both memory and convergence? 
 
-![DataLoader Explanation (Early Draft)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png)
 
-The second visualization takes a broader view of the DataLoader:
+Visualizations of a broader view of the DataLoader:
 - The relationship between Dataset and DataLoader. 
 - How shuffling works and when to use it? 
 - Multi-worker data loading for performance. 
 - Pin memory optimization for GPU training. 
 
-*(Note: These visualizations were part of my iteration process during the internship. While they provided valuable pedagogical insights, the final course curriculum continued to evolve after my internship ended, with subsequent improvements and refinements.)*
-
-## The Seven Labs {#seven-labs}
-
-As part of the PyTorch Associate Training program, 7 labs were created focusing on core PyTorch competencies. These labs complement additional content created by other contributors to form the complete certification curriculum.
-
-The 7 labs designed for this project are:
-
-**1. Intro to PyTorch**
-
-**2. Building Neural Networks with PyTorch (2 labs DNN and CNN)**
-
-**3. Benchmarking Models**
-
-**4. Leveraging Automatic Mixed Precision for Training and Inference**
-
-**5. Activation Functions for Models**
-
-**6. Creating Neural Network Checkpoints**
-
-**7. Advanced Training Techniques**
 
 
-Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts.
 
 ## Official Launch at PyTorch Conference {#pytorch-conference}
 
