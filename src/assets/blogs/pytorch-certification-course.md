@@ -60,7 +60,7 @@ Every lab follows a carefully designed flow that guides students through 5-7 str
 The creation of these labs involved extensive design work, including Figma prototypes, storyboards, and iterative refinements. This behind-the-scenes process was crucial in ensuring each lab delivered maximum pedagogical value.
 
 
-![Lesson Design - Storyboard vs Preliminary Lesson Draft (Brainstorming from Granite Cookbook)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
+![Lesson Design Storyboard (Brainstorming from Granite Cookbook)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
 
 These design iterations ensured that the visuals, code examples, and explanations were optimized for learning. We refined the curriculum multiple times to achieve the best possible outcomes for students.
 
@@ -143,9 +143,9 @@ I contributed to IBM's Foundation Models Stack with a **PR for supporting prefil
 
 These parallel contributions meant working across multiple areas of deep learning infrastructure simultaneously. This breadth gave me unique insights into how PyTorch fits into the larger ecosystem and informed how I explained concepts to students.
 
-## Appendix: Jupyter Lab flow (inspired by Open-source bite-sized recipes) {#appendix}
+## Appendix: Jupyter Lab Storyboard (inspired by Open-source bite-sized recipes) {#appendix}
 
-![Lesson Common Pattern](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png){width:50%}
+![Lesson Storyboard](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png){width:50%}
 
    
 

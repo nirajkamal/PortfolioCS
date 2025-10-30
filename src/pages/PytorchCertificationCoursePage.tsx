@@ -156,7 +156,7 @@ export function PytorchCertificationCoursePage() {
     {
         "type": "image",
         "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png",
-        "alt": "Lesson Design - Storyboard vs Preliminary Lesson Draft (Brainstorming from Granite Cookbook)"
+        "alt": "Lesson Design Storyboard (Brainstorming from Granite Cookbook)"
     },
     {
         "type": "paragraph",
@@ -322,13 +322,13 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "heading",
-        "content": "Appendix: Jupyter Lab flow (inspired by Open-source bite-sized recipes)",
+        "content": "Appendix: Jupyter Lab Storyboard (inspired by Open-source bite-sized recipes)",
         "id": "appendix"
     },
     {
         "type": "image",
         "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png",
-        "alt": "Lesson Common Pattern",
+        "alt": "Lesson Storyboard",
         "width": "50%"
     },
     {
