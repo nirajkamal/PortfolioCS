@@ -125,7 +125,11 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "I adopted this same philosophy for the PyTorch labs: <strong>each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations</strong>. This approach is especially beneficial for beginners because:"
+        "content": "<a href='#appendix' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>View the typical common pattern in Jupyter Labs \u2192</u></a>"
+    },
+    {
+        "type": "paragraph",
+        "content": "We adopted this same philosophy for the PyTorch labs: <strong>each lab contains 5-7 small, focused steps with just enough code to understand each concept, combined with detailed visual illustrations</strong>. This approach is especially beneficial for beginners because:"
     },
     {
         "type": "paragraph",
@@ -135,11 +139,6 @@ export function PytorchCertificationCoursePage() {
         "type": "heading3",
         "content": "Jupyter Lab Structure and Flow",
         "id": "lab-structure"
-    },
-    {
-        "type": "image",
-        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/typical_lab_structure.png",
-        "alt": "Typical Lab Structure"
     },
     {
         "type": "paragraph",
@@ -156,11 +155,6 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "image",
-        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/shabby_figma_drafts_behind_the_scenes.png",
-        "alt": "Shabby Figma Drafts Behind the Scenes"
-    },
-    {
-        "type": "image",
         "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png",
         "alt": "Lesson Design - Storyboard vs Preliminary Lesson Draft"
     },
@@ -171,10 +165,6 @@ export function PytorchCertificationCoursePage() {
     {
         "type": "paragraph",
         "content": "Throughout this process, a common structural pattern emerged across most lessons  -  a consistent flow that helped students build mental models of how PyTorch lessons should be organized and approached. This structural consistency made the curriculum coherent and predictable, turning what could be a chaotic learning journey into a guided, step\u2011by\u2011step progression."
-    },
-    {
-        "type": "paragraph",
-        "content": "<a href='#appendix' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>View the detailed lesson common pattern in the appendix \u2192</u></a>"
     },
     {
         "type": "heading",
@@ -208,11 +198,6 @@ export function PytorchCertificationCoursePage() {
         "id": "visualizing-model"
     },
     {
-        "type": "image",
-        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/code_model_class.png",
-        "alt": "Model Class Definition (Early Draft)"
-    },
-    {
         "type": "paragraph",
         "content": "One of the key differences was showing <strong>exactly how and why</strong> we define models as classes. The illustration breaks down: - The inheritance from `nn.Module` and why it matters. - The purpose of `__init__()` and `super().__init__()`. - How layers are defined and registered. - The forward pass implementation. - A visual intuition that model layers are initiated in `__init__` and connected in `forward()`."
     },
@@ -230,71 +215,12 @@ export function PytorchCertificationCoursePage() {
         "content": "DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:"
     },
     {
-        "type": "image",
-        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_draft_not_in_actual_lesson.png",
-        "alt": "DataLoader Batching Process - Not Included in Actual Lessons"
-    },
-    {
         "type": "paragraph",
         "content": "The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with: - What a DataLoader actually does under the hood? - How batching works and why it's essential for training efficiency? - The step-by-step process of converting individual samples into batches. - Why batch sizes matter for both memory and convergence?"
     },
     {
-        "type": "image",
-        "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Dataloader_explanation.png",
-        "alt": "DataLoader Explanation (Early Draft)"
-    },
-    {
         "type": "paragraph",
-        "content": "The second visualization takes a broader view of the DataLoader: - The relationship between Dataset and DataLoader. - How shuffling works and when to use it? - Multi-worker data loading for performance. - Pin memory optimization for GPU training."
-    },
-    {
-        "type": "paragraph",
-        "content": "<em>(Note: These visualizations were part of my iteration process during the internship. While they provided valuable pedagogical insights, the final course curriculum continued to evolve after my internship ended, with subsequent improvements and refinements.)</em>"
-    },
-    {
-        "type": "heading",
-        "content": "The Seven Labs",
-        "id": "seven-labs"
-    },
-    {
-        "type": "paragraph",
-        "content": "As part of the PyTorch Associate Training program, 7 labs were created focusing on core PyTorch competencies. These labs complement additional content created by other contributors to form the complete certification curriculum."
-    },
-    {
-        "type": "paragraph",
-        "content": "The 7 labs designed for this project are:"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>1. Intro to PyTorch</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>2. Building Neural Networks with PyTorch (2 labs DNN and CNN)</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>3. Benchmarking Models</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>4. Leveraging Automatic Mixed Precision for Training and Inference</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>5. Activation Functions for Models</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>6. Creating Neural Network Checkpoints</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "<strong>7. Advanced Training Techniques</strong>"
-    },
-    {
-        "type": "paragraph",
-        "content": "Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts."
+        "content": "Visualizations of a broader view of the DataLoader: - The relationship between Dataset and DataLoader. - How shuffling works and when to use it? - Multi-worker data loading for performance. - Pin memory optimization for GPU training."
     },
     {
         "type": "heading",

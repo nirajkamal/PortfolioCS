@@ -36,7 +36,7 @@ During an internship at IBM Research in Summer 2025, under the guidance of [<u>S
 
 This course rethinks how deep learning is taught to beginners, making abstract PyTorch concepts concrete and accessible through **visual illustrations and hands-on practice**.
 
-> **Note**: All images and content shown in this blog post are drafts and early iterations from the design process. The final, polished versions of these materials are part of the official PyTorch Foundation Certification Course.
+> **Note**: All images and content shown in this blog post are either inspired by open-source resources such as the Granite Snack Cookbook or are schematic drafts created for illustration purposes. No official PyTorch Foundation Certification Course materials or proprietary images are included.
 
 ### Inspiration: The Snack-Sized Learning Approach {#snack-inspiration}
 
