@@ -74,11 +74,6 @@ export function PytorchCertificationCoursePage() {
         "level": 3
     },
     {
-        "title": "The Seven Labs",
-        "id": "seven-labs",
-        "level": 2
-    },
-    {
         "title": "Official Launch at PyTorch Conference",
         "id": "pytorch-conference",
         "level": 2
@@ -91,6 +86,11 @@ export function PytorchCertificationCoursePage() {
     {
         "title": "Appendix: The Lesson Common Pattern",
         "id": "appendix",
+        "level": 2
+    },
+    {
+        "title": "Bibliography",
+        "id": "bibliography",
         "level": 2
     }
 ];
@@ -111,7 +111,7 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "quote",
-        "content": "<strong>Note</strong>: All images and content shown in this blog post are drafts and early iterations from the design process. The final, polished versions of these materials are part of the official PyTorch Foundation Certification Course.",
+        "content": "<strong>Note</strong>: All images and content shown in this blog post are either inspired by open-source resources such as the Granite Snack Cookbook or are schematic drafts created for illustration purposes. No official PyTorch Foundation Certification Course materials or proprietary images are included.",
         "author": null
     },
     {
@@ -142,7 +142,7 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "Every lab follows a carefully designed flow that guides students through 5-7 structured steps. This image shows how each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations."
+        "content": "Every lab follows a carefully designed flow that guides students through 5-7 structured steps. Each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations."
     },
     {
         "type": "heading",
@@ -156,7 +156,7 @@ export function PytorchCertificationCoursePage() {
     {
         "type": "image",
         "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png",
-        "alt": "Lesson Design - Storyboard vs Preliminary Lesson Draft"
+        "alt": "Lesson Design - Storyboard vs Preliminary Lesson Draft (Brainstorming from Granite Cookbook)"
     },
     {
         "type": "paragraph",
@@ -199,28 +199,16 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "paragraph",
-        "content": "One of the key differences was showing <strong>exactly how and why</strong> we define models as classes. The illustration breaks down: - The inheritance from `nn.Module` and why it matters. - The purpose of `__init__()` and `super().__init__()`. - How layers are defined and registered. - The forward pass implementation. - A visual intuition that model layers are initiated in `__init__` and connected in `forward()`."
-    },
-    {
-        "type": "paragraph",
-        "content": "This visual approach helps beginners understand the pattern rather than just copying code."
+        "content": "A major challenge for beginners is understanding why PyTorch models are defined as classes and how their internal structure works. The labs break down the inheritance from `nn.Module`, the role of `__init__()` and `super().__init__()`, and how layers are registered and connected through the forward pass. By focusing on the reasoning behind these patterns, students learn to build models with confidence, rather than simply copying code."
     },
     {
         "type": "heading3",
-        "content": "Making DataLoaders Intuitive (Preliminary drafts of visual aids for the lessons)",
+        "content": "Making DataLoaders Intuitive",
         "id": "making-dataloaders"
     },
     {
         "type": "paragraph",
-        "content": "DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:"
-    },
-    {
-        "type": "paragraph",
-        "content": "The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with: - What a DataLoader actually does under the hood? - How batching works and why it's essential for training efficiency? - The step-by-step process of converting individual samples into batches. - Why batch sizes matter for both memory and convergence?"
-    },
-    {
-        "type": "paragraph",
-        "content": "Visualizations of a broader view of the DataLoader: - The relationship between Dataset and DataLoader. - How shuffling works and when to use it? - Multi-worker data loading for performance. - Pin memory optimization for GPU training."
+        "content": "DataLoaders are another area where newcomers often struggle. The labs clarify what DataLoaders do, how batching improves training efficiency, and why batch size affects both memory and convergence. They also explain the relationship between Dataset and DataLoader, the importance of shuffling, multi-worker loading for performance, and pin memory optimization for GPU training. This step-by-step approach helps learners grasp the practical aspects of data handling in PyTorch."
     },
     {
         "type": "heading",
@@ -230,6 +218,10 @@ export function PytorchCertificationCoursePage() {
     {
         "type": "paragraph",
         "content": "The course was officially launched at the <a href='https://events.linuxfoundation.org/pytorch-conference/' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'><u>PyTorch Conference 2025</u></a> as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice."
+    },
+    {
+        "type": "paragraph",
+        "content": "Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts."
     },
     {
         "type": "image",
@@ -330,7 +322,7 @@ export function PytorchCertificationCoursePage() {
     },
     {
         "type": "heading",
-        "content": "Appendix: The Lesson Common Pattern",
+        "content": "Appendix: Jupyter Lab flow (inspired by Open-source bite-sized recipes)",
         "id": "appendix"
     },
     {
@@ -338,6 +330,23 @@ export function PytorchCertificationCoursePage() {
         "content": "/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png",
         "alt": "Lesson Common Pattern",
         "width": "50%"
+    },
+    {
+        "type": "heading",
+        "content": "Bibliography",
+        "id": "bibliography"
+    },
+    {
+        "type": "paragraph",
+        "content": "- <strong>Granite Snack Cookbook</strong>: <a href='https://github.com/ibm-granite-community/granite-snack-cookbook' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>ibm-granite-community/granite-snack-cookbook</a> \u2014 Source of inspiration for snack-sized, visual learning patterns and lesson structure."
+    },
+    {
+        "type": "paragraph",
+        "content": "- <strong>PyTorch Conference Keynote</strong>: Launch photo and event details referenced from the official <a href='https://events.linuxfoundation.org/pytorch-conference/' target='_blank' rel='noopener noreferrer' style='color: #ff6b3d; text-decoration: underline;'>PyTorch Conference 2025</a> keynote."
+    },
+    {
+        "type": "paragraph",
+        "content": "- <strong>Appendix & Lesson Design Storyboards</strong>: Brainstorming diagrams and lesson flow illustrations are inspired by open-source repositories such as the Granite Snack Cookbook and other PyTorch educational recipes."
     }
 ];
 

@@ -24,10 +24,10 @@ external: false
 - A Visual, Beginner-Friendly Approach | visual-approach | 2
   - Visualizing Model Architecture | visualizing-model | 3
   - Making DataLoaders Intuitive | making-dataloaders | 3
-- The Seven Labs | seven-labs | 2
 - Official Launch at PyTorch Conference | pytorch-conference | 2
 - Impact and Reflection | impact | 2
 - Appendix: The Lesson Common Pattern | appendix | 2
+- Bibliography | bibliography | 2
 ---
 
 ## Introduction {#introduction}
@@ -53,14 +53,14 @@ We adopted this same philosophy for the PyTorch labs: **each lab contains 5-7 sm
 
 ### Jupyter Lab Structure and Flow {#lab-structure}
 
-Every lab follows a carefully designed flow that guides students through 5-7 structured steps. This image shows how each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations.
+Every lab follows a carefully designed flow that guides students through 5-7 structured steps. Each step is self-contained yet builds upon the previous one, ensuring no conceptual gaps. Each section includes just enough code to understand that particular concept, paired with visual explanations.
 
 ## Behind the Scenes {#behind-scenes}
 
 The creation of these labs involved extensive design work, including Figma prototypes, storyboards, and iterative refinements. This behind-the-scenes process was crucial in ensuring each lab delivered maximum pedagogical value.
 
 
-![Lesson Design - Storyboard vs Preliminary Lesson Draft](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
+![Lesson Design - Storyboard vs Preliminary Lesson Draft (Brainstorming from Granite Cookbook)](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_design_storyboard_vs_actual_lesson_draft.png)
 
 These design iterations ensured that the visuals, code examples, and explanations were optimized for learning. We refined the curriculum multiple times to achieve the best possible outcomes for students.
 
@@ -84,37 +84,18 @@ The solution: create **bite-sized lessons with detailed visual illustrations** t
 
 ### Visualizing Model Architecture {#visualizing-model}
 
-One of the key differences was showing **exactly how and why** we define models as classes. The illustration breaks down:
-- The inheritance from `nn.Module` and why it matters. 
-- The purpose of `__init__()` and `super().__init__()`. 
-- How layers are defined and registered. 
-- The forward pass implementation. 
-- A visual intuition that model layers are initiated in `__init__` and connected in `forward()`.
+A major challenge for beginners is understanding why PyTorch models are defined as classes and how their internal structure works. The labs break down the inheritance from `nn.Module`, the role of `__init__()` and `super().__init__()`, and how layers are registered and connected through the forward pass. By focusing on the reasoning behind these patterns, students learn to build models with confidence, rather than simply copying code.
 
-This visual approach helps beginners understand the pattern rather than just copying code.
+### Making DataLoaders Intuitive {#making-dataloaders}
 
-### Making DataLoaders Intuitive (Preliminary drafts of visual aids for the lessons) {#making-dataloaders}
-
-DataLoaders can be confusing for beginners. The visual approach explains the core concepts through detailed illustrations:
-
-The first visualization breaks down the batching process - one of the most critical concepts beginners struggle with:
-- What a DataLoader actually does under the hood? 
-- How batching works and why it's essential for training efficiency? 
-- The step-by-step process of converting individual samples into batches. 
-- Why batch sizes matter for both memory and convergence? 
-
-
-Visualizations of a broader view of the DataLoader:
-- The relationship between Dataset and DataLoader. 
-- How shuffling works and when to use it? 
-- Multi-worker data loading for performance. 
-- Pin memory optimization for GPU training. 
-
+DataLoaders are another area where newcomers often struggle. The labs clarify what DataLoaders do, how batching improves training efficiency, and why batch size affects both memory and convergence. They also explain the relationship between Dataset and DataLoader, the importance of shuffling, multi-worker loading for performance, and pin memory optimization for GPU training. This step-by-step approach helps learners grasp the practical aspects of data handling in PyTorch.
 
 
 ## Official Launch at PyTorch Conference {#pytorch-conference}
 
 The course was officially launched at the [<u>PyTorch Conference 2025</u>](https://events.linuxfoundation.org/pytorch-conference/) as part of PyTorch Foundation's certification pathway. The full-day training program covers these 7 labs along with additional modules, all delivered with instructor-led guidance and hands-on practice.
+
+Each lab includes detailed illustrations, step-by-step walkthroughs, and practical exercises that reinforce the concepts.
 
 ![Course Launch at PyTorch Conference](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/course_launch_at_pytorch_conference.png)
 
@@ -162,6 +143,20 @@ I contributed to IBM's Foundation Models Stack with a **PR for supporting prefil
 
 These parallel contributions meant working across multiple areas of deep learning infrastructure simultaneously. This breadth gave me unique insights into how PyTorch fits into the larger ecosystem and informed how I explained concepts to students.
 
-## Appendix: The Lesson Common Pattern {#appendix}
+## Appendix: Jupyter Lab flow (inspired by Open-source bite-sized recipes) {#appendix}
 
 ![Lesson Common Pattern](/blogs/Pytorch_Course/10_21_2025_Reflection_Post/Lesson_common_pattern.png){width:50%}
+
+   
+
+---
+
+
+
+## Bibliography {#bibliography}
+
+- **Granite Snack Cookbook**: [ibm-granite-community/granite-snack-cookbook](https://github.com/ibm-granite-community/granite-snack-cookbook) — Source of inspiration for snack-sized, visual learning patterns and lesson structure.
+
+- **PyTorch Conference Keynote**: Launch photo and event details referenced from the official [PyTorch Conference 2025](https://events.linuxfoundation.org/pytorch-conference/) keynote.
+
+- **Appendix & Lesson Design Storyboards**: Brainstorming diagrams and lesson flow illustrations are inspired by open-source repositories such as the Granite Snack Cookbook and other PyTorch educational recipes.
